@@ -1,0 +1,38 @@
+
+.md-header {
+    background-color: #3C126B;
+    background: linear-gradient(to right, #260041 0%, #A87FC7 100%);
+}
+
+.md-search__input {
+    background-color: #260041;
+}
+.md-typeset a {
+    color: rgba(103, 48, 165, 1);
+}
+
+.md-typeset a:hover {
+    color: rgba(103, 48, 165, 0.70);
+}
+
+.md-footer-nav {
+    background-color: #260041;
+}
+.md-footer-meta {
+    background-color: #431C5F;
+}
+
+.integrations ul {
+    list-style: none;
+    text-align: left;
+}
+
+.integrations ul li {
+    display: inline-block;
+    margin-bottom: 1.25em;
+    margin-left: 1.25em;
+}
+
+.integrations li a {
+    box-shadow: 0 0 0 7px #fff, 1px 1px 6px 9px #e4dbef;
+}
