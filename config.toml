@@ -1,3 +1,7 @@
-baseURL = "http://example.org/"
+baseURL = "https://docs.humio.com/"
 languageCode = "en-us"
-title = "My New Hugo Site"
+title = "Humio documentation"
+theme = "hugo-theme-learn"
+
+[outputs]
+home = [ "HTML", "RSS", "JSON" ]

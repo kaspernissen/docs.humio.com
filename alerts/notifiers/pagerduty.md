@@ -1,4 +1,0 @@
-<!--
-## PagerDuty notifier
-TODO
--->
