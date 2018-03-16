@@ -1,3 +1,7 @@
+---
+title: "Installation"
+---
+
 ## Overview
 
 This section describes how to install Humio on a single machine. If you want to run a distributed cluster, please refer to [distributed installation](installation-distributed.md)

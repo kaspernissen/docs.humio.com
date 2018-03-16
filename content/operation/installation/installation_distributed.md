@@ -1,3 +1,7 @@
+---
+title: "Installation distributed"
+---
+
 ## Overview
 
 This section describes how to install Humio configured as a distributed system across multiple machines.

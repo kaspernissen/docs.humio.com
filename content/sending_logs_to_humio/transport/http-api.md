@@ -1,5 +1,6 @@
-HTTP API
-========
+---
+title: "HTTP API"
+---
 
 ## Overview
 

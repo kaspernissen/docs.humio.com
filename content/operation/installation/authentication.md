@@ -1,4 +1,7 @@
-# User authentication
+---
+title: "Authentication"
+---
+
 
 Humio supports different ways of authentication users.
 

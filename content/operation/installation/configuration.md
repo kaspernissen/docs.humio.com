@@ -1,3 +1,7 @@
+---
+title: "Configuration"
+---
+
 ## Configuring Humio
 In this section, we describe the configuration options you can use with Humio.
 

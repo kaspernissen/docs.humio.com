@@ -1,3 +1,7 @@
+---
+title: "Instance sizing"
+---
+
 
 # Sizing Humio / Hardware Recommendations
 

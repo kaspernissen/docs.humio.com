@@ -1,4 +1,9 @@
-# Release Notes
+---
+title: "Release notes"
+weight: 9
+pre: "<b>9. </b>"
+---
+
 
 ## 2018-03-13
 Regular update release.    

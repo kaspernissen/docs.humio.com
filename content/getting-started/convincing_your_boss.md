@@ -1,3 +1,9 @@
+---
+title: "Convincing your boss"
+weight: 4
+---
+
+
 ## Overview
 
 If you've already tried our [tutorial](tutorial.md), then you will probably already be convinced that you need to get Humio into your organization.

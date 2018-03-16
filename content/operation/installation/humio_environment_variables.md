@@ -1,4 +1,6 @@
-## Humio environment variables
+---
+title: "Humio environment variables"
+---
 
 This describes the configuration parameters for Humio, and their default values.
 Please see [the installation instructions](installation.md) on where to place the configuration file.

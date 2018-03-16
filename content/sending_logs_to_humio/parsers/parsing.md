@@ -1,3 +1,8 @@
+---
+title: "Parsing"
+draft: true
+---
+
 When sending data to Humio, you can specify a parser.
 Humio uses parsers to extract fields and add structure to the data that you send to it.
 

@@ -1,4 +1,7 @@
-# System administration
+---
+title: "System administration"
+---
+
 
 ## Root Users
 

@@ -1,3 +1,7 @@
+---
+title: "Kafka configuration"
+---
+
 ## Configuring Kafka
 
 When running Humio in a cluster setup it uses Kafka as part of the infrastructure. 

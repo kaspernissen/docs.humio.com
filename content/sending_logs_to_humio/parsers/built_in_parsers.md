@@ -1,3 +1,7 @@
+---
+title: "Built in parsers"
+---
+
 Humio supplies built-in parsers for common log formats. For example, it includes a parser for the widely-used [accesslog](https://httpd.apache.org/docs/2.4/logs.html#accesslog) format for web servers like Apache and Nginx.
 
 This page lists and describes each of the built-in parsers.

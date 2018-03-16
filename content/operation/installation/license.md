@@ -1,3 +1,7 @@
+---
+title: "License"
+---
+
 ## Installing License Keys
 
 Once you have purchased a license for running Humio on premise you will need

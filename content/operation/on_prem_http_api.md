@@ -1,4 +1,6 @@
-# Overview
+---
+title: "On prem HTTP API"
+---
 
 This page provides information about the HTTP API for managing
 on-premises installations of Humio.  The general aspect of this API is

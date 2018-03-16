@@ -1,4 +1,6 @@
-# Rate Unit Conversions in timecharts
+---
+title: "Rate Unit Conversions in timecharts"
+---
 
 When displaying a rate (somethings per timeunit) in a timechart, the display is sensitive to the size of the chart's 
 `span` or `bucket` parameter, if the thing being graphed is a `sum` (or `count`) of log data.  

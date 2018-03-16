@@ -1,3 +1,8 @@
+---
+title: "New to log management"
+date: 2018-03-15T08:09:40+01:00
+weight: 1
+---
 
 ## Introduction
 
