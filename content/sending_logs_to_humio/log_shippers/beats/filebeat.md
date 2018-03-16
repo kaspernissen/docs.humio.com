@@ -1,3 +1,6 @@
+---
+title: "Filebeat"
+---
 
 [Filebeat](https://www.elastic.co/products/beats/filebeat) is a lightweight, open source program that can monitor log files and send data to servers like Humio.
 

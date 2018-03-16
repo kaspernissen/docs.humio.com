@@ -1,3 +1,6 @@
+---
+title: "Others"
+---
 
 Humio supports the following API's for ingesting data.
 

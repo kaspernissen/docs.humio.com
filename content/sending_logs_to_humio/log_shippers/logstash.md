@@ -1,6 +1,5 @@
 ---
 title: "Logstash"
-weight: 2
 ---
 
 Logstash is an established open source tool for collecting logs,
@@ -26,8 +25,7 @@ extensible architecture of Logstash to parse many kinds of data:
 
 ### Installation
 
-To download Logstash, visit the [Logstash downloads
-page](https://www.elastic.co/downloads/logstash).
+To download Logstash, visit the [Logstash downloads page](https://www.elastic.co/downloads/logstash).
 
 !!! note
 
@@ -60,6 +58,7 @@ output{
   }
 }
 ```
+
 Where:
 
 * `<humio-host>` - is the name of your Humio server
@@ -90,7 +89,7 @@ object becomes a field in the Humio Event.
 Humio treats some fields as special cases:
 
 | Name                     |   Description |
----------------------------|-------------
+---------------------------|---------------|
 | `@timestamp`             | This field must be present, and contain the timestamp in ISO 8601 format. This format is: `yyyy-MM-dd'THH:mm:ss.SSSZ`. <br /><br />You can specify the timezone (like +00:02) in the timestamp. Specify the time zone if you want Humio to save this information. Logstash adds the `@timestamp` field automatically. <br /><br />Depending on the configuration, the timestamp can be the time at which Logstash handles the event, or the actual timestamp in the data. If the timestamp is present in the data, you can configure logstash to parse it, for example, by using the date filter. |
 | `message`                | If present, Humio treats this field as the rawstring of the event. <br /><br />Humio maps this field to the `@rawstring` field, which is textual representation of the raw event in Humio. <br /><br />If you do not provide the message or rawstring field, then the rawstring representation is the JSON structure as text. |
 | `rawstring`              | This field is similar to the `message` field. <br /><br />If you provide both fields, then Humio uses the `message` field. The reason for having both is that some Logstash integrations automatically set a message field representing the raw string. <br /><br />In Humio, we use the name rawstring. |

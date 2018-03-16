@@ -1,6 +1,5 @@
 ---
 title: "Beats"
-weight: 1
 ---
 
 The [Elastic Beats](https://www.elastic.co/products/beats) are a
@@ -16,11 +15,11 @@ There are currently five official Beats. The Elastic documentation site and Humi
 
 * **[Filebeat](https://www.elastic.co/guide/en/beats/filebeat/current/index.html)** - Ships regular log files.
     * [Get Started](https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-getting-started.html)
-    * [Humio's Filebeat documentation](filebeat.md)
+    * [Humio's Filebeat documentation](/sending_logs_to_humio/log_shippers/beats/filebeat/)
 
 * **[Metricbeat](https://www.elastic.co/guide/en/beats/metricbeat/current/index.html)** - Ships metrics from your OS and common services.
     * [Get Started](https://www.elastic.co/guide/en/beats/metricbeat/current/metricbeat-getting-started.html)
-    * [Humio's Metricbeat documentation](metricbeat.md)
+    * [Humio's Metricbeat documentation](/sending_logs_to_humio/log_shippers/beats/metricbeat/)
 
 * **[Packetbeat](https://www.elastic.co/guide/en/beats/packetbeat/current/index.html)** - Analyzes network packets and common protocols like HTTP
     * [Get Started](https://www.elastic.co/guide/en/beats/packetbeat/current/packetbeat-getting-started.html)

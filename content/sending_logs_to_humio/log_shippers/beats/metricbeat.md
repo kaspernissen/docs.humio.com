@@ -1,3 +1,7 @@
+---
+title: "Metricbeat"
+---
+
 [Metricbeat](https://www.elastic.co/products/beats/metricbeat) is a lightweight tool for collecting and shipping metrics.
 
 Metricbeat collects a large set of valuable system metrics, including:
