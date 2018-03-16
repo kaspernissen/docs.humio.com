@@ -9,9 +9,10 @@ There are two key steps to getting logs from Docker containers into Humio:
 1. Shipping the container logs to Humio
 2. Parsing the logs
 
-!!! Note
-    In this guide, we assume that you use Docker in the standard way, where
-    logs are captured from `stdout` and `stderr`.
+{{% notice note %}}
+In this guide, we assume that you use Docker in the standard way, where
+logs are captured from `stdout` and `stderr`.
+{{% /notice %}}
 
 ### 1. Shipping container logs to Humio
 
@@ -23,14 +24,13 @@ With `docker2humio`, you configure and run a shipper container on each
 Docker host. Then, you hook up all the containers for which you want
 logs using the fluentd log-driver.
 
-!!! Tip "Log Types"
+{{% notice tip %}}
+***Log Types***
 
-    You should set the log types for your containers so Humio can
-    parse the logs.
+You should set the log types for your containers so Humio can parse the logs.
 
-    Humio can accept logs even when it does not know their type. So just
-    start sending logs to Humio, and then create and
-    enhance the relevant parsers afterwards.
+Humio can accept logs even when it does not know their type. So just start sending logs to Humio, and then create and enhance the relevant parsers afterwards.
+{{% /notice %}}
 
 Go to the [`docker2humio` container page](https://hub.docker.com/r/pmech/docker2humio/)
 for further documentation on running the container.
@@ -45,13 +45,11 @@ To do this, you can either use a built-in parser, or create new ones for your lo
 types.  For more details on creating parsers, see the [parsing
 page](/parsing.md).
 
-!!! Tip
+{{% notice tip %}}
+In terms of log management, Docker is just a transport layer.
 
-    In terms of log management, Docker is just a transport layer.
-
-    Before writing a custom parser, see the
-    [integrations page](../overview/index.html) to see if Humio already
-    supports your log type.
+Before writing a custom parser, see the [integrations page](../overview/index.html) to see if Humio already supports your log type.
+{{% /notice %}}
 
 ## Metrics
 

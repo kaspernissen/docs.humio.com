@@ -30,10 +30,13 @@ There are currently five official Beats. The Elastic documentation site and Humi
 * **[Heartbeat](https://www.elastic.co/guide/en/beats/heartbeat/current/index.html)** - Checks system status and availability
     * [Get Started](https://www.elastic.co/guide/en/beats/heartbeat/current/heartbeat-getting-started.html)
 
-!!! Note "Community Beats"
-    In addition, the Elastic community has created many other Beats that you can download and use.
+{{% notice note %}}
+***Community Beats***
 
-    These [Community Beats](https://www.elastic.co/guide/en/beats/libbeat/current/community-beats.html) cover many less common use cases.
+In addition, the Elastic community has created many other Beats that you can download and use.
+
+These [Community Beats](https://www.elastic.co/guide/en/beats/libbeat/current/community-beats.html) cover many less common use cases.
+{{% /notice %}}
 
 ## General Output Configuration
 
@@ -57,8 +60,9 @@ Where:
 * `<dataspace>` - is the name of your dataspace on your server
 * `<ingest-token>` - is the [ingest token](/ingest-tokens.md) for your dataspace
 
-!!! Tip
-    To optimize performance for the data volumes you want to send, and to keep shipping latency down, change the default settings for `compression_level`, `bulk_max_size` and `flush_interval`.
+{{% notice note %}}
+To optimize performance for the data volumes you want to send, and to keep shipping latency down, change the default settings for `compression_level`, `bulk_max_size` and `flush_interval`.
+{{% /notice %}}
 
 ## Adding fields
 

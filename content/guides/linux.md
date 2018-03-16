@@ -24,10 +24,9 @@ metrics the system module is of interest.
 
 * [System Module](https://www.elastic.co/guide/en/beats/metricbeat/current/metricbeat-module-system.html)
 
-!!! Note
-
-    Metricbeat can provide a lot of metrics (many per process for
-    example).  Experiment with finding the level you need.
+{{% notice note %}}
+Metricbeat can provide a lot of metrics (many per process for example).  Experiment with finding the level you need.
+{{% /notice %}}
 
 <h3>Example Metricbeat Configuration</h3>
 
@@ -57,8 +56,10 @@ Where
 
 See the page on [Metricbeat](../log-shippers/metricbeat.md) for more information.
 
-!!! TIP "Example queries"
-    check out the these [queries](../log-shippers/metricbeat.md#host-metrics-example-queries) on host metrics
+{{% notice note %}}
+***Example queries***
+check out the these [queries](../log-shippers/metricbeat.md#host-metrics-example-queries) on host metrics
+{{% /notice %}}
 
 ## System Logs (syslog)
 

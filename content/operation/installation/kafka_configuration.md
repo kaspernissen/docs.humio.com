@@ -80,6 +80,8 @@ Set retention on the ingest queue to 1GB (per partition)
 ```
 <kafka_dir>/bin/kafka-configs.sh --zookeeper $HOST:2181 --entity-name humio-ingest --entity-type topics --alter --add-config retention.bytes=1073741824
 ```
-!!! Note "`retention.bytes`"
-    The setting `retention.bytes` is per partition. By default Humio has 24 partitions for ingest.
+
+{{% notice note %}}
+The setting `retention.bytes` is per partition. By default Humio has 24 partitions for ingest.
+{{% /notice %}}
 

@@ -33,11 +33,11 @@ For example, the following query has these components:
         Tag filters        |       Filter       |              Aggregate               | Aggregate
 ```
 
-!!! tip
-    To chain query expressions, use the 'pipe' character, (`|`), between each of the query expressions.
+{{% notice tip %}}
+To chain query expressions, use the 'pipe' character, (`|`), between each of the query expressions.
 
-    This causes Humio to pass the output from one expression into the next expression.
-
+This causes Humio to pass the output from one expression into the next expression.
+{{% /notice %}}
 
 ## Tag filters
 
@@ -58,8 +58,9 @@ For more information on tags, see the [glossary](glossary/#tags) page.
 
 The most basic query in Humio is to search for a particular string in the `@rawstring` attribute of events.  See [glossary](glossary#events) for more details on `@rawstring`.
 
-!!! note
-    You can perform more complex regular expression searches on the `@rawstring` attribute of an event by using the [regex](query-language/query-functions#regex) function.
+{{% notice note %}}
+You can perform more complex regular expression searches on the `@rawstring` attribute of an event by using the [regex](query-language/query-functions#regex) function.
+{{% /notice %}}
 
 
 ### Examples
@@ -126,12 +127,14 @@ In addition to globbing (`*` appearing in match strings) you can match fields us
 
 
 
-!!! note
-    The left-hand-side of the operator is interpreted an attribute name. If you write `200 = statuscode`, Humio tries to find an attribute named `200` and test if its value is `"statuscode"`.
+{{% notice note %}}
+The left-hand-side of the operator is interpreted an attribute name. If you write `200 = statuscode`, Humio tries to find an attribute named `200` and test if its value is `"statuscode"`.
+{{% /notice %}}
 
-!!! warning
-    If the specified attribute is not present in an event, then the comparison always fails.
-    You can use this behavior to match events that do not have a given field, using either `not (foo=*)` or the equivalent `foo!=*` to find events that do not have the attribute `foo`.
+{{% notice warning %}}
+If the specified attribute is not present in an event, then the comparison always fails.
+You can use this behavior to match events that do not have a given field, using either `not (foo=*)` or the equivalent `foo!=*` to find events that do not have the attribute `foo`.
+{{% /notice %}}
 
 <!-- TODO: State explicitly which comparison operators will yield positive for missing attributes, and which ones won't. Especially: "!=" -->
 
@@ -171,8 +174,9 @@ The following example shows a typical query pipeline:
 <!-- ^^ Workaround to get pipe-in-code-in-table. -->
 
 
-!!! note
-    Queries can be built by combining filters and functions. You can find out more about Query Functions [here](query-language/query-functions.md).
+{{% notice note %}}
+Queries can be built by combining filters and functions. You can find out more about [Query Functions](/searching_logs/query_functions/).
+{{% /notice %}}
 
 
 ## Extracting new attributes
@@ -185,8 +189,9 @@ to find the entries that have less than 1000 free disk space:
 
 `regex("disk_free=(?<space>[0-9]+)") | space < 1000`
 
-!!! tip
-    Since regular expressions do need some computing power, it is best to do as much simple filtering as possible earlier in the query chain before applying the regex function.
+{{% notice tip %}}
+Since regular expressions do need some computing power, it is best to do as much simple filtering as possible earlier in the query chain before applying the regex function.
+{{% /notice %}}
 
 You can also use regex expressions to extract new fields. So the above could also 
 be written

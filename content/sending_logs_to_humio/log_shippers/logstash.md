@@ -9,8 +9,11 @@ You can use Logstash alongside Humio to process and analyze logs
 together. In this scenario, you use Logstash as the log collection and
 parsing agent, and instruct it to send the data to Humio.
 
-!!! Tip "Humio supports the Elasticsearch bulk insertion API" 
-    Just point the Elastic  outputter to Humio as described [here](logstash.md#configuration)
+{{% notice tip %}}
+***Humio supports the Elasticsearch bulk insertion API*** 
+
+Just point the Elastic  outputter to Humio as described [here](logstash.md#configuration)
+{{% /notice %}}
 
 
 The benefit of this approach is that you can take advantage of the
@@ -27,11 +30,9 @@ extensible architecture of Logstash to parse many kinds of data:
 
 To download Logstash, visit the [Logstash downloads page](https://www.elastic.co/downloads/logstash).
 
-!!! note
-
-    You can find the complete documentation for Logstash at [the
-    Reference page of the official Logstash
-    website](https://www.elastic.co/guide/en/logstash/current/index.html).
+{{% notice note %}}
+You can find the complete documentation for Logstash at [the Reference page of the official Logstash website](https://www.elastic.co/guide/en/logstash/current/index.html).
+{{% /notice %}}
 
 
 ### Configuration

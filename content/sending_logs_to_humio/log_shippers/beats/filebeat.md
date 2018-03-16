@@ -19,23 +19,32 @@ Filebeat has some properties that make it a great tool for sending file data to 
     When Filebeat reads a file, it keeps track of the last point that it has read to. If there is no network connection, then Filebeat waits to retry data transmission. It continues data transmission when the connection is working again.
 
 
-!!! Note "Official documentation"
-    Check out Filebeat's [official documentation](https://www.elastic.co/guide/en/beats/filebeat/current/index.html).
+{{% notice note %}}
+***Official documentation***
+
+Check out Filebeat's [official documentation](https://www.elastic.co/guide/en/beats/filebeat/current/index.html).
+{{% /notice %}}
 
 ## Installation
 
 To download Filebeat, visit the [Filebeat downloads page](https://www.elastic.co/downloads/beats/filebeat)
 
-!!! note "Installation documentation"
-    You can find installation documentation for Filebeat at [the Filebeat Installation page of the official Filebeat website](https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-installation.html).
+{{% notice note %}}
+***Installation documentation***
+
+You can find installation documentation for Filebeat at [the Filebeat Installation page of the official Filebeat website](https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-installation.html).
+{{% /notice %}}
 
 ## Configuration
 
 Humio supports parts of the Elasticsearch bulk ingest API.
 Data can be sent to Humio by configuring Filebeat to use the built in Elastic Search output.
 
-!!! Note "Configuration documentation"
-    You can find configuration documentation for Filebeat at [the Filebeat configuration page of the official Filebeat website](https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-configuration-details.html).
+{{% notice note %}}
+***Configuration documentation***
+
+You can find configuration documentation for Filebeat at [the Filebeat configuration page of the official Filebeat website](https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-configuration-details.html).
+{{% /notice %}}
 
 The following example shows a simple Filebeat configuration that sends data to Humio:
 
@@ -56,8 +65,9 @@ output:
 
 ```
 
-!!! tip
-    The Filebeat configuration file is located at `/etc/filebeat/filebeat.yml` on Linux.
+{{% notice note %}}
+The Filebeat configuration file is located at `/etc/filebeat/filebeat.yml` on Linux.
+{{% /notice %}}
 
 You must make the following changes to the sample configuration:
 
@@ -83,18 +93,21 @@ sudo systemctl enable filebeat
 sudo systemctl restart filebeat 
 ```
 
-!!! Note "Testing filebeat"
-    On linux Filebeat is often placed at `/usr/share/filebeat/bin/filebeat` 
-    To test it can be run like `/usr/share/filebeat/bin/filebeat -c /etc/filebeat/filebeat.yml` 
+{{% notice note %}}
+***Testing Filebeat***
 
+On linux Filebeat is often placed at `/usr/share/filebeat/bin/filebeat` 
+To test it can be run like `/usr/share/filebeat/bin/filebeat -c /etc/filebeat/filebeat.yml` 
+{{% /notice %}}
 
 ## Parsing data
 Humio uses parsers to parse the data from Filebeat into events.
 Parsers can extract fields from the text strings an add structure to the events.
 For more information on parsers, see [parsing](/parsing.md).
 
-!!! Note
-    Take a look at Humio's [built-in parsers](/built-in-parsers.md).
+{{% notice note %}}
+Take a look at Humio's [built-in parsers](/built-in-parsers.md).
+{{% /notice %}}
 
 You can specify the parser/type for each monitored file using the `type` field in the fields section in the Filebeat configuration.  
 If not specifying a type, Humios built in key value parser (`kv`) will be used.
@@ -117,8 +130,9 @@ It is possible to add fields with static values using the fields section. These 
 Filebeat automatically sends the host (`beat.hostname`) and filename (`source`) along with the data. Humio adds theese fields to each event.
 The fields are added as `@host` and `@source` (to try not to collide with other fields in the event).
 
-!!! tip
-     To avoid having the `@host` and `@source` fields, specify `@host` and `@source` in the `fields` section and provide an empty value.
+{{% notice tip %}}
+To avoid having the `@host` and `@source` fields, specify `@host` and `@source` in the `fields` section and provide an empty value.
+{{% /notice %}}
 
 ## Tags
 Humio saves data in Data Sources. You can provide a set of Tags to specify which Data Source the data is saved in.  
@@ -132,8 +146,12 @@ By default, Filebeat creates one event for each line in the in a file. However, 
 For example, stack traces in many programming languages span multiple lines.
 
 You can specify multiline settings in the Filebeat configuration.
-!!! Note "Multiline documentation"
-    [See Filebeats official multiline configuration documentation](https://www.elastic.co/guide/en/beats/filebeat/master/multiline-examples.html)
+
+{{% notice note %}}
+***Multiline documentation***
+
+[See Filebeats official multiline configuration documentation](https://www.elastic.co/guide/en/beats/filebeat/master/multiline-examples.html)
+{{% /notice %}}
 
 Often a log event starts with a timestamp and we want to read all lines until we see a new line starting with a timestamp.
 In filebeat that can be done like this:

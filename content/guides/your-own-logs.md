@@ -7,17 +7,18 @@ to Humio?
 
 The easiest way to ship your application logs is to have your application
 write logs to a file on disk, and then use
-[Filebeat](../log-shippers/beats.md) to ship them to Humio.
+[Filebeat](/sending_logs_to_humio/log_shippers/beats/) to ship them to Humio.
 
-!!! tip
-    Remember to set a limit on the size of the log file, and rotate it so that
-    you don't run out of disk space.
+{{% notice tip %}}
+Remember to set a limit on the size of the log file, and rotate it so that
+you don't run out of disk space.
+{{% /notice %}}
 
+{{% notice note %}}
+***Docker***
 
-!!! Docker
-
-    If you are using Docker for your application, see the [Docker
-    Containers documentation](../platforms/docker.md)
+If you are using Docker for your application, see the [Docker Containers documentation](/sending_logs_to_humio/integrations/docker/)
+{{% /notice %}}
 
 
 ## Filebeat Configuration

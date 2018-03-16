@@ -1,6 +1,5 @@
 ---
 title: "Moving from Elastic Stack"
-date: 2018-03-15T08:09:56+01:00
 weight: 2
 ---
 

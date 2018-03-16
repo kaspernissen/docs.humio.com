@@ -1,15 +1,16 @@
-
+---
+title: "Others"
+---
 
 So you are developing your own application and want to ship its logs
 to Humio?  The easiest is to just log to a file on disk (remember to
 set a limit on its size and rotate it so you don't run out of disk
-space) and then use [Filebeat](../log-shippers/beats.md) to ship it
+space) and then use [Filebeat](/sending_logs_to_humio/log-shippers/beats/) to ship it
 to Humio.
 
-!!! Note
-
-    If you are using Docker for your own application, go to the [Docker
-    Containers documentation](docker.md)
+{{% notice note %}}
+If you are using Docker for your own application, go to the [Docker Containers documentation](/sending_logs_to_humio/integrations/docker/)
+{{% /notice %}}
 
 
 ## Filebeat Configuration
@@ -32,4 +33,4 @@ output.elasticsearch:
   username: <ingest-token>
 ```
 
-See the detailed documentation for filebeat [here](/integrations/log-shippers/filebeat.md)
+See the detailed [documentation for Filebeat](/sending_logs_to_humio/log_shippers/filebeat/)

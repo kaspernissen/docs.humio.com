@@ -15,12 +15,11 @@ You cannot delete individual Events in a Data Source beyond expiration.<!--GRW: 
 
 Humio represents each Data Source internally as a dedicated directory within the Data Space directory.
 
-!!! tip
-    We recommend that you do not create more than 1,000 separate Tags, or combinations of Tags.
+{{% notice note %}}
+We recommend that you do not create more than 1,000 separate Tags, or combinations of Tags.
 
-    If you need more combinations, then we recommend that you use attributes on individual Events to differentiate them, and let you select them separately.
-
-
+If you need more combinations, then we recommend that you use attributes on individual Events to differentiate them, and let you select them separately.
+{{% /notice %}}
 
 ### Data Spaces
 
@@ -28,10 +27,9 @@ Humio organizes data into 'Data Spaces'. Each Data Space has its own set of user
 
 When you set up data quotas and retention policies, you configure them for each Data Space.
 
-!!! note
-    Queries cannot span more than one Data Space.
-
-
+{{% notice note %}}
+Queries cannot span more than one Data Space.
+{{% /notice %}}
 
 ### Events
 
@@ -56,22 +54,23 @@ Tags provide an important way to speed up searching. They allow Humio to select 
 For example, you can add Tags to Events that represent host names, file names, service names, or the kind of service.  
 Tags can be configured in [parsers](/parsing.md) or specified in the APIs for data ingestion.
 
-!!! note
-     Tags are an advanced option in Humio. It can be used to separate data into different datasources and thereby improve query performance.
-     **If in doubt, start out by not specifying any tags.**
+{{% notice note %}}
+Tags are an advanced option in Humio. It can be used to separate data into different datasources and thereby improve query performance.
+**If in doubt, start out by not specifying any tags.**
 
-     We, at Humio (support@humio.com), are ready to help you in using tags.
+We, at Humio (support@humio.com), are ready to help you in using tags.
+{{% /notice %}}
 
-In Humio tags always start with a #. When turning a field into a tag it will be prepended with #.
+In Humio tags always start with a #. When turning a field into a tag it will be prepended with `#`.
 If fields start with an `@` or `_` , the character is removed before prepending the #
 
-!!! warning
-    You should use Tags for the aspects that you want to search for most often.
+{{% notice warning %}}
+You should use Tags for the aspects that you want to search for most often.
 
-    Do not create more distinct dynamic Tags than you need. This reduces system performance and increases resource usage.
+Do not create more distinct dynamic Tags than you need. This reduces system performance and increases resource usage.
 
-    You should set dynamic values, such as names that include dates, as Event attributes, not Tags. Attributes are individual key/values that are associated with an individual Event.
-
+You should set dynamic values, such as names that include dates, as Event attributes, not Tags. Attributes are individual key/values that are associated with an individual Event.
+{{% /notice %}}
 
 ### Users
 
@@ -93,8 +92,9 @@ There are three levels of users: 'normal', 'administrator', and 'root':
 
 You can manage Users and their rights using the 'Data Space' web page in Humio.
 
-!!! tip
-    You can add the same user ID to more than one Data Space.
+{{% notice note %}}
+You can add the same user ID to more than one Data Space.
+{{% /notice %}}
 
 
 ## Query Concepts
@@ -132,10 +132,9 @@ Humio sets the `groupby` attribute of a live query automatically. It bases the g
 
 Aggregate queries run live inside each bucket as Events arrive. Whenever the current response is selected, it runs the aggregations for the query across the buckets.
 
-!!! note
-    Humio purges live queries if no client has checked their status for 60 minutes.
-
-
+{{% notice note %}}
+Humio purges live queries if no client has checked their status for 60 minutes.
+{{% /notice %}}
 
 ### Query Boundaries
 

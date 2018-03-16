@@ -11,26 +11,29 @@ This section describes how to install Humio configured as a distributed system a
 Running a distributed Humio setup requires a Kafka cluster (version 1.0).
 You can setup such a cluster using our Docker image. Or you can install Kafka using some other method.
 
-!!! Note "Installation and configuration scripts"
-    We have created a [github repository](https://github.com/humio/provision-humio-cluster) with scripts to help install and configure Humio.
-    We suggest you read through the documentation below and have a look at repository. Check out the scripts and modify them for your environment.
+{{% notice note %}}
+***Installation and configuration scripts***
+
+We have created a [github repository](https://github.com/humio/provision-humio-cluster) with scripts to help install and configure Humio.
+We suggest you read through the documentation below and have a look at repository. Check out the scripts and modify them for your environment.
+{{% /notice %}}
 
 ### Running the Kafka Docker image from humio/humio-kafka
 
-!!! important
-    
-    The suggested default is to run 3 instances of the Docker image each containing a Kafka and Zookeeper instance.
-    The zookeeper and kafka instances must run on ports, that the Humio instances can connect to.
-    The suggested setup below maps the user "Humio" on the host machine to the user "Humio" inside the Docker containers
-    and runs the Kafka, zookeeper and Humio processes as that user. This allows the processes to write to the mounted data directories.
-    Tailor according to your needs and make sure the "/data/" directories are on a mount point with sufficient storage. (e.g. probably not "/")
+{{% notice note %}}
+The suggested default is to run 3 instances of the Docker image each containing a Kafka and Zookeeper instance.
+The zookeeper and kafka instances must run on ports, that the Humio instances can connect to.
+The suggested setup below maps the user "Humio" on the host machine to the user "Humio" inside the Docker containers
+and runs the Kafka, zookeeper and Humio processes as that user. This allows the processes to write to the mounted data directories.
+Tailor according to your needs and make sure the "/data/" directories are on a mount point with sufficient storage. (e.g. probably not "/")
 
-    The data is split on 4 mountpoints, in the example configurations below on these prefixes:
+The data is split on 4 mountpoints, in the example configurations below on these prefixes:
 
-    1. /data/logs holds logfiles from the various processes.
-    2. /data/zookeeper-data holds zookeeper data. (Not much)
-    3. /data/kafka-data holds Kafka data.
-    4. /data/humio-data holds Humio data.
+1. /data/logs holds logfiles from the various processes.
+2. /data/zookeeper-data holds zookeeper data. (Not much)
+3. /data/kafka-data holds Kafka data.
+4. /data/humio-data holds Humio data.
+{{% /notice %}}
 
 The following shows how to use the `humio/humio-kafka` image to set up
 Zookeeper and Kafka in a 3 machine cluster.
@@ -202,8 +205,9 @@ You can use this file to pass on JVM arguments to the Humio Java process.
 
         docker pull humio/humio-core
 
-    !!! warning
-        If you get a 'permission denied' error, then contact Humio to gain access to the `humio/humio-core` private repository.
+{{% notice warning %}}
+If you get a 'permission denied' error, then contact Humio to gain access to the `humio/humio-core` private repository.
+{{% /notice %}}
 
 1. Run the Humio Docker image as a container:
 
@@ -224,12 +228,16 @@ You can use this file to pass on JVM arguments to the Humio Java process.
 
 1. Humio is now running. Navigate to [http://localhost:8080](http://localhost:8080) to view the Humio web interface.
 
-!!! important
-    In the above example, we started the Humio container with full access to the network of the host machine. In a production environment, you should restrict this access by using a firewall, or adjusting the Docker network configuration.
+{{% notice info %}}
+In the above example, we started the Humio container with full access to the network of the host machine. In a production environment, you should restrict this access by using a firewall, or adjusting the Docker network configuration.
+{{% /notice %}}
 
-!!! note "Starting Humio as a service"
-    There are different ways of starting the docker container ["as a service"](https://docs.docker.com/engine/admin/host_integration/).
-    In the above example, we used Dockers [restart policies](https://docs.docker.com/engine/reference/run/#restart-policies-restart). It can be started using a process manager. [A systemd example is provided here](installation#systemd-service-example)
+{{% notice note %}}
+***Starting Humio as a service***
+
+There are different ways of starting the docker container ["as a service"](https://docs.docker.com/engine/admin/host_integration/).
+In the above example, we used Dockers [restart policies](https://docs.docker.com/engine/reference/run/#restart-policies-restart). It can be started using a process manager. [A systemd example is provided here](installation#systemd-service-example)
+{{% /notice %}}
 
 
 ## Configuring Humio

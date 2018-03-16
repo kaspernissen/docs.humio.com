@@ -17,8 +17,9 @@ Humio supports different ways of authentication users.
 Users are authenticated (logged in) using one of the above integrations. But the authorisation is done in Humio. Which dataspaces a user can access is specified in Humio.
 
 
-!!! note
-    User authentication is disabled by default.
+{{% notice note %}}
+User authentication is disabled by default.
+{{% /notice %}}
 
 ## Root User
 
@@ -29,8 +30,9 @@ the special API token for root access. The token is created every time the serve
 This can then be used for creating initial users and data spaces on the humio server.
 It's also useful for running scripts/integrations on the local server, for provisioning or daily maintenance purposes.
 
-!!! Note
-    As the token is created anew on server startup, it is not suitable for use from other machines.
+{{% notice note %}}
+As the token is created anew on server startup, it is not suitable for use from other machines.
+{{% /notice %}}
 
 To create an initial user with root priviledges on the server, use this:
 
@@ -56,9 +58,10 @@ If you have a "reverse proxy" in front of Humio, and that proxy has a way of kno
 other unique user identifier, you can let the proxy decide what username the user gets access as inside Humio.
 This is one way to accomplish single sign-on in certain configurations.
 
-!!! note
-    Make sure Humio is not accessible without passing through the proxy, as direct access to the Humio server
-    in this configuration allows anyone to assumte any identity in Humio.
+{{% notice note %}}
+Make sure Humio is not accessible without passing through the proxy, as direct access to the Humio server
+in this configuration allows anyone to assumte any identity in Humio.
+{{% /notice %}}
 
 Configure using:
 

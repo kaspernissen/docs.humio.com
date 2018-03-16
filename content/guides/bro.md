@@ -40,8 +40,10 @@ It is also possible to test the script by running:
 ```
 bro -i eth0 <bro-directory-full-path>/site/json-logs-by-corelight.bro
 ```
-!!! Note "Network interface"
-    On Mac the default network interface is `en0`
+
+{{% notice note %}}
+On Mac the default network interface is `en0`
+{{% /notice %}}
 
 You can follow the above or add the Bro script in a way matching your installation.
 With the script in place, and after a restart, Bro should be logging in JSON format, formatted as JSON objects separated by newlines.
@@ -59,10 +61,10 @@ Or you can create it from the command line like this:
 curl -v 'http://localhost:8080/humio/api/v1/dataspaces/bro' -X PUT -H 'Content-Type: application/json' -H 'Accept: application/json' --data-binary '{}'
 ```
 
-!!! Note "Authentication"
-    If you are running with authentication or using Humio as a service you need to add your API token
-    `-H "Authorization: Bearer $TOKEN"`
-    
+{{% notice note %}}
+If you are running with authentication or using Humio as a service you need to add your API token
+`-H "Authorization: Bearer $TOKEN"`
+{{% /notice %}}    
 You now have a bro dataspace.
 
 
@@ -119,14 +121,22 @@ Note, that in the filebeat configuration we specify that Humio should use the bu
 
 With the config in place we are ready to run Filebeat. 
 
-!!! Note "Running Filebeat"
-    Run Filebeat as described [here](/integrations/log-shippers/filebeat.md#running-filebeat).  
-    An example of running Filebeat with the above parameters as environment variables:  
-    `BRO_LOG_DIR=/home/bro/logs DATASPACE=bro HUMIO_HOST=localhost INGEST_TOKEN=none /usr/share/filebeat/bin/filebeat -c /etc/filebeat/filebeat.yml` 
+{{% notice note %}}
+***Running Filebeat***
 
-!!! Note "Logging is verbose"
-    Logging is set to debug in the above Filebeat configuration. It can be a good idea to set it to info when things are running well.
-    Filebeat log files are by default rotated and only 7 files of 10 megabytes each are kept, so it should not fill up the disk. See more in the [docs](https://www.elastic.co/guide/en/beats/filebeat/current/configuration-logging.html)
+Run Filebeat as described [here](/integrations/log-shippers/filebeat.md#running-filebeat).  
+An example of running Filebeat with the above parameters as environment variables:  
+```
+BRO_LOG_DIR=/home/bro/logs DATASPACE=bro HUMIO_HOST=localhost INGEST_TOKEN=none /usr/share/filebeat/bin/filebeat -c /etc/filebeat/filebeat.yml
+```
+{{% /notice %}}
+
+{{% notice note %}}
+***Logging is verbose***
+
+Logging is set to debug in the above Filebeat configuration. It can be a good idea to set it to info when things are running well.
+Filebeat log files are by default rotated and only 7 files of 10 megabytes each are kept, so it should not fill up the disk. See more in the [docs](https://www.elastic.co/guide/en/beats/filebeat/current/configuration-logging.html)
+{{% /notice %}}
 
 
 If there is data in the Bro log files, Filebeat will start shipping the data to Humio.
@@ -167,5 +177,9 @@ There is a link to the tutorial in the top right corner of the Humio UI.
 We have created two example dashboards. You can add them to your Humio installation by running this [script](bro-files/bro-add-dashboards.sh)  
 Before running the script set the right values for the parameters at the top
 
-!!! Note "Make the script executable"
-    `chmod +x <path_to_script>/bro-add-dashboards.sh`
+{{% notice note %}}
+***Make the script executable***
+```
+chmod +x <path_to_script>/bro-add-dashboards.sh
+```
+{{% /notice %}}

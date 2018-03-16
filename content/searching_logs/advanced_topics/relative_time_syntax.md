@@ -20,8 +20,9 @@ Months          | `month`, `months`, `mon`
 Quarters        | `quarter`, `quarters`, `q`, `qtr`, `qtrs`
 Years           | `year`, `years`, `y`, `yr`, `yrs`
 
-!!! Note
-    You can include a space character between the number and the unit of time.
+{{% notice note %}}
+You can include a space character between the number and the unit of time.
+{{% /notice %}}
 
 ## Examples
 

@@ -41,10 +41,11 @@ This section describes the HTTP headers that you can use with the Humio API.
 
 To use the HTTP API, you must provide an API token using the `Authorization` header.
 
-!!! note
-    You can find your API token on the web application's front page (after login) by clicking the 'Account', then the 'Show' button.
+{{% notice note %}}
+You can find your API token on the web application's front page (after login) by clicking the 'Account', then the 'Show' button.
 
-    ![API Token](images/api-token.png)
+![API Token](images/api-token.png)
+{{% /notice %}}
 
 Example:
 
@@ -168,8 +169,9 @@ When providing a timestamp, relative time modifiers are specified relative to "n
 
 See the relative time syntax [here](/relative-time-syntax.md)
 
-!!! note
-    Relative time modifiers are always relative to now.
+{{% notice note %}}
+Relative time modifiers are always relative to now.
+{{% /notice %}}
 
 This method is shown in the following examples:
 
@@ -191,18 +193,16 @@ You can also mix relative and absolute time modifiers. For example, to search fr
 }
 ```
 
-!!! note
-    **Omitted and required arguments**
+{{% notice note %}}
+***Omitted and required arguments***
 
-    Humio has defined behavior when you omit time arguments:
+Humio has defined behavior when you omit time arguments:
 
-    * If you omit the`end` argument, it gets the default value `now`.  
-    * If you omit the `start` argument, it gets the default value of `24hours`.  
+* If you omit the`end` argument, it gets the default value `now`.  
+* If you omit the `start` argument, it gets the default value of `24hours`.  
 
-    For [*_live queries_*](glossary.md#live-queries), you must either set `end` to "now", or omit it. You must set `start` to a relative time modifier.
-
-
-
+For [*_live queries_*](glossary.md#live-queries), you must either set `end` to "now", or omit it. You must set `start` to a relative time modifier.
+{{% /notice %}}
 
 ### Response
 
@@ -341,12 +341,13 @@ boundary, and information about the attributes and their unique value
 domains in the response.
 
 
-!!! warning
-    **Query timeouts**
+{{% notice warning %}}
+***Query timeouts***
 
-    If you do not poll a query for 30 seconds, then it stops and deletes itself.
+If you do not poll a query for 30 seconds, then it stops and deletes itself.
 
-    Live queries keep running for an hour without being polled.
+Live queries keep running for an hour without being polled.
+{{% /notice %}}
 
 #### Example
 
@@ -392,10 +393,13 @@ When parsing text logs like syslogs, accesslogs or logs from applications you ty
 
 This API should be used, when a parser should be applied to the data. It is possible to create [parsers](/parsing.md) in Humio
 
-!!! Note "Filebeat is another option for sending data that needs a parser"
-    Another option, that is related to this API is to use [Filebeat](/integrations/log-shippers/filebeat.md).  
-    Filebeat is a lightweight open source agent that can monitor files and ship data to Humio. When using filebeat it is also possible to specify a parser for the data.
-    Filebeat can handle many problems like network problems, retrying, batching, spikes in data etc. 
+{{% notice note %}}
+***Filebeat is another option for sending data that needs a parser***
+
+Another option, that is related to this API is to use [Filebeat](/integrations/log-shippers/filebeat.md).  
+Filebeat is a lightweight open source agent that can monitor files and ship data to Humio. When using filebeat it is also possible to specify a parser for the data.
+Filebeat can handle many problems like network problems, retrying, batching, spikes in data etc. 
+{{% /notice %}}
 
 ``` text
 POST	/api/v1/dataspaces/$DATASPACE/ingest-messages
@@ -644,11 +648,11 @@ You can use this endpoint to upload files that can be used by the
 
 You can upload files in CSV or JSON format.
 
-!!! note
-    Upload files as multipart form data.
+{{% notice note %}}
+Upload files as multipart form data.
 
-    The file should be in a part named `file`.
-
+The file should be in a part named `file`.
+{{% /notice %}}
 
 #### Example using curl
 

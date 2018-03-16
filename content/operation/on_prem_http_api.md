@@ -133,8 +133,10 @@ curl -XDELETE -H "Authorization: Bearer $TOKEN" "http://localhost:8080/api/v1/cl
 ```
 
 It is possible to drop a host, even if it has data and assigned partitions, by adding the query parameter  "accept-data-loss" with the value "true".
-!!! warning
-    This silently drops your data.
+
+{{% notice warning %}}
+This silently drops your data.
+{{% /notice %}}
 
 Example:
 ``` bash

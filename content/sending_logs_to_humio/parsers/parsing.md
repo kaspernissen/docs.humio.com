@@ -6,8 +6,11 @@ draft: true
 When sending data to Humio, you can specify a parser.
 Humio uses parsers to extract fields and add structure to the data that you send to it.
 
-!!! Note "Example"
-    When sending data with [Filebeat](integrations/log-shippers/filebeat.md) you specify a parser to parse data
+{{% notice note %}}
+***Example***
+
+When sending data with [Filebeat](integrations/log-shippers/filebeat.md) you specify a parser to parse data
+{{% /notice %}}
 
 Humio comes with a set of [built-in parsers](built-in-parsers.md) for
 common log formats.
@@ -22,12 +25,14 @@ Go to the **Parsers** subpage in your data space to see all the available parser
 
 ![Parsers List`](images/parsers.png)
 
-!!! Note "Built-in parsers"
-    The first part of the list contains [built-in parsers](built-in-parsers.md).
+{{% notice note %}}
+***Built-in parsers***
 
-    You cannot delete the built-in parsers, but you can overwrite them if you
-    want.
-    You can also copy existing parsers to use as a starting point for creating new parsers.
+The first part of the list contains [built-in parsers](built-in-parsers.md).
+
+You cannot delete the built-in parsers, but you can overwrite them if you want.
+You can also copy existing parsers to use as a starting point for creating new parsers.
+{{% /notice %}}
 
 ## The Parser User Interface
 
@@ -37,8 +42,9 @@ The following screenshots shows the **Parser** page testing the built-in [`acces
 
 The **Parser** page lets you define and test parsers.
 
-!!! Tip
-    Click the tooltips ('?') next to each field for information on their purpose.
+{{% notice tip %}}
+Click the tooltips ('?') next to each field for information on their purpose.
+{{% /notice %}}
 
 Let's walk through the different steps in creating a parser:
 
@@ -81,10 +87,13 @@ Specify the field containing the timestamp on the **Parser** page.
 You can find out how to parse timestamps at the [Parsing Timestamps section below](parsing.md#parsing-timestamps).
 
 
-!!! Tip "Testing"
-    You can test the parser on the **Parser** page by adding some test data. This offers an interactive way to refine the parser.
+{{% notice tip %}}
+***Testing***
 
-    See the section on [Testing the Parser](parsing.md#testing-parsers) section below.
+You can test the parser on the **Parser** page by adding some test data. This offers an interactive way to refine the parser.
+
+See the section on [Testing the Parser](parsing.md#testing-parsers) section below.
+{{% /notice %}}
 
 
 ## Regular expression parser
@@ -92,15 +101,20 @@ You can find out how to parse timestamps at the [Parsing Timestamps section belo
 The regular expression (regex) parser lets you parse incoming data using a regular expression. Humio extracts fields using named capture groups.
 
 <!--
-!!! Note "Regular expression syntax"
-    Humio uses Java regular expressions. [Refer to the Java documentation for syntax details](https://docs.oracle.com/javase/8/docs/api/java/util/regex/Pattern.html).    
+{{% notice note %}}
+***Regular expression syntax***
+
+Humio uses Java regular expressions. [Refer to the Java documentation for syntax details](https://docs.oracle.com/javase/8/docs/api/java/util/regex/Pattern.html).    
+{{% /notice %}}
 -->
 
 <!--
-!!! Note "Regular expression syntax"
-    Humio uses re2j regular expressions, which are very close to Java's regular expression syntax
+{{% notice note %}}
+***Regular expression syntax***
+Humio uses re2j regular expressions, which are very close to Java's regular expression syntax
 
-    Refer to the [re2j regular expression documentation](https://github.com/google/re2/wiki/Syntax) for more details on this syntax.
+Refer to the [re2j regular expression documentation](https://github.com/google/re2/wiki/Syntax) for more details on this syntax.
+{{% /notice %}}
     
 -->
 
@@ -116,10 +130,12 @@ See the section below on [parsing timestamps](parsing.md#parsing-timestamps).
 
 Have a look at some of the built-in parsers to get started.
 
-!!! Tip "Testing"
-    You can test the parser on the **Parser** page by adding some test data. This offers an interactive way to refine the parser.
+{{% notice tip %}}
+***Testing***
+You can test the parser on the **Parser** page by adding some test data. This offers an interactive way to refine the parser.
 
-    See the section on [Testing the Parser](parsing.md#testing-parsers) section below.
+See the section on [Testing the Parser](parsing.md#testing-parsers) section below.
+{{% /notice %}}
 
 ## Parsing Timestamps
 
@@ -128,11 +144,17 @@ The default timestamp format is [ISO 8601](https://en.wikipedia.org/wiki/ISO_860
 If the timestamps in the data are in local time, and do not have a time zone, then you can specify the time zone manually.
 The **Timezone** input field becomes editable when the timestamp format does not have a time zone designator.
 
-!!! Note "Timestamp format"
-    Look at [Java's DateTimeFormatter documentation](https://docs.oracle.com/javase/8/docs/api/java/time/format/DateTimeFormatter.html) for details on how to define the timestamp format.
+{{% notice note %}}
+***Timestamp format***
 
-!!! Note "timestamp in milliseconds"
-    You can specify `millis` in the timestamp format. This specifies that the time is in milliseconds (Epoch time in milliseconds).
+Look at [Java's DateTimeFormatter documentation](https://docs.oracle.com/javase/8/docs/api/java/time/format/DateTimeFormatter.html) for details on how to define the timestamp format.
+{{% /notice %}}
+
+{{% notice note %}}
+***timestamp in milliseconds***
+
+You can specify `millis` in the timestamp format. This specifies that the time is in milliseconds (Epoch time in milliseconds).
+{{% /notice %}}
 
 ## Key-value parsing
 When creating a regular expression parser, you can add key-value parsing.
@@ -158,21 +180,27 @@ As developers start to use Humio, they can start to use the key-value pattern wh
 ## Testing Parsers
 The parser page supports testing the parser. Paste a snippet of your logs and run the parser.
 
-!!! Note "Building the regular expression"
-    When creating the regular expression, we recommend that you build it one group at a time, and test it after each change.
+{{% notice note %}}
+***Building the regular expression***
+
+When creating the regular expression, we recommend that you build it one group at a time, and test it after each change.
+{{% /notice %}}
 
 When you run the parser, Humio shows a list of parsed events. You can expand each event and see the extracted fields.
 Events are colored red if they could not be parsed and the first error message is displayed above the result list.
 
-!!! Note "Testing the `timestamp` field"
-    The `@timestamp` field displays in milliseconds (UTC). This makes it hard to determine if the timestamp is parsed correctly.
+{{% notice note %}}
+***Testing the `timestamp` field***
+The `@timestamp` field displays in milliseconds (UTC). This makes it hard to determine if the timestamp is parsed correctly.
 
-    A formatted timestamp is shown on the gray bar at the top of the details for the event.
+A formatted timestamp is shown on the gray bar at the top of the details for the event.
+{{% /notice %}}
 
-!!! Note
-    At the moment, the parser page cannot handle multiline events.
+{{% notice note %}}
+At the moment, the parser page cannot handle multiline events.
 
-    This feature is planned for a future release of Humio. Stay tuned!
+This feature is planned for a future release of Humio. Stay tuned!
+{{% /notice %}}
 
 ## Adding tags
 Humio saves data in Data Sources. You can provide a set of Tags to specify which Data Source the data is saved in. 
@@ -191,14 +219,17 @@ When a parser fails, Humio adds fields to the event:
 
  > `@error_msg`: contains the error
 
-!!! Tip "Finding all parsing failures in a dataspace"
-    In a dataspace, you can search for all events that were not parsed correctly:
-     > `@event_parsed=false`
+{{% notice note %}}
+***Finding all parsing failures in a dataspace***
 
-    You can extend the query in different ways. For example, you can display a time chart:
+In a dataspace, you can search for all events that were not parsed correctly:
+ > `@event_parsed=false`
 
-     > `@event_parsed=false | timechart()`
+You can extend the query in different ways. For example, you can display a time chart:
 
-    Or by group results by error message:
+ > `@event_parsed=false | timechart()`
 
-     > `@event_parsed=false | groupby(@error_msg)`
+Or by group results by error message:
+
+ > `@event_parsed=false | groupby(@error_msg)`
+{{% /notice %}}

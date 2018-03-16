@@ -16,15 +16,21 @@ On top of the system-level statistics, Metricbeat comes with modules that offer 
 Check out [the Modules page at the official Metricbeat documentation](https://www.elastic.co/guide/en/beats/metricbeat/current/metricbeat-modules.html) for more details on these integrations and how they work.
 
 
-!!! Note "Official documentation"
-    You can read all the official documentation on Metricbeats [at the Metricbeat website](https://www.elastic.co/guide/en/beats/metricbeat/current/index.html).
+{{% notice note %}}
+***Official documentation***
+
+You can read all the official documentation on Metricbeats [at the Metricbeat website](https://www.elastic.co/guide/en/beats/metricbeat/current/index.html).
+{{% /notice %}}
 
 ## Installation
 
 To download Metricbeat, visit the [Metricbeat downloads page](https://www.elastic.co/downloads/beats/metricbeat).
 
-!!! Note "Installation documentation"
-    You can find installation documentation for Metricbeat at [the Installation page of the official Metricbeat website](https://www.elastic.co/guide/en/beats/metricbeat/current/metricbeat-installation.html).
+{{% notice note %}}
+***Installation documentation***
+
+You can find installation documentation for Metricbeat at [the Installation page of the official Metricbeat website](https://www.elastic.co/guide/en/beats/metricbeat/current/metricbeat-installation.html).
+{{% /notice %}}
 
 
 ## Configuration
@@ -32,8 +38,11 @@ To download Metricbeat, visit the [Metricbeat downloads page](https://www.elasti
 
 Because Humio supports parts of the Elasticsearch insertion API, you can send data from Metricbeat to Humio by configuring Metricbeat to use the built-in Elasticsearch output.
 
-!!! Note "Configuration documentation"
-    You can find configuration documentation for Metricbeat at [the Metricbeat configuration page of the official Metricbeat website](https://www.elastic.co/guide/en/beats/metricbeat/current/configuring-howto-metricbeat.html).
+{{% notice note %}}
+***Configuration documentation***
+
+You can find configuration documentation for Metricbeat at [the Metricbeat configuration page of the official Metricbeat website](https://www.elastic.co/guide/en/beats/metricbeat/current/configuring-howto-metricbeat.html).
+{{% /notice %}}
 
 
 The following example shows a simple Metricbeat configuration collecting host metrics and sending them to Humio:
@@ -63,8 +72,11 @@ Where:
 * `<dataspace>` - is the name of your dataspace on your server
 * `<ingest-token>` - is the [ingest token](/ingest-tokens.md) for your dataspace
 
-!!! tip "Configuration file"
-    The Metricbeat configuration file is located at `/etc/metricbeat/metricbeat.yml` on Linux.
+{{% notice note %}}
+***Configuration file***
+
+The Metricbeat configuration file is located at `/etc/metricbeat/metricbeat.yml` on Linux.
+{{% /notice %}}
 
 ## Running Metricbeat
 Run Metricbeat as a service on Linux with the following commands

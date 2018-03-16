@@ -31,8 +31,9 @@ After you have logged in to Humio, you can see the GitHub Data Space:
 
 Click the GitHub Data Space to view it.
 
-!!! note
-    You can read more about Data Spaces and users in the [glossary](glossary) page.
+{{% notice note %}}
+You can read more about Data Spaces and users in the [glossary](glossary) page.
+{{% /notice %}}
 
 
 ### 2. Navigating the Search page
@@ -62,12 +63,13 @@ The following screenshot shows example results for this query:
 ![An Empty Query](images/github-main_not-annotated.png)
 
 
-!!! note
-    **The Event Distribution Graph**
+{{% notice note %}}
+***The Event Distribution Graph***
 
-    Humio also provides an overview of all events that happened during the search interval in the _Event Distribution Graph_.
+Humio also provides an overview of all events that happened during the search interval in the _Event Distribution Graph_.
 
-    The _Event Distribution Graph_ is an important part in narrowing down your queries. You can use it to look for event patterns, or to 'sanity check' your queries. For example, you could check that a query returns the expected number of events.
+The _Event Distribution Graph_ is an important part in narrowing down your queries. You can use it to look for event patterns, or to 'sanity check' your queries. For example, you could check that a query returns the expected number of events.
+{{% /notice %}}
 
 Now, let's take a look at what data our query found. You can get the details of each item in the _Event List_ by clicking it. This shows the entire content of the event, as well as the fields that
 Humio has parsed, in a detail view at the bottom of the screen.
@@ -76,10 +78,11 @@ You can find more about input Parsers [here](parsing.md).
 <!-- GRW: The link above does not work. -->
 
 
-!!! note
-    **Data format**
+{{% notice note %}}
+***Data format***
 
-    GitHub uses a JSON format for its event data.  Note that the [data model](https://developer.github.com/v3/activity/events/types/) for the GitHub events is outside the scope of this guide.
+GitHub uses a JSON format for its event data.  Note that the [data model](https://developer.github.com/v3/activity/events/types/) for the GitHub events is outside the scope of this guide.
+{{% /notice %}}
 
 ### 4. Narrowing down your query
 
@@ -108,15 +111,16 @@ The following screenshot shows example results for this query:
 
 ![A simple query for the search term 'gravatar'](images/github-search-filter-gravatar.png)
 
-!!! note
-    **Data types and fields in results**
+{{% notice note %}}
+***Data types and fields in results***
 
-    The search query `gravatar` is present as a substring of one or more of the JSON key names in each result, for example, `gravatar_id`.
+The search query `gravatar` is present as a substring of one or more of the JSON key names in each result, for example, `gravatar_id`.
 
-    These matches show that Humio searched the data source as it would search plain text.
+These matches show that Humio searched the data source as it would search plain text.
 
-    You can also search JSON in a structured way.
-    <!-- GRW: Need to add a reference, link, or pointer to this content -->
+You can also search JSON in a structured way.
+<!-- GRW: Need to add a reference, link, or pointer to this content -->
+{{% /notice %}}
 
 <!---
 
@@ -151,12 +155,13 @@ For example, the following search finds all events that contain "foo", "bar", an
 > [`foo and bar and baz` - Click here to try this query](https://demo.humio.com/github/search?live=false&query=foo%20and%20bar%20and%20baz&start=1day)
 
 
-!!! note
-    **Implicit `and`**
+{{% notice note %}}
+***Implicit `and`***
 
-    When you use two terms after each other in a query, Humio automatically inserts a 'hidden' `and` keyword. This means that the last query is identical to the following query:
+When you use two terms after each other in a query, Humio automatically inserts a 'hidden' `and` keyword. This means that the last query is identical to the following query:
 
-    [`foo bar baz` - Click here to try this query](https://demo.humio.com/github/search?live=false&query=foo%20bar%20baz&start=1day)
+[`foo bar baz` - Click here to try this query](https://demo.humio.com/github/search?live=false&query=foo%20bar%20baz&start=1day)
+{{% /notice %}}
 
 Here are some more examples:
 
@@ -174,21 +179,21 @@ You can use the structure of each event in queries.
 
 This means that you can use the structure of each JSON entry in the Humio Data Space to narrow down your query to particular fields.
 
-!!! note
+{{% notice note %}}
+For example, the following query finds all events related to the main GitHub repository for the [`Docker project`](https://github.com/docker/docker):
 
-    For example, the following query finds all events related to the main GitHub repository for the [`Docker project`](https://github.com/docker/docker):
+> [`repo.name=docker/docker` - Click here to try this query](https://demo.humio.com/github/search?live=false&query=repo.name%3Ddocker%2Fdocker&start=1day)
 
-    > [`repo.name=docker/docker` - Click here to try this query](https://demo.humio.com/github/search?live=false&query=repo.name%3Ddocker%2Fdocker&start=1day)
+You can also use the wildcard character ("*") in structured Event Field queries.
 
-    You can also use the wildcard character ("*") in structured Event Field queries.
+For example, the following query finds events related to any repository under the `docker` namespace:
 
-    For example, the following query finds events related to any repository under the `docker` namespace:
+> [`repo.name=docker/*` - Click here to try this query](https://demo.humio.com/github/search?live=false&query=repo.name%3Ddocker%2F*&start=1day)
 
-    > [`repo.name=docker/*` - Click here to try this query](https://demo.humio.com/github/search?live=false&query=repo.name%3Ddocker%2F*&start=1day)
+The following query finds events related to any repository named `docker` under any namespace:
 
-    The following query finds events related to any repository named `docker` under any namespace:
-
-    [`repo.name=*/docker` - Click here to try this query](https://demo.humio.com/github/search?live=false&query=repo.name%3D*%2Fdocker&start=1day)
+[`repo.name=*/docker` - Click here to try this query](https://demo.humio.com/github/search?live=false&query=repo.name%3D*%2Fdocker&start=1day)
+{{% /notice %}}
 
 Let's use this knowledge to restrict our query to return only events under the `jenkinsci` namespace in GitHub.
 
@@ -216,28 +221,29 @@ We will use them to build up the logic required to figure out the most active us
 For a detailed description of all the functions, please see the [reference guide](query-language/query-functions).
 
 
-!!! note
-    Functions come in two categories:
+{{% notice note %}}
+Functions come in two categories:
 
-    * **Transformation functions**
-    <br/>
-    An example of a transformation function is the [regex](query-language/query-functions#regex) function.  [regex](query-language/query-functions#regex) can do two kinds of transformations: pure filtering of events, or extraction of new fields using capture groups:
-    <br/>
-    <br/>
-    The following example query extracts dates in 2016 and adds the `mydate` field to all events.
-    > [`regex("2016-(?<mydate\>\\\\d\\\\d-\\\\d\\\\d)")` - Click here to try this query](https://demo.humio.com/github/search?live=false&query=regex%28%222016-%28%3F%3Cmydate%3E%5C%5Cd%5C%5Cd-%5C%5Cd%5C%5Cd%29%22%29&start=1day)
-    <br />
-    <br />
-    Note that a general introduction to regular expressions is outside the scope of this guide.
+* **Transformation functions**
+<br/>
+An example of a transformation function is the [regex](query-language/query-functions#regex) function.  [regex](query-language/query-functions#regex) can do two kinds of transformations: pure filtering of events, or extraction of new fields using capture groups:
+<br/>
+<br/>
+The following example query extracts dates in 2016 and adds the `mydate` field to all events.
+> [`regex("2016-(?<mydate\>\\\\d\\\\d-\\\\d\\\\d)")` - Click here to try this query](https://demo.humio.com/github/search?live=false&query=regex%28%222016-%28%3F%3Cmydate%3E%5C%5Cd%5C%5Cd-%5C%5Cd%5C%5Cd%29%22%29&start=1day)
+<br />
+<br />
+Note that a general introduction to regular expressions is outside the scope of this guide.
 
-    * **Aggregate functions**
-    <br />
-    An example of an aggregate function is [groupby](query-language/query-functions#groupby). This function groups events by the value of a field, then applies a function to each group. By default, it counts the number of events in each group.
-    <br />
-    <br />
-    The following example query shows you all the event types for the last 24 hours, along with the count of each type:
-    > [`groupby(type, function=count())` - Click here to try this query](https://demo.humio.com/github/search?live=false&query=groupby(type%2C%20function%3Dcount%28%29)&start=1day)
+* **Aggregate functions**
+<br />
+An example of an aggregate function is [groupby](query-language/query-functions#groupby). This function groups events by the value of a field, then applies a function to each group. By default, it counts the number of events in each group.
+<br />
+<br />
+The following example query shows you all the event types for the last 24 hours, along with the count of each type:
+> [`groupby(type, function=count())` - Click here to try this query](https://demo.humio.com/github/search?live=false&query=groupby(type%2C%20function%3Dcount%28%29)&start=1day)
 
+{{% /notice %}}
 We now know how to insert functions into our search query. But we need to join the functions together to obtain a useful result. In the next section, you'll learn how to use pipes to do this.
 
 #### 4.4 Adding Pipes
@@ -246,30 +252,31 @@ You can group several query expressions together into a 'pipe' that runs them on
 
 To chain query expressions, use the 'pipe' character, "|", between each of the query expressions.
 
-!!! note
-    **Example: Total count of activity**
+{{% notice note %}}
+***Example: Total count of activity***
 
-    In this query, we count the total number of events after a certain point in time:
+In this query, we count the total number of events after a certain point in time:
 
-    > [`created_at=\*T07:00\*  | groupby(repo.name) | count()` - Click here to try this query](https://demo.humio.com/github/search?live=false&query=created_at%3D*T07:00*%20%7C%20groupby(repo.name)%20%7C%20count()&start=1day)
+> [`created_at=\*T07:00\*  | groupby(repo.name) | count()` - Click here to try this query](https://demo.humio.com/github/search?live=false&query=created_at%3D*T07:00*%20%7C%20groupby(repo.name)%20%7C%20count()&start=1day)
 
-    This query does these actions in sequence:
+This query does these actions in sequence:
 
-    1. Finds all events from the first minute after 7:00 AM
-    2. Groups the events by the `repo.name` field using the `groupby()` function. This function transforms the result into a table with one column: `_count`.
-    3. Counts the number of events using the `count()` function.
+1. Finds all events from the first minute after 7:00 AM
+2. Groups the events by the `repo.name` field using the `groupby()` function. This function transforms the result into a table with one column: `_count`.
+3. Counts the number of events using the `count()` function.
 
-    **Example: Sort by group**
+**Example: Sort by group**
 
-    In this example, we filter for events related to repositories in the `docker` namespace, group them by the number of events in each repository, and then sort the result by the number of events. This provides an indication of the overall popularity of each repository.
+In this example, we filter for events related to repositories in the `docker` namespace, group them by the number of events in each repository, and then sort the result by the number of events. This provides an indication of the overall popularity of each repository.
 
-    > [`repo.name=docker/* | groupby(repo.name) | sort()` - Click here to try this query](https://demo.humio.com/github/search?live=false&query=repo.name%3Ddocker%2F*%20%7C%20groupby(repo.name)%20%7C%20sort()&start=1day)
+> [`repo.name=docker/* | groupby(repo.name) | sort()` - Click here to try this query](https://demo.humio.com/github/search?live=false&query=repo.name%3Ddocker%2F*%20%7C%20groupby(repo.name)%20%7C%20sort()&start=1day)
 
-    This query does these actions in sequence:
+This query does these actions in sequence:
 
-    1. Finds all events related to repositories in the Docker organization
-    2. Groups the events by the `repo.name` field using the `groupby()` function. This function transforms the result into a table with two columns: `_count` and `repo.name`.
-    3. Sorts the table using the `sort()` function. The [sort](query-language/query-functions#sort) function sorts by the `_count` field by default and will put the repository with the most activity at the top.
+1. Finds all events related to repositories in the Docker organization
+2. Groups the events by the `repo.name` field using the `groupby()` function. This function transforms the result into a table with two columns: `_count` and `repo.name`.
+3. Sorts the table using the `sort()` function. The [sort](query-language/query-functions#sort) function sorts by the `_count` field by default and will put the repository with the most activity at the top.
+{{% /notice %}}
 
 
 

@@ -1,6 +1,5 @@
 ---
 title: "New to log management"
-date: 2018-03-15T08:09:40+01:00
 weight: 1
 ---
 
@@ -35,15 +34,16 @@ In most situations, you must add a 'log shipping' layer to your system.  A
 send them directly to a log management system like [Humio](http://www.humio.com).
 
 
-!!! note
-    We are really fond of the Elastic
-    [Beats](https://www.elastic.co/products/beats).  These are small,
-    lightweight programs that can ship a large (and growing) number of
-    types of logs and metrics.
+{{% notice note %}}
+We are really fond of the Elastic
+[Beats](https://www.elastic.co/products/beats).  These are small,
+lightweight programs that can ship a large (and growing) number of
+types of logs and metrics.
 
-    In general, Humio is compatible with the Elastic ingest APIs. So if your
-    favorite log shipper can send it to Elastic, then there is a good chance
-    that it can send to Humio as well. If not, let us know and we'll look into it.
+In general, Humio is compatible with the Elastic ingest APIs. So if your
+favorite log shipper can send it to Elastic, then there is a good chance
+that it can send to Humio as well. If not, let us know and we'll look into it.
+{{% /notice %}}
 
 An important aspect of the shipping layer is how it handles faults. When
 evaluating a log shipper, you should check out in what situations it will lose
@@ -63,8 +63,9 @@ Humio can parse logs for you. Some log shipping frameworks, like
 [Fluentd](http://www.fluentd.org/) or
 [LogStash](https://www.elastic.co/products/logstash), can also parse logs.
 
-!!! note
-    Humio integrates well with both of these shipping frameworks. Neat!
+{{% notice note %}}
+Humio integrates well with both of these shipping frameworks. Neat!
+{{% /notice %}}
 
 
 ## Querying logs

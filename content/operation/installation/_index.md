@@ -22,8 +22,9 @@ You can use this file to pass on JVM arguments to the Humio Java process.
 
 
 <!--
-    !!! note
-        These settings are for a machine with 8GB of RAM or more.
+{{% notice note %}}
+These settings are for a machine with 8GB of RAM or more.
+{{% /notice %}}
 -->
 
 3. Create an empty directory on the host machine to store data for Humio:
@@ -42,15 +43,16 @@ You can use this file to pass on JVM arguments to the Humio Java process.
 
 7. Humio is now running. Navigate to [http://localhost:8080](http://localhost:8080) to view the Humio web interface.
 
-!!! important
-    In the above example, we started the Humio container with full access to the network of the host machine (`--net=host`). In a production environment, you should restrict this access by using a firewall, or adjusting the Docker network configuration.  
-    Another possibility is to forward explicit ports. That is possible like this: `-p 8080:8080`. But then you need to forward all the ports you configure Humio to use. By default Humio is only using port 8080.
+{{% notice info %}}
+In the above example, we started the Humio container with full access to the network of the host machine (`--net=host`). In a production environment, you should restrict this access by using a firewall, or adjusting the Docker network configuration.  
+Another possibility is to forward explicit ports. That is possible like this: `-p 8080:8080`. But then you need to forward all the ports you configure Humio to use. By default Humio is only using port 8080.
+{{% /notice %}}
     
     
-!!! Mac
-    On a Mac there can be issues with using the host network (`--net=host`). In that case use `-p 8080:8080` to forward port 8080 on the host network to the Docker container.  
-    Another concern is to allow enough memory to the virtual machine running Docker on Mac. Open the Docker app and go to preferences and specify 4GB.
-
+{{% notice note %}}
+On a Mac there can be issues with using the host network (`--net=host`). In that case use `-p 8080:8080` to forward port 8080 on the host network to the Docker container.  
+Another concern is to allow enough memory to the virtual machine running Docker on Mac. Open the Docker app and go to preferences and specify 4GB.
+{{% /notice %}}
 
 Updating Humio is described in the [upgrade section](sysadm.md#upgrading)
 

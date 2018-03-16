@@ -79,16 +79,18 @@ Humio supports different ways of authentication users.
      
 Users are authenticated (logged in) using one of the above integrations. But the authorisation is done in Humio. Which dataspaces a user can access is specified in Humio. 
 
-!!! note
-    User authentication is disabled by default.
+{{% notice note %}}
+User authentication is disabled by default.
+{{% /notice %}}
     
 Configuration details for user authentication is [here](/installation/authentication.md)
 
 ### Run Humio behind a (reverse) proxy server
 It is possible to put Humio behind a proxy server. 
 
-!!! important
-    It is important that the proxy does not rewrite urls, when forwarding to Humio.
+{{% notice info %}}
+It is important that the proxy does not rewrite urls, when forwarding to Humio.
+{{% /notice %}}
 
 For example a proxy server could accept all request at `http://example.com` and expose humio on `http://example.com/internal/humio/`.
 
