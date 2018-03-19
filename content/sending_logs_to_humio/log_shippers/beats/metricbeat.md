@@ -70,7 +70,7 @@ Where:
 
 * `<humio-host>` - is the name of your Humio server
 * `<dataspace>` - is the name of your dataspace on your server
-* `<ingest-token>` - is the [ingest token](/ingest-tokens.md) for your dataspace
+* `<ingest-token>` - is the [ingest token](/sending_logs_to_humio/ingest_tokens/) for your dataspace
 
 {{% notice note %}}
 ***Configuration file***

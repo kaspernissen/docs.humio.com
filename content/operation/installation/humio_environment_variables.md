@@ -3,7 +3,7 @@ title: "Humio environment variables"
 ---
 
 This describes the configuration parameters for Humio, and their default values.
-Please see [the installation instructions](installation.md) on where to place the configuration file.
+Please see [the installation instructions](/operation/installation/) on where to place the configuration file.
 
 ```
 # JVM arguments. Make sure to increase stac size to at least 2M (-Xss2M) and allow XX:MaxDirectMemorySize to be at least half of available RAM.

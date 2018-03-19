@@ -6,7 +6,7 @@ weight: 4
 
 ## Overview
 
-If you've already tried our [tutorial](tutorial.md), then you will probably already be convinced that you need to get Humio into your organization.
+If you've already tried our [tutorial](/getting_started/tutorial/), then you will probably already be convinced that you need to get Humio into your organization.
 
 This section explains the benefits that Humio provides in business-friendly terms.
 

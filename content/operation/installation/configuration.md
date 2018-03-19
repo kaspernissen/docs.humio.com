@@ -83,7 +83,7 @@ Users are authenticated (logged in) using one of the above integrations. But the
 User authentication is disabled by default.
 {{% /notice %}}
     
-Configuration details for user authentication is [here](/installation/authentication.md)
+Configuration details for user [authentication](/operation/installation/authentication/)
 
 ### Run Humio behind a (reverse) proxy server
 It is possible to put Humio behind a proxy server. 

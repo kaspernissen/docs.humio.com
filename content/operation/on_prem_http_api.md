@@ -4,13 +4,13 @@ title: "On prem HTTP API"
 
 This page provides information about the HTTP API for managing
 on-premises installations of Humio.  The general aspect of this API is
-the same a the regular [HTTP API](/http-api)
+the same a the regular [HTTP API](/sending_logs_to_humio/transport/http_api/)
 
 All requests require `root` level access. See [API token for local root access](#api-token-for-local-root-access).
 
 Note, this API is still very much *work-in-progress*.
 
-<h4>Available Endpoints</h4>
+## Available Endpoints
 
 | Endpoint | Method | Description
 |-----------|---------|------------
@@ -36,14 +36,12 @@ Note, this API is still very much *work-in-progress*.
 |`/api/v1/dataspaces/$DATASPACE/datasources/$DATASOURCEID/autotagging`| [GET,POST,DELETE](#auto-tagging-high-volume-datasources) | Configure auto-tagging for high-volume datasources.
 
 
-API token for local root access
----------------------------------------
+## API token for local root access
 
-See [Root User setup](/installation/authentication.md#root-user).
+See [Root User setup](/operation/installation/authentication/#root-user).
 
 
-Manage your cluster
--------------------
+## Manage your cluster
 
 All cluster operation on the Humio cluster presumes a running Kafka/Zookeeper cluster.
 All Humio instances in a cluster must be hooked up to the same Kafka cluster,
@@ -60,8 +58,8 @@ That host then collects data from that input stream into a segment. Once the seg
 Humio hosts may be added to, or removed from, a running cluster.
 
 
-Add a host to your cluster
---------------------------
+## Add a host to your cluster
+
 Assuming you have a cluster of one or more humio nodes, add a with these steps:
 
 1. Add a new server as described in the installation documentation, and configure it to talk to the existing kafka-cluster
@@ -84,8 +82,8 @@ Assuming you have a cluster of one or more humio nodes, add a with these steps:
 
 1. To get the host to do some work, assign partitions to it using the API below.
 
-List cluster members
------------------------------------
+## List cluster members
+
 ``` text
 GET    /api/v1/clusterconfig/members
 ```
@@ -96,8 +94,8 @@ curl -H "Authorization: Bearer $TOKEN" "http://localhost:8080/api/v1/clusterconf
 ```
 
 
-Modifying a host in your cluster
---------------------------------
+## Modifying a host in your cluster
+
 You can fetch / re-post the object representing the host in the cluster using GET/PUT requests.
 $HOST is the integer-id of the new host.
 
@@ -119,8 +117,8 @@ outputs:
 
 You can edit the fields internalHostUri and displayName in this structure and POST the resulting changes back to the server, preserving the vhost and uuid fields.
 
-Deleting a host from your cluster
----------------------------------
+## Deleting a host from your cluster
+
 If the host does not have any segments files, and no assgined partitions, there is no data loss when deleting a host.
 
 ``` text
@@ -143,8 +141,8 @@ Example:
 curl -XDELETE -H "Authorization: Bearer $TOKEN" "http://localhost:8080/api/v1/clusterconfig/members/1?accept-data-loss=true"
 ```
 
-Applying default partition settings
------------------------------------
+## Applying default partition settings
+
 This is a shortcut to getting all members of a cluster to have the same share of the load on both ingest and storage partitions.
 
 ``` text
@@ -157,8 +155,8 @@ curl -XPOST -H "Authorization: Bearer $TOKEN" "http://localhost:8080/api/v1/clus
 ```
 
 
-Querying and assigning storage partitions to hosts
---------------------------------------------------
+## Querying and assigning storage partitions to hosts
+
 When a data segments is complete, the server select the host(s) to place the segment on by looking up a segment-related key in the storage partition table.
 The partitions map to a set of hosts. All of these hosts are then assigned as owners of the segment, and will start getting their copy shortly after.
 
@@ -179,8 +177,8 @@ curl -H "Authorization: Bearer $TOKEN" "http://localhost:8080/api/v1/clusterconf
 curl -XPOST -d @segments-partitions.json -H "Content-Type: application/json" -H "Authorization: Bearer $TOKEN" "http://localhost:8080/api/v1/clusterconfig/segments/partitions"
 ```
 
-Assigning default storage partitions to hosts
----------------------------------------------
+## Assigning default storage partitions to hosts
+
 When the set of hosts has been modified, you likely want to make the storage partitions distribute the storage load evenly among the current set of hosts.
 The following API allows doing that, while also selcting the number of replicas to use.
 
@@ -199,8 +197,8 @@ echo '{ "partitionCount": 7, "replicas": 2 }' > settings.json
 curl -XPOST -d @settings.json -H "Content-Type: application/json" -H "Authorization: Bearer $TOKEN" "http://localhost:8080/api/v1/clusterconfig/segments/partitions/set-replication-defaults"
 ```
 
-Moving existing segments between hosts
---------------------------------------
+## Moving existing segments between hosts
+
 There is API for taking the actions moving the eixsting segments between hosts.
 
 1. Moving segments so that all hosts have their "fair share" of the segments, as stated in storage partitioning setting, but as mush as possible leaving segments where they are.
@@ -227,8 +225,8 @@ curl -XPOST -H "Content-Type: application/json" -H "Authorization: Bearer $TOKEN
 curl -XPOST -H "Content-Type: application/json" -H "Authorization: Bearer $TOKEN" "http://localhost:8080/api/v1/clusterconfig/segments/distribute-evenly-from-host/7"
 ```
 
-Ingest partitions
------------------
+## Ingest partitions
+
 These route the incoming data while it is "in progress".
 
 Warning: Do not POST to thi API unless the cluster is running fine, with all members connected and active. All ingest traffic stops for a few seconds when being applied.
@@ -254,8 +252,8 @@ curl -H "Authorization: Bearer $TOKEN" "http://localhost:8080/api/v1/clusterconf
 curl -XPOST -d @ingest-partitions.json -H "Content-Type: application/json" -H "Authorization: Bearer $TOKEN" "http://localhost:8080/api/v1/clusterconfig/ingestpartitions"
 ```
 
-Managing kafka queue settings
------------------------------
+## Managing kafka queue settings
+
 The ingest queues are partitions of the Kafka queue named "humio-ingest".
 Humio offers an API for editing the Kafka partition to broker assignments this queue.
 Note that changes to these settings are applied asynchronously, thus you can get the previous settings, or a mix with the latest settings, for a few seconds after applying a new set.
@@ -276,10 +274,9 @@ echo '{ "partitionCount": 24, "replicas": 2 }' > kafka-ingest-settings.json
 curl -XPOST -d @kafka-ingest-settings.json -H "Content-Type: application/json" -H "Authorization: Bearer $TOKEN" "http://localhost:8080/api/v1/clusterconfig/kafka-queues/partition-assignment/set-replication-defaults"
 ```
 
-Adding a ingest listener endpoint
----------------------------------
+## Adding a ingest listener endpoint
 
-You can ingest events using one of the many [existing integration](/index.md#integrations) but when your requirements do
+You can ingest events using one of the many [existing integration](/sending_logs_to_humio/integrations/) but when your requirements do
 not match, perhaps you can supply a stream of events on TCP, separated by line feeds.
 This API allows you to create and configure a TCP listener for such events.
 Use cases include accepting "rsyslogd forward format" and similar plain-text event streams.
@@ -355,8 +352,7 @@ Humio will try to increase the buffer to up to 128MB, but will accept whatever t
 sudo sysctl net.core.rmem_max=16777216
 ```
 
-Setup sharding for tags
------------------------
+## Setup sharding for tags
 
 ``` text
 GET    /api/v1/dataspaces/$DATASPACE/shardingrules
@@ -409,8 +405,8 @@ Since sharding rules is a BETA feature, feedback is welcome. IF you happen to re
 if you wish to add sharding rules to your dataspace.
 
 
-Importing a dataspace from another Humio instance (BETA)
---------------------------------------------------------
+## Importing a dataspace from another Humio instance (BETA)
+
 You can import ingest tokens, user, dashboards and segments files from a nother Humio instance.
 You need to get a copy of the "/data/humio-data/global-data-snapshot.json" from the origin server.
 
@@ -453,8 +449,8 @@ datafiles at first, but get all the metadata. When you rerun the POST,
 the metadata is inserted/updated again, if it no longer matches
 only. The new dataspace files will get copied at that point in time.
 
-Auto tagging high-volume datasources
-------------------------------------
+## Auto tagging high-volume datasources
+
 A datasource is ultimately bounded by the volume that one CPU thread can manage to compress and write to the filesystem. This is typically in the 1-4 TB/day range.
 To handle more ingest traffic from a spefific data source, you ned to provide more variability in the set of tags. But in some cases it may not be possible or desirable to adjust
 the set of tags or tagged fields in the client. To solve this case, Humio supports adding a synthetic tag, that is assigned a random number for each (small bulk) of events.

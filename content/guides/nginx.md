@@ -17,7 +17,7 @@ is happening in Nginx in great detail. For example, you can:
 ## Logs
 
 To ship the Nginx access logs to Humio, use
-[Filebeat](../log-shippers/beats.md).
+[Filebeat](/sending_logs_to_humio/log_shippers/beats/).
 
 {{% notice note %}}
 On Linux, the access log is in `/var/log/nginx/access.log`
@@ -40,13 +40,13 @@ Where:
 
 * `<humio-host>` - is the name of your Humio server
 * `<dataspace>` - is the name of your dataspace on your server
-* `<ingest-token>` - is the [ingest-token](/ingest-tokens.md) for your dataspace
+* `<ingest-token>` - is the [ingest-token](/sending_logs_to_humio/ingest_tokens/) for your dataspace
 
-See the page on [Filebeat](../log-shippers/filebeat.md) for further details.
+See the page on [Filebeat](/sending_logs_to_humio/log_shippers/beats/filebeat/) for further details.
 
-The above Filebeat configuration uses the [built-in parser `accesslog`](/built-in-parsers.md#accesslog).
+The above Filebeat configuration uses the [built-in parser `accesslog`](/sending_logs_to_humio/parsers/built_in_parsers/#accesslog).
 The parser can parse logs formatted in the default Nginx log configuration. 
-If your log Nginx configuration is modified, create a [custom parser](/parsing.md), by copying the accesslog parser and modifying it.
+If your log Nginx configuration is modified, create a [custom parser](/sending_logs_to_humio/parsers/parsing/), by copying the accesslog parser and modifying it.
 Then replace the parser name in the Filebeat configuration. 
 
 {{% notice note %}}
@@ -159,7 +159,7 @@ Where:
 
 * `<humio-host>` - is the name of your Humio server
 * `<dataspace>` - is the name of your dataspace on your server
-* `<ingest-token>` - is the [ingest-token](/ingest-tokens.md) for your dataspace
+* `<ingest-token>` - is the [ingest-token](/sending_logs_to_humio/ingest_tokens/) for your dataspace
 
-See also the page on [Metricbeat](../log-shippers/metricbeat.md) for more
+See also the page on [Metricbeat](/sending_logs_to_humio/log_shippers/beats/metricbeat/) for more
 information.

@@ -52,13 +52,13 @@ Where
 
 * `<humio-host>` - is the name of your Humio server
 * `<dataspace>` - is the name of your dataspace on your server
-* `<ingest-token>` - is the [ingest token](/ingest-tokens.md) for your dataspace
+* `<ingest-token>` - is the [ingest token](/sending_logs_to_humio/ingest_tokens/) for your dataspace
 
-See the page on [Metricbeat](../log-shippers/metricbeat.md) for more information.
+See the page on [Metricbeat](/sending_logs_to_humio/log_shippers/beats/metricbeat/) for more information.
 
 {{% notice note %}}
 ***Example queries***
-check out the these [queries](../log-shippers/metricbeat.md#host-metrics-example-queries) on host metrics
+check out the these [queries](/sending_logs_to_humio/log_shippers/beats/metricbeat/#host-metrics-example-queries) on host metrics
 {{% /notice %}}
 
 ## System Logs (syslog)
@@ -84,15 +84,15 @@ Where
 
 * `<humio-host>` - is the name of your Humio server
 * `<dataspace>` - is the name of your dataspace on your server
-* `<ingest-token>` - is the [ingest token](/ingest-tokens.md) for your dataspace
+* `<ingest-token>` - is the [ingest token](/sending_logs_to_humio/ingest_tokens/) for your dataspace
 
 Notice the type is `syslog-utc`, which points to the built in syslog parser, expecting the timestamp to be in UTC time.
 Often syslog timestamps are in local time. Go ahead and create a new parser with another timezone in Humio if necessary.
 You can copy the built in syslog-utc and just change the timezone.
-See [Parsing](/parsing.md) for details.
+See [Parsing](/sending_logs_to_humio/parsers/parsing/) for details.
 
 
-Check out the [Filebeat](../log-shippers/filebeat.md) page for more
+Check out the [Filebeat](/sending_logs_to_humio/log_shippers/beats/filebeat/) page for more
 information.
 
 ## Custom Logs or Metrics
@@ -104,5 +104,4 @@ these strategies:
    [Filebeat](https://www.elastic.co/guide/en/beats/filebeat/current/index.html)
    to ship them similarly to the System logs above.
 
-1. Use cron to run a script that send data to Humio via it [Ingest
-   API](/http-api.md#ingest).
+1. Use cron to run a script that send data to Humio via it [Ingest API](/sending_logs_to_humio/transport/http_api/#ingest).

@@ -58,7 +58,7 @@ Default retention configuration: retention.ms = 1 hours
 
 ### Configuration
 
-humio has some built in [API endpoints for controling kafka](/http-api-on-premises.md). Using the API it is possible to specify partition size, replication factor etc on the ingest queue.
+humio has some built in [API endpoints for controling kafka](/operation/on_prem_http_api/). Using the API it is possible to specify partition size, replication factor etc on the ingest queue.
 
 It is also possible to use other Kafka tools, such as the command line tools included in the kafka distribution.
 

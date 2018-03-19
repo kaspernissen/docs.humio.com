@@ -7,7 +7,7 @@ title: "HTTP API"
 
 This page provides information about the HTTP API that Humio provides.
 
-<h4>Variables</h4>
+### Variables
 
 This documentation uses the following variables to show places where you should replace the data in each example request with your own data:
 
@@ -15,7 +15,7 @@ This documentation uses the following variables to show places where you should 
 * `$API_TOKEN`: Your [API token](#api-token).
 * `$PARSER`: The identifier of a specific parser.
 
-<h4>Available Endpoints</h4>
+### Available Endpoints
 
 | Endpoint | Method | Description
 |-----------|---------|------------
@@ -44,7 +44,7 @@ To use the HTTP API, you must provide an API token using the `Authorization` hea
 {{% notice note %}}
 You can find your API token on the web application's front page (after login) by clicking the 'Account', then the 'Show' button.
 
-![API Token](images/api-token.png)
+![API Token](/images/api-token.png)
 {{% /notice %}}
 
 Example:
@@ -57,7 +57,7 @@ curl https://demo.humio.com/api/v1/dataspaces/github/query \
  -d '{"queryString":"count()"}'
 ```
 
-on-premises installs can also use [API token for local root access](/http-api-on-premises.md#api-token-for-local-root-access).
+on-premises installs can also use [API token for local root access](/operation/on_prem_http_api/#api-token-for-local-root-access).
 
 ### Compression
 
@@ -83,8 +83,8 @@ To request a gzip compressed response -->
 This is the main endpoint for executing queries in Humio.
 
 This endpoint streams results as soon as they are calculated, but depending on
-the query type ([filter](glossary#filter-queries) or
-[aggregate](glossary#aggregate-queries)), the time of delivery changes.  The following table illustrates this:
+the query type ([filter](/glossary#filter-queries) or
+[aggregate](/glossary#aggregate-queries)), the time of delivery changes.  The following table illustrates this:
 
 |                | Live query                                   | Standard query                                   |
 |:--------------:|:--------------------------------------------:|:------------------------------------------------:|
@@ -108,14 +108,14 @@ job endpoint](#query-jobs-create) and then poll the result when you need it.
 <!-- This query API is designed for integrations. It is possible to
 stream large amounts of data out of Humio or to make a blocking query
 waiting for the final result.  How the data is returned depends on the
-query. If an [aggregate function](glossary#aggregate-queries) is used,
+query. If an [aggregate function](/glossary/#aggregate-queries) is used,
 the server cannot return the result until the query has finished.  It
 is possible to use the [polling query
 endpoint](http-api.md#poll-based-query.md) to continuously poll for
 partial results. This is what the Humio UI does.  If the query is not
 using aggregate functions, like filter queries, the result can be
 streamed as events are found.  [Live
-queries](glossary.md#live-queries) are continuous queries that newer
+queries](/glossary/#live-queries) are continuous queries that newer
 ends. A live query that aggregates data is not suited for this
 endpoint. Use the [polling query
 endpoint](http-api.md#poll-based-query.md).  This is illustrated in
@@ -134,9 +134,9 @@ The JSON request body has the following attributes:
 
 Name        | Type   | Required     | Description
 ----------- | ------ | ------------ | -------------
-`queryString` | string |  Yes         | The actual query. See [Query language](query-language.md) for details
-`start`       | Time   |  No          | The start date and time. This parameter tells Humio not to return results from before this date and time. You can learn how to specify a time [here](http-api.md#time).
-`end`         | Time   |  No          | The end date and time.  This parameter tells Humio not to return results from after this date and time. You can learn how to specify a time [here](http-api.md#time)
+`queryString` | string |  Yes         | The actual query. See [Query language](/searching_logs/query_language/) for details
+`start`       | Time   |  No          | The start date and time. This parameter tells Humio not to return results from before this date and time. You can learn how to specify a time [here](#time).
+`end`         | Time   |  No          | The end date and time.  This parameter tells Humio not to return results from after this date and time. You can learn how to specify a time [here](#time)
 `isLive`      | boolean|  No         | Sets whether this query is live. Defaults to `false`. Live queries are continuously updated.
 `timeZoneOffsetMinutes`      | number|  No   | Set the time zone offset used for `bucket()` and `timechart()` time slices, which is significant if the corresponding `span` is multiples of days.  Defaults to `0` (UTC); positive numbers are to the east of UTC, so for `UTC+01:00` timezone the value `60` should be passed.
 `arguments`   | object|  No   | Dictionary of arguments specified in queries with `?param` or `?{param=defaultValue}` syntax.  Provided arguments must be a simple dictionary of string values. If an argument is given explicitly as in `?query(param=value)` then that value overrides values provided here.
@@ -167,7 +167,7 @@ With relative time, you specify the start and end time as a relative time such a
 
 When providing a timestamp, relative time modifiers are specified relative to "now".
 
-See the relative time syntax [here](/relative-time-syntax.md)
+See the relative time syntax [here](/searching_logs/advanced_topics/relative_time_syntax/)
 
 {{% notice note %}}
 Relative time modifiers are always relative to now.
@@ -201,7 +201,7 @@ Humio has defined behavior when you omit time arguments:
 * If you omit the`end` argument, it gets the default value `now`.  
 * If you omit the `start` argument, it gets the default value of `24hours`.  
 
-For [*_live queries_*](glossary.md#live-queries), you must either set `end` to "now", or omit it. You must set `start` to a relative time modifier.
+For [*_live queries_*](/glossary/#live-queries), you must either set `end` to "now", or omit it. You must set `start` to a relative time modifier.
 {{% /notice %}}
 
 ### Response
@@ -391,12 +391,12 @@ When parsing text logs like syslogs, accesslogs or logs from applications you ty
  
 ### Ingest data using a parser
 
-This API should be used, when a parser should be applied to the data. It is possible to create [parsers](/parsing.md) in Humio
+This API should be used, when a parser should be applied to the data. It is possible to create [parsers](/sending_logs_to_humio/parsers/parsing/) in Humio
 
 {{% notice note %}}
 ***Filebeat is another option for sending data that needs a parser***
 
-Another option, that is related to this API is to use [Filebeat](/integrations/log-shippers/filebeat.md).  
+Another option, that is related to this API is to use [Filebeat](/sending_logs_to_humio/log_shippers/beats/filebeat/).  
 Filebeat is a lightweight open source agent that can monitor files and ship data to Humio. When using filebeat it is also possible to specify a parser for the data.
 Filebeat can handle many problems like network problems, retrying, batching, spikes in data etc. 
 {{% /notice %}}
@@ -425,7 +425,7 @@ Example sending 4 accesslog lines to Humio
 ```
 
 The above example sends 4 accesslog lines to Humio. the parser is specified using the `type` field and is set to `accesslog`.   
-The parser accesslog should be specified in the dataspace. See [parsing](/parsing.md) for details.  
+The parser accesslog should be specified in the dataspace. See [parsing](/sending_logs_to_humio/parsers/parsing/) for details.  
 The `fields` section is used to specify fields that should be added to each of the events when they are parsed. In the example all the accesslog events will get a host field telling the events came from webhost1.  
 It is possible to send events of different types in the same request. That is done by adding a new element to the outer array in the example above.
 Tags can be specified in the parser pointed to by the `type` field
@@ -437,7 +437,7 @@ When sending events, you can set the following standard fields:
 Name            | Required      | Description
 ------------    | ------------- |------------
 `messages`      | yes           | The raw strings representing the events. Each string will be parsed by the parser specified by `type`.
-`type`          | yes           | The [parser](/parsing.md) Humio will use to parse the `messages`
+`type`          | yes           | The [parser](/sending_logs_to_humio/parsers/parsing/) Humio will use to parse the `messages`
 `fields`        | no            | Annotate each of the `messages` with these key-values. Values must be strings.
 `tags`          | no            | Annotate each of the `messages` with these key-values as Tags. Please see other documentation on tags before using.
 
@@ -571,7 +571,7 @@ Tags are key-value pairs.
 Events are stored in data sources. A Data Space has a set of Data Sources. Data sources are defined by their tags. An event is stored in a data source matching its tags. If no data source with the exact tags exists it is created.
 Tags are used as query boundaries when searching
 Tags are provided as a json object containing key-value pairs. Keys and values must be strings, and at least one tag must be specified.
-See the [Glossary](glossary/#tags) for more information.
+See the [Glossary](/glossary/#tags) for more information.
 
 #### Events
 
@@ -644,7 +644,7 @@ curl https://demo.humio.com/api/v1/dataspaces/$DATASPACE/ingest \
 ### Files
 
 You can use this endpoint to upload files that can be used by the
-[lookup](query-language/query-functions.md#lookup) function.
+[lookup](/searching_logs/query_functions/#lookup) function.
 
 You can upload files in CSV or JSON format.
 
@@ -705,7 +705,7 @@ For example, a standard web server log has the status code, method, and URL
 fields for each log line.
 
 When sending data to Humio, for example using
-[Filebeat](/integrations/log-shippers/filebeat.md), you must specify a parser telling
+[Filebeat](/sending_logs_to_humio/log_shippers/beats/filebeat/), you must specify a parser telling
 Humio how to parse the incoming data.
 
 Humio has some built-in parsers for common formats like access logs from Apache and Nginx
@@ -782,7 +782,7 @@ Name           | Type   | Required     | Description
 `dateTimeFields` | Array  | Yes          | Specifies the fields which contain the timestamp of the event. <br /><br />You can specify multiple fields, for example, a date field and a time field. The values of these fields are concatenated with whitespaces. <br /> <br /> Humio parses these fields  with the format that you specify in the `dateTimeFormat` attribute.
 `dateTimeFormat` | String |  No          | The format string that Humio should use to parse the fields identified by the `dateTimeFields` attribute. <br /><br />This attribute uses the [Java DateTimeFormatter syntax](https://docs.oracle.com/javase/8/docs/api/java/time/format/DateTimeFormatter.html). <br /><br />The default value is the ISO-8601 format, for example, `yyyy-MM-dd'T'HH:mm:ss.SSSZ`, with milliseconds as an optional addition.
 `timezone`       | String |  No          | This field is only used if the timestamp of the event is in localtime and does not have a timezone. <br /> <br />In that case, you can use it to set a timezone. <br /><br />Do not use this field if the timezone is part of the `dateTimeFormat`.<br /><br /> Examples: `UTC`, `Z`, or `Europe/Copenhagen`.
-`tagFields`      |Array   | No           | Specify fields in events generated by this parser that should be turned into [tags](/glossary.md#tags).<br/> For example it could be specified that the host field in the events from this parser should be treated as a tag.
+`tagFields`      |Array   | No           | Specify fields in events generated by this parser that should be turned into [tags](/glossary/#tags).<br/> For example it could be specified that the host field in the events from this parser should be treated as a tag.
 
 
 ##### Response

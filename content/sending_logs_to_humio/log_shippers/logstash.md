@@ -12,7 +12,7 @@ parsing agent, and instruct it to send the data to Humio.
 {{% notice tip %}}
 ***Humio supports the Elasticsearch bulk insertion API*** 
 
-Just point the Elastic  outputter to Humio as described [here](logstash.md#configuration)
+Just point the Elastic outputter to Humio as described [here](#configuration)
 {{% /notice %}}
 
 
@@ -26,7 +26,7 @@ extensible architecture of Logstash to parse many kinds of data:
   data formats. Grok has many built-in patterns to help parse your
   data.
 
-### Installation
+## Installation
 
 To download Logstash, visit the [Logstash downloads page](https://www.elastic.co/downloads/logstash).
 
@@ -35,7 +35,7 @@ You can find the complete documentation for Logstash at [the Reference page of t
 {{% /notice %}}
 
 
-### Configuration
+## Configuration
 
 Because Humio supports parts of the Elasticsearch insertion API, you
 can use the built-in `elasticsearch` output in the Logstash
@@ -64,13 +64,13 @@ Where:
 
 * `<humio-host>` - is the name of your Humio server
 * `<dataspace>` - is the name of your dataspace on your server
-* `<ingest-token>` - is the [ingest token](/ingest-tokens.md) for your dataspace
+* `<ingest-token>` - is the [ingest token](/sending_logs_to_humio/ingest_tokens/) for your dataspace
 
 
 In the above example, Logstash calls the Linux `date` command every
 five seconds. It passes the output from this command to Humio.
 
-#### Field mappings
+### Field mappings
 
 When you use the Elasticsearch output, Logstash outputs JSON
 objects. The JSON for an event sent to Humio with the above
@@ -95,7 +95,7 @@ Humio treats some fields as special cases:
 | `message`                | If present, Humio treats this field as the rawstring of the event. <br /><br />Humio maps this field to the `@rawstring` field, which is textual representation of the raw event in Humio. <br /><br />If you do not provide the message or rawstring field, then the rawstring representation is the JSON structure as text. |
 | `rawstring`              | This field is similar to the `message` field. <br /><br />If you provide both fields, then Humio uses the `message` field. The reason for having both is that some Logstash integrations automatically set a message field representing the raw string. <br /><br />In Humio, we use the name rawstring. |
 
-#### Dropping fields
+### Dropping fields
 
 Logstash often adds fields like `host` and `@version` to events. You
 can remove these fields using a filter and the `drop_field` function

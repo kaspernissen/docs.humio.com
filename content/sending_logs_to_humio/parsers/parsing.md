@@ -1,6 +1,5 @@
 ---
 title: "Parsing"
-draft: true
 ---
 
 When sending data to Humio, you can specify a parser.
@@ -9,10 +8,10 @@ Humio uses parsers to extract fields and add structure to the data that you send
 {{% notice note %}}
 ***Example***
 
-When sending data with [Filebeat](integrations/log-shippers/filebeat.md) you specify a parser to parse data
+When sending data with [Filebeat](/sending_logs_to_humio/log_shippers/beats/filebeat/) you specify a parser to parse data
 {{% /notice %}}
 
-Humio comes with a set of [built-in parsers](built-in-parsers.md) for
+Humio comes with a set of [built-in parsers](/sending_logs_to_humio/parsers/built_in_parsers/) for
 common log formats.
 
 If no built-in parsers match your needs, then you can create your own.
@@ -23,12 +22,12 @@ parser.
 
 Go to the **Parsers** subpage in your data space to see all the available parsers:
 
-![Parsers List`](images/parsers.png)
+![Parsers List`](/images/parsers.png)
 
 {{% notice note %}}
 ***Built-in parsers***
 
-The first part of the list contains [built-in parsers](built-in-parsers.md).
+The first part of the list contains [built-in parsers](/sending_logs_to_humio/parsers/built_in_parsers/).
 
 You cannot delete the built-in parsers, but you can overwrite them if you want.
 You can also copy existing parsers to use as a starting point for creating new parsers.
@@ -36,9 +35,9 @@ You can also copy existing parsers to use as a starting point for creating new p
 
 ## The Parser User Interface
 
-The following screenshots shows the **Parser** page testing the built-in [`accesslog` parser](built-in-parsers.md#accesslog):
+The following screenshots shows the **Parser** page testing the built-in [`accesslog` parser](/sending_logs_to_humio/parsers/built_in_parsers/#accesslog):
 
-![Accesslog Parser`](images/accesslog-parser.png)
+![Accesslog Parser`](/images/accesslog-parser.png)
 
 The **Parser** page lets you define and test parsers.
 
@@ -51,8 +50,8 @@ Let's walk through the different steps in creating a parser:
 <h2>Parser Types</h2>
 Humio supports two types of parsers:
 
-* [JSON Parsers](parsing.md#json-parser)
-* [Regular expressions parsers](parsing.md#regular-expression-parser)
+* [JSON Parsers](/sending_logs_to_humio/parsers/parsing/#json-parser)
+* [Regular expressions parsers](/sending_logs_to_humio/parsers/parsing/#regular-expression-parser)
 
 At the top of the page, select the type of parser you want to create.
 
@@ -84,7 +83,7 @@ The reason we need JSON parsers in Humio is to parse the timestamp from the JSON
 The parser specifies the timestamp field and its format.
 
 Specify the field containing the timestamp on the **Parser** page.
-You can find out how to parse timestamps at the [Parsing Timestamps section below](parsing.md#parsing-timestamps).
+You can find out how to parse timestamps at the [Parsing Timestamps section below](/sending_logs_to_humio/parsers/parsing/#parsing-timestamps).
 
 
 {{% notice tip %}}
@@ -92,7 +91,7 @@ You can find out how to parse timestamps at the [Parsing Timestamps section belo
 
 You can test the parser on the **Parser** page by adding some test data. This offers an interactive way to refine the parser.
 
-See the section on [Testing the Parser](parsing.md#testing-parsers) section below.
+See the section on [Testing the Parser](/sending_logs_to_humio/parsers/parsing/#testing-parsers) section below.
 {{% /notice %}}
 
 
@@ -126,7 +125,7 @@ Some patterns often used for extracting timestamps are:
 > `(?<@timestamp>\S+\s\S+)` date followed by whitespace followed by timestamp
 
 You must also specify a timestamp format. Humio uses this to parse the extracted timestamp.
-See the section below on [parsing timestamps](parsing.md#parsing-timestamps).
+See the section below on [parsing timestamps](/sending_logs_to_humio/parsers/parsing/#parsing-timestamps).
 
 Have a look at some of the built-in parsers to get started.
 
@@ -134,7 +133,7 @@ Have a look at some of the built-in parsers to get started.
 ***Testing***
 You can test the parser on the **Parser** page by adding some test data. This offers an interactive way to refine the parser.
 
-See the section on [Testing the Parser](parsing.md#testing-parsers) section below.
+See the section on [Testing the Parser](/sending_logs_to_humio/parsers/parsing/#testing-parsers) section below.
 {{% /notice %}}
 
 ## Parsing Timestamps
@@ -204,7 +203,7 @@ This feature is planned for a future release of Humio. Stay tuned!
 
 ## Adding tags
 Humio saves data in Data Sources. You can provide a set of Tags to specify which Data Source the data is saved in. 
-Using tags can significantly speed up searches. Tags are described [here](/glossary.md#tags)
+Using tags can significantly speed up searches. Tags are described [here](/glossary/#tags)
 
 When using a parser, its name is added as the `#type` tag.  
 For example using the `accesslog` parser for parsing webserver logs will result in events with the tag `#type=accesslog`.   

@@ -2,7 +2,7 @@
 title: "Relative time syntax"
 ---
 
-In many places in Humio, you must specify a time. For example, when [specifying the time interval for a query](http-api.md#time) or when using the [timechart query function](/query-language/query-functions.md#timechart).
+In many places in Humio, you must specify a time. For example, when [specifying the time interval for a query](/sending_logs_to_humio/transport/http_api/#time) or when using the [timechart query function](/searching_logs/query_functions/#timechart).
 
 To make specifying a time more flexible, Humio supports a relative time syntax. This lets you express a simple time duration, rather than specifying two absolute times.
 

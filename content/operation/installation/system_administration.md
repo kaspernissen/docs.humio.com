@@ -5,7 +5,7 @@ title: "System administration"
 
 ## Root Users
 
-See [Root User setup](/installation/authentication.md#root-user).
+See [Root User setup](/operation/installation/authentication/#root-user).
 
 ## Setting retention
 

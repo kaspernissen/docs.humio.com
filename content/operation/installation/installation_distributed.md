@@ -236,12 +236,12 @@ In the above example, we started the Humio container with full access to the net
 ***Starting Humio as a service***
 
 There are different ways of starting the docker container ["as a service"](https://docs.docker.com/engine/admin/host_integration/).
-In the above example, we used Dockers [restart policies](https://docs.docker.com/engine/reference/run/#restart-policies-restart). It can be started using a process manager. [A systemd example is provided here](installation#systemd-service-example)
+In the above example, we used Dockers [restart policies](https://docs.docker.com/engine/reference/run/#restart-policies-restart). It can be started using a process manager. [A systemd example is provided here](/operation/installation/#systemd-service-example)
 {{% /notice %}}
 
 
 ## Configuring Humio
-Please refer to the [configuration](configuration.md) section
+Please refer to the [configuration](/operation/installation/configuration/) section
 
 ## System administration
-Please refer to the [system administration](sysadm.md) page
+Please refer to the [system administration](/operation/installation/system_administration/) page

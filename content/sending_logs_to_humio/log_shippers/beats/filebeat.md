@@ -80,7 +80,7 @@ This is done by specifying the `type` field in the fields section. See the Parsi
 Note that the URL specifies the Data Space that Humio sends events to. 
 In the example, the URL points to Humio in the cloud, which is fine if you are using our hosted service.  
 It is important to specify the port number in the URL otherwise Filebeat defaults to using 9200.
-* Insert an [ingest token](/ingest-tokens.md) from the dataspace as the username.
+* Insert an [ingest token](/sending_logs_to_humio/ingest_tokens/) from the dataspace as the username.
 * Specify the text encoding to use when reading files using the `encoding` field. If the log files use special, non-ASCII characters, then set the encoding here. For example, `utf-8` or `latin1`.
 
 * If all your events are fairly small, you can increase `bulk_max_size` from the default of 50. The default of 50 is fine for most use cases.
@@ -103,10 +103,10 @@ To test it can be run like `/usr/share/filebeat/bin/filebeat -c /etc/filebeat/fi
 ## Parsing data
 Humio uses parsers to parse the data from Filebeat into events.
 Parsers can extract fields from the text strings an add structure to the events.
-For more information on parsers, see [parsing](/parsing.md).
+For more information on parsers, see [parsing](/sending_logs_to_humio/parsers/parsing/).
 
 {{% notice note %}}
-Take a look at Humio's [built-in parsers](/built-in-parsers.md).
+Take a look at Humio's [built-in parsers](/sending_logs_to_humio/parsers/built_in_parsers/).
 {{% /notice %}}
 
 You can specify the parser/type for each monitored file using the `type` field in the fields section in the Filebeat configuration.  
@@ -118,7 +118,7 @@ For example, when sending a web server access log file to Humio, you can use the
 
 ### Parsing JSON data
 
-Humio supports [JSON parsers](/parsing.md).
+Humio supports [JSON parsers](/sending_logs_to_humio/parsers/parsing/).
 Filebeat processes logs line by line, so JSON parsing will only work if there is one JSON object per line.
 Customize a JSON parser in Humio,  (do not use the JSON parsing built into filebeat).
 
@@ -136,8 +136,8 @@ To avoid having the `@host` and `@source` fields, specify `@host` and `@source` 
 
 ## Tags
 Humio saves data in Data Sources. You can provide a set of Tags to specify which Data Source the data is saved in.  
-See [glossary](/glossary.md#tags) for more information about tags and Data Sources.  
-The `type` configured in Filebeat is always used as tag. Other fields can be used as tags as well by defining the fields as `tagFields` in the [parser](/parsing.md) pointed to by the `type`.  
+See [glossary](/glossary/#tags) for more information about tags and Data Sources.  
+The `type` configured in Filebeat is always used as tag. Other fields can be used as tags as well by defining the fields as `tagFields` in the [parser](/sending_logs_to_humio/parsers/parsing/) pointed to by the `type`.  
 In Humio tags always start with a #. When turning a field into a tag it will be prepended with #.
 
 

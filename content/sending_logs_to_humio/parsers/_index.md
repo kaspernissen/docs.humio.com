@@ -18,5 +18,5 @@ Humio supports two types of parsers:
 * JSON parser
 * Regular expression parser
 
-To find out how to configure parsers, see the [Parsers section of the HTTP API document](http-api/#parsers).
+To find out how to configure parsers, see the [Parsers section of the HTTP API document](/sending_logs_to_humio/transport/http_api/#parsers).
 

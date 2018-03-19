@@ -12,7 +12,7 @@ The built-in parsers are also a good starting point when creating custom parsers
 {{% notice note %}}
 ***About Parsers***
 
-See the [Parsing logs](parsing.md) page for an overview of how parsers work.
+See the [Parsing logs](/sending_logs_to_humio/parsers/parsing/) page for an overview of how parsers work.
 {{% /notice %}}
 
 {{% notice note %}}
@@ -44,7 +44,7 @@ The parser expects lines to starts with a timestamp, followed by the optional fi
 It also expects the timestamp to be in the UTC time zone.
 
 Often syslog timestamps are in local time. If that is the case, then copy this parser and specify the time zone.
-This parser also leverages Humio's built-in [key-value parser](parsing.md#Key-value-parsing).
+This parser also leverages Humio's built-in [key-value parser](/sending_logs_to_humio/parsers/parsing/#Key-value-parsing).
 
 {{% notice note %}}
 ***Examples of the `syslog` format***
@@ -59,7 +59,7 @@ Feb 25 06:35:01 Myhost CRON[24272]: (root) CMD (command -v deb-sa1 > /dev/null &
 ## kv
 This parser is the key-value parser. It can process standard key-value patterns in log lines.
 
-This parser uses Humio's built-in [key-value parser](parsing.md#Key-value-parsing).
+This parser uses Humio's built-in [key-value parser](/sending_logs_to_humio/parsers/parsing/#Key-value-parsing).
 It expects the log line to start with a date in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) formatting.
 
 The parser processes the rest of the line for key-value pairs.
@@ -75,7 +75,7 @@ Given the above log line, Humio parses the fields `user=John Doe` and `service=u
 {{% /notice %}}
 
 ## kv-millis
-This parser, like the (kv parser)(built-in-parsers.md#kv-millis) parser, is a key-value parser. However, it expects the timestamp in the log line to be UTC time in milliseconds.
+This parser, like the (kv parser)(/sending_logs_to_humio/parsers/built_in_parsers/#kv-millis) parser, is a key-value parser. However, it expects the timestamp in the log line to be UTC time in milliseconds.
 
 {{% notice note %}}
 ***Example of key-value parsing with millisecond timing***
@@ -109,11 +109,11 @@ The timestamp must be in the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) 
 
 ## bro-json
 This parser can process JSON data generated from [Bro](https://www.bro.org/).  
-We have documentation [here](/integrations/platforms/bro.md) describing how to send Bro data to Humio.
+We have documentation [here](/guides/bro/) describing how to send Bro data to Humio.
 This parser is tailored to handle the output generated from the Bro script in the linked to documentation.    
 The name of the Bro log file will become a `#path` tag in Humio.
 
 ## corelight-json
 Built in parser that supports [Corelights](https://www.corelight.com/) Bro sensors.
 
-Corelight sensors have out of the box support for streaming out the Bro logs. Humio can receive the streaming data using this parser and [ingest listeners](/http-api-on-premises.md#adding-a-ingest-listener-endpoint).
+Corelight sensors have out of the box support for streaming out the Bro logs. Humio can receive the streaming data using this parser and [ingest listeners](/operation/on_prem_http_api/#adding-a-ingest-listener-endpoint).

@@ -1,4 +1,8 @@
-
+---
+title: "Glossary"
+weight: 10
+pre: "<b>10. </b>"
+---
 This section introduces the core concepts of Humio. It also describes how Humio organizes data.
 
 ## Main Concepts
@@ -52,7 +56,7 @@ Humio saves data in Data Sources. You can provide a set of Tags to specify which
 You can add Tags to [Events](#events) that you ingest into Humio.
 Tags provide an important way to speed up searching. They allow Humio to select which Data Sources to search through.     
 For example, you can add Tags to Events that represent host names, file names, service names, or the kind of service.  
-Tags can be configured in [parsers](/parsing.md) or specified in the APIs for data ingestion.
+Tags can be configured in [parsers](/sending_logs_to_humio/parsers/parsing/) or specified in the APIs for data ingestion.
 
 {{% notice note %}}
 Tags are an advanced option in Humio. It can be used to separate data into different datasources and thereby improve query performance.
@@ -102,7 +106,7 @@ You can add the same user ID to more than one Data Space.
 ### Aggregate Queries
 _Aggregate queries_ are queries that join the Events into a new structure of Events with attributes.
 
-A query becomes an _aggregate query_ if it uses an aggregate function like `sum()`, `count()` or `avg()`. See [functions](query-language/query-functions.md) for more information.
+A query becomes an _aggregate query_ if it uses an aggregate function like `sum()`, `count()` or `avg()`. See [functions](/searching_logs/query_functions/) for more information.
 
 For example, the query `count()` takes a stream of Events as its input, and produces one Event containing a `count` attribute.
 
@@ -115,7 +119,7 @@ In contrast _filter queries_ can start streaming the response as soon as Events 
 ### Filter Queries
 _Filter queries_, or _non-aggregate queries_, are queries that only filter Events, or add or remove attributes on each Event.
 
-These queries can only contain filters and transformation functions (see [functions](query-language/query-functions.md))
+These queries can only contain filters and transformation functions (see [functions](/searching_logs/query_functions/))
 
 
 ### Live Queries

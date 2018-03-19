@@ -11,7 +11,7 @@ First let us setup Bro to write logs in the JSON format. That will make it easie
 [Seth](https://twitter.com/remor) from [Corelight](https://www.corelight.com/) has made a nice Bro script to support streaming Bro logs as JSON.
 The script requires Bro 2.5.2+
 
-[Download it here](bro-files/corelight-logs.bro)
+[Download it here](/bro-files/corelight-logs.bro)
 
 One way to install the script is to put it in the `<bro-directory>/site/` folder and then add the Bro script to the end of `local.bro` like this:
 ```
@@ -52,7 +52,7 @@ Verify this by looking in one of the log files, for example `corelight_conn.log`
 ## Configure Humio
 
 We assume you already have a local Humio running or is using Humio as a Service. 
-Head over to the [installation docs](/installation/installation.md) for instructions on how to install Humio.
+Head over to the [installation docs](/operation/installation/) for instructions on how to install Humio.
 
 If you don't have a dataspace, create one by pressing 'Add Dataspace' on the front page of Humio. 
 Or you can create it from the command line like this:
@@ -69,10 +69,10 @@ You now have a bro dataspace.
 
 
 ## Configure Filebeat
-We will use [Filebeat](/integrations/log-shippers/filebeat.md) to ship Bro logs to Humio.
+We will use [Filebeat](/sending_logs_to_humio/log_shippers/beats/filebeat/) to ship Bro logs to Humio.
 Filebeat is a light weight, open source agent that can monitor log files and send data to servers like Humio.
 Filebeat must be installed on the server having the Bro logs.
-Follow the instructions [here](/integrations/log-shippers/filebeat.md#installation) to download and install Filebeat. 
+Follow the instructions [here](/sending_logs_to_humio/log_shippers/beats/filebeat/#installation) to download and install Filebeat. 
 Then return here to configure Filebeat.
 
 Below is a filebeat.yml configuration file for sending Bro logs to Humio:
@@ -111,7 +111,7 @@ The configuration file has these parameters:
 You can replace them in the file or set them as ENV parameters when starting Filebeat.  
 If you are running without authentication leave out the whole line `username: ${INGEST_TOKEN}`. 
 or set the `INGEST_TOKEN` to a dummy value. 
-Otherwise [create an ingest token as described here](/ingest-tokens.md).
+Otherwise [create an ingest token as described here](/sending_logs_to_humio/ingest_tokens/).
 
 
 Note, that in the filebeat configuration we specify that Humio should use the built-in parser `bro-json` to parse the data.
@@ -124,7 +124,7 @@ With the config in place we are ready to run Filebeat.
 {{% notice note %}}
 ***Running Filebeat***
 
-Run Filebeat as described [here](/integrations/log-shippers/filebeat.md#running-filebeat).  
+Run Filebeat as described [here](/sending_logs_to_humio/log_shippers/beats/filebeat/#running-filebeat).  
 An example of running Filebeat with the above parameters as environment variables:  
 ```
 BRO_LOG_DIR=/home/bro/logs DATASPACE=bro HUMIO_HOST=localhost INGEST_TOKEN=none /usr/share/filebeat/bin/filebeat -c /etc/filebeat/filebeat.yml
@@ -174,7 +174,7 @@ There is a link to the tutorial in the top right corner of the Humio UI.
 
 ## Bro dashboards
 
-We have created two example dashboards. You can add them to your Humio installation by running this [script](bro-files/bro-add-dashboards.sh)  
+We have created two example dashboards. You can add them to your Humio installation by running this [script](/bro-files/bro-add-dashboards.sh)  
 Before running the script set the right values for the parameters at the top
 
 {{% notice note %}}

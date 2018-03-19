@@ -3,7 +3,7 @@ This section describes the Humio query language.
 
 The Humio query language is the syntax that lets you compose queries to retrieve, process, and analyze business data in your system.
 
-Before reading this section, we recommend that you read the [tutorial](tutorial). The tutorial introduces you to queries in Humio, and lets you try out some sample queries that demonstrate the basic principles.
+Before reading this section, we recommend that you read the [tutorial](/getting_started/tutorial/). The tutorial introduces you to queries in Humio, and lets you try out some sample queries that demonstrate the basic principles.
 
 
 ## Principles
@@ -51,15 +51,15 @@ We recommend that you include the pipe character before tag filters in your quer
 However, these pipe characters are not mandatory. The Humio query engine can recognize tag filters
 when they are at the front of the query, and use this information to narrow down the number of data sources to search. This feature decreases query time.
 
-For more information on tags, see the [glossary](glossary/#tags) page.
+For more information on tags, see the [glossary](/glossary/#tags) page.
 
 
 ## Rawstring filters
 
-The most basic query in Humio is to search for a particular string in the `@rawstring` attribute of events.  See [glossary](glossary#events) for more details on `@rawstring`.
+The most basic query in Humio is to search for a particular string in the `@rawstring` attribute of events.  See [glossary](/glossary/#events) for more details on `@rawstring`.
 
 {{% notice note %}}
-You can perform more complex regular expression searches on the `@rawstring` attribute of an event by using the [regex](query-language/query-functions#regex) function.
+You can perform more complex regular expression searches on the `@rawstring` attribute of an event by using the [regex](/searching_logs/query_functions/#regex) function.
 {{% /notice %}}
 
 
@@ -215,7 +215,7 @@ The name of the target field can be set using the parameter "as" on most functio
 
 ### Eval syntax
 
-The function [eval](query-language/query-functions#eval) can assign fields while doing numeric computations on the input.
+The function [eval](/searching_logs/query_functions/#eval) can assign fields while doing numeric computations on the input.
 
 The ":=" syntax is short for eval. Use "|" between assignments.
 
@@ -288,7 +288,7 @@ time=*
 
 ## Composite Function Calls
 
-See [Query Functions](query-language/query-functions).
+See [Query Functions](/searching_logs/query_functions/).
 
 Whenever a function accepts a function as an argument, there are some
 special rules.  For all variations of groupby (bucket and timechart), that

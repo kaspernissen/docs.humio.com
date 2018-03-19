@@ -49,7 +49,7 @@ curl http://localhost:8080/api/v1/users \
 providers). If using LDAP, `$EMAIL` is the username the user must enter to login, and need not be an actual email address.
 
 Once that user has been added, you can log on using that user and see your own API token, as described
-in [API token](/http-api.md#api-token).
+in [API token](/sending_logs_to_humio/transport/http_api/#api-token).
 
 ## By proxy
 Make Humio use the username provided by a HTTP proxy.

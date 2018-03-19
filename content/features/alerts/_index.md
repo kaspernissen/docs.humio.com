@@ -14,10 +14,10 @@ Alerts are what triggers the notifiers. They are created using Humio's query lan
 ## Notifiers
 Our list of notifiers is ever growing and currently we do support the following services. We are constantly expanding what we support (If you don't see a service you need here, please contact [support@humio.com](mailto:support@humio.com?subject=Requesting alert notifier) and we will be happy to find a solution for you):
 
-* [E-mail](/alerts/notifiers/email.md)
-* [Slack](/alerts/notifiers/slack.md)
-* [WebHook](/alerts/notifiers/webhook.md)
-* [OpsGenie](/alerts/notifiers/webhook.md)
+* [E-mail](/features/alerts/notifiers/email/)
+* [Slack](/features/alerts/notifiers/slack/)
+* [WebHook](/features/alerts/notifiers/webhook/)
+* [OpsGenie](/features/alerts/notifiers/webhook/)
 <!--TODO: * PagerDuty-->
 <!--TODO: * VictorOps-->
 

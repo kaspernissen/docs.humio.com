@@ -25,7 +25,7 @@ If you are using Docker for your application, see the [Docker Containers documen
 
 Filebeat ship logs as unstructured text. To parse these logs, you need
 to set a log type using the `@type` field.  Humio will use the parser specified by `@type` to parse the data.  
-See [Parsing Logs](/parsing.md) for more information on parsing log data.
+See [Parsing Logs](/sending_logs_to_humio/parsers/parsing/) for more information on parsing log data.
 
 Example Filebeat configuration with a custom log type:
 
@@ -41,4 +41,4 @@ output.elasticsearch:
   username: <ingest-token>
 ```
 
-See the detailed documentation for filebeat [here](/integrations/log-shippers/filebeat.md)
+See the detailed documentation for [filebeat](/sending_logs_to_humio/log_shippers/beats/filebeat/)

@@ -9,7 +9,7 @@ pre: "<b>9. </b>"
 Regular update release.    
 Data migrations: No.  
 
-- Introduced [licensing](licensing.md). Humio requires a license to run. It can run in trial mode with all features enabled for a month.
+- Introduced [licensing](/operation/installation/license/). Humio requires a license to run. It can run in trial mode with all features enabled for a month.
 - Fixed bug: In some scenarios the browsers back button had to be clicked twice or more to go back.
 - Fixed bug: Enter does not start search after navigating using the browsers back button
 
@@ -111,8 +111,8 @@ Data migrations: **Yes: The backups are incompatible.**
 - Export to file. It is now possible to export the results of a query to a file.  
     When exporting, the result set is not limited for filter queries, making it possible to export large amounts of data.  
     Plain text, JSON and ND-JSON (Newline Delimited JSON) formats are supported in this version.  
-- [format()](/query-language/query-functions.md#format) function. Format a string using printf-style.
-- [top()](/query-language/query-functions.md#top) function. Find the most common values of a field.
+- [format()](/searching_logs/query_functions/#format) function. Format a string using printf-style.
+- [top()](/searching_logs/query_functions/#top) function. Find the most common values of a field.
 - Performance improvement for searches using in particular "expensive" aggregates functions such as groupby and percentile.
 - `global-snapshots` topic in Kafka: Humio now deletes the oldest snapshot after writing a new, keeping the latest 10 only.
 
@@ -123,7 +123,7 @@ Data migrations: No.
 Version: 2018-02-07T13-26-11--build-1962--sha-2559a567039ce7399da48dbb2aed9fdfe2fddc3e  
 
 - Reduced query state size for live queries decreasing memory usage.
-- Added [concat()](/query-language/query-functions.md#concat) function.
+- Added [concat()](/searching_logs/query_functions/#concat) function.
 - Log4j2 updated from 2.9.1 to 2.10.0. If you are using a custom logging configuration, you may need to update your configuration accordingly.
 - Removed GC pauses caused by java.util.zip.* native calls from compressed http-traffic triggering "GCLocker initiated GC", which could block the entire JVM for many seconds.
 - To eliminate GC pauses caused by compression in the Kafka-client in Humio, Humio now disables compression on all topics used by Humio.
@@ -209,7 +209,7 @@ Version: 2018-01-19T07-37-48--build-1755--sha-9b1daf191d2625da9a557078cb0af2d6a8
 - Better Page Titles for Browser History.
 - Renewing your API token from your account settings page.
 - More guidance for new users in the form of help messages and tooltips.
-- Added [suggestions on sizing of hardware to run Humio on](/installation/instance-sizing.md).
+- Added [suggestions on sizing of hardware to run Humio on](/operation/installation/instance_sizing/).
 - Startup time reduced when running on large datasets.
 - Fix [bug #35](https://github.com/humio/issues/issues/35) Preventing you from doing e.g. `groupby` for fields containing spaces or quotes in their field name.
 - Fixed bug: If Kafka did not respond for 5 seconds, ingested events could get duplicated inside humio.
@@ -234,14 +234,14 @@ Version: 2018-01-09T14-02-07--build-1632--sha-370b5cee6aa42d49ef419b454b94cafd9a
 Regular update release.  
 
 - Netflow support for on premises customers. It is now possible to send Netflow data directly to Humio. It is configured using Ingest listeners.
-- Tags can be defined in [parsers](/parsing.md#adding-tags).
-- [Filebeat configuration](/integrations/log-shippers/filebeat.md) now utilises tags in parsers. The Filebeat configuration is still backward compatible. 
-- Better [Bro integration](/integrations/platforms/bro.md).
-- Added [stddev()](/query-language/query-functions.md#stddev) function.
+- Tags can be defined in [parsers](/sending_logs_to_humio/parsers/parsing/#adding-tags).
+- [Filebeat configuration](/sending_logs_to_humio/log_shippers/beats/filebeat/) now utilises tags in parsers. The Filebeat configuration is still backward compatible. 
+- Better [Bro integration](/guides/bro/).
+- Added [stddev()](/searching_logs/query_functions/#stddev) function.
 - Root user management in the UI. A gear icon has been added next to the "Add Dataspace" button, if you are logged in as a root user. Press it and it is possible to manage users.
-- Fix [bug #19](https://github.com/humio/issues/issues/19) uploading files to be used with the [lookup](query-language/query-functions.md#lookup) function. 
-- Datasources are [autosharded](/http-api-on-premises.md#auto-tagging-high-volume-datasources) into multiple datasources if they have huge ingest loads. This is mostly an implementation detail.
-- [Tag sharding](/http-api-on-premises.md#setup-sharding-for-tags). A tag with many different values would result in a lot of small datasources which will hurt performance.
+- Fix [bug #19](https://github.com/humio/issues/issues/19) uploading files to be used with the [lookup](/searching_logs/query_functions/#lookup) function. 
+- Datasources are [autosharded](/operation/on_prem_http_api/#auto-tagging-high-volume-datasources) into multiple datasources if they have huge ingest loads. This is mostly an implementation detail.
+- [Tag sharding](/operation/on_prem_http_api/#setup-sharding-for-tags). A tag with many different values would result in a lot of small datasources which will hurt performance.
 A Tag will be sharded if it has many different values.  
 For example, having a field user as tag and having 100.000 Different users could result in 100.000 datasources. Instead the tag will be sharded and allowed to have 16 different values (by default).  
 In general do not use a field with high cardinality as a tag in Humio.
@@ -301,7 +301,7 @@ Minor update release.
 
  - Kafka topic configuration defaults changed and documented.
 
-If running on-premises, please inspect and update the retention settings on the Kafka topics created by Humio to match your Kafka . [See Configuration of Kafka](/installation/kafka-configuration.md).
+If running on-premises, please inspect and update the retention settings on the Kafka topics created by Humio to match your Kafka . [See Configuration of Kafka](/operation/installation/kafka_configuration/).
 
 ## 2017-12-06
 Regular update release.  
@@ -344,7 +344,7 @@ Version: 2017-11-16T08-50-16--build-1204--sha-f15c4e367ee62e187f76788c12eb0feb31
 
  - Fix bug where Humio ignored the default search range specified for the dataspace
  - Fix bug with "save as" menu being hidden behind event distribution graph
- - Add documentation for new [regular expression syntax](/query-language.md)
+ - Add documentation for new [regular expression syntax](/searching_logs/query_language/)
  
 
 ## 2017-11-14
@@ -388,7 +388,7 @@ Version: 2017-11-06T11-27-28--build-1129--sha-8e24b956a8aee4bc039a0af8deaa7c07ae
 
 Improvements in the query language:
 
-- [Saved queries can be invoked as a macro](/query-language.md#using-saved-queries-as-macrosfunctions) using the following syntax:  
+- [Saved queries can be invoked as a macro](/searching_logs/query_language/#using-saved-queries-as-macrosfunctions) using the following syntax:  
   `$"name of saved query"()` or `$nameOfSavedQuery()`.    
   Saved queries can declare arguments using `?{arg=defaultValue}` syntax.  
   Such arguments can be used where ever a string, number or identifier is allowed in the language.  
@@ -396,11 +396,11 @@ Improvements in the query language:
     `$savedQuery(arg=value, otherArg=otherValue)`.
   
 - Support for C-style allow comments `// single line` or `/* multi line */`
-- [Anonymous composite functions](/query-language.md#composite-function-calls) can now make use of filter expressions:  
+- [Anonymous composite functions](/searching_logs/query_language/#composite-function-calls) can now make use of filter expressions:  
   ```
     #type=accesslog | groupby(function={ uri=/foo* | count() })
   ```
-- New [HTTP ingest API supporting parsers](/http-api.md#ingest-data-using-a-parser)  
+- New [HTTP ingest API supporting parsers](/sending_logs_to_humio/transport/http_api/#ingest-data-using-a-parser)  
 
 ## 2017-11-01
 Regular update release.  
@@ -455,7 +455,7 @@ Version: 2017-10-11T10-50-10--build-949--sha-292ff6da98b7ad91687db5fc31eef6033bd
 on-premises notes:
 - Since using the ingest queue is on by default, if running a clustered setup,
   make sure to update the ingest partition assignments.
-  At the very least [reset them to defaults.](../http-api-on-premises/index.html#applying-default-partition-settings)
+  At the very least [reset them to defaults.](/operation/on_prem_http_api/#applying-default-partition-settings)
 
 
 ## 2017-10-10  
@@ -466,7 +466,7 @@ Cloud-only release.
 - Events are highlighted in the eventdistribution graph when they are hovered.
 - Possible to migrate dataspaces from one Humio to another.
 - Improved Auth0 on-prem support.
-- [Heroku Integration](integrations/platforms/heroku.md).
+- [Heroku Integration](/sending_logs_to_humio/integrations/heroku/).
 - Improved query scheduling for dashboards starting many queries at the same time.
 
 ## 2017-09-29  
