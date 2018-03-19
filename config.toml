@@ -2,6 +2,7 @@ baseURL = "https://docs.humio.com/"
 languageCode = "en-us"
 title = "Humio documentation"
 theme = "hugo-theme-learn"
+enableGitInfo = true
 
 [outputs]
 home = [ "HTML", "RSS", "JSON" ]
