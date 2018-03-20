@@ -97,19 +97,31 @@ Metricbeat automatically sends the host name of the system along with the data. 
 Once you have data from Metricbeat in Humio, you can run some interesting queries, such as the following examples:
 
 * Show CPU load for each host:
- > `#type=beat | timechart(series=@host, function=max(system.load.1, as=load))`
+```
+#type=beat | timechart(series=@host, function=max(system.load.1, as=load))
+```
 
 * Show memory usage for each host:
- > `#type=beat | timechart(series=@host, function=max(system.memory.actual.used.bytes))`
+```
+#type=beat | timechart(series=@host, function=max(system.memory.actual.used.bytes))
+```
 
 * Show disk free space (in gigabytes):
- > `#type=beat @host=host1  system.filesystem.mount_point="/" | timechart(function=min(system.filesystem.free, as=free)) | eval(free=free/(1024*1024*1024))`
+```
+#type=beat @host=host1  system.filesystem.mount_point="/" | timechart(function=min(system.filesystem.free, as=free)) | eval(free=free/(1024*1024*1024))
+```
 
 * Disk IO - show bytes read for each disk:
- > `#type=beat @host=host1 | system.diskio.read.bytes=* | timechart(series=system.diskio.name, function=counterrate(system.diskio.read.bytes), span=1m)`
+```
+#type=beat @host=host1 | system.diskio.read.bytes=* | timechart(series=system.diskio.name, function=counterrate(system.diskio.read.bytes), span=1m)
+```
 
 * Network traffic - Show bytes sent on the `eth0` interface:
- > `#type=beat @host=host1 system.network.name=eth0 | timechart(function=count(system.network.out.bytes), span=1m)`
+```
+#type=beat @host=host1 system.network.name=eth0 | timechart(function=count(system.network.out.bytes), span=1m)
+```
 
 * Show the top 10 processes using the most CPU:
- > `#type=beat | system.process.name=* | groupby(system.process.name, function=avg(system.process.cpu.total.pct, as=cpu)) | sort(cpu, limit=10)`
+```
+#type=beat | system.process.name=* | groupby(system.process.name, function=avg(system.process.cpu.total.pct, as=cpu)) | sort(cpu, limit=10)
+```

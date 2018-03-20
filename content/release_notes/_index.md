@@ -344,7 +344,7 @@ Version: 2017-11-16T08-50-16--build-1204--sha-f15c4e367ee62e187f76788c12eb0feb31
 
  - Fix bug where Humio ignored the default search range specified for the dataspace
  - Fix bug with "save as" menu being hidden behind event distribution graph
- - Add documentation for new [regular expression syntax](/searching_logs/query_language/)
+ - Add documentation for new [regular expression syntax](/searching_logs/)
  
 
 ## 2017-11-14
@@ -388,7 +388,7 @@ Version: 2017-11-06T11-27-28--build-1129--sha-8e24b956a8aee4bc039a0af8deaa7c07ae
 
 Improvements in the query language:
 
-- [Saved queries can be invoked as a macro](/searching_logs/query_language/#using-saved-queries-as-macrosfunctions) using the following syntax:  
+- [Saved queries can be invoked as a macro](/searching_logs/#using-saved-queries-as-macrosfunctions) using the following syntax:  
   `$"name of saved query"()` or `$nameOfSavedQuery()`.    
   Saved queries can declare arguments using `?{arg=defaultValue}` syntax.  
   Such arguments can be used where ever a string, number or identifier is allowed in the language.  
@@ -396,7 +396,7 @@ Improvements in the query language:
     `$savedQuery(arg=value, otherArg=otherValue)`.
   
 - Support for C-style allow comments `// single line` or `/* multi line */`
-- [Anonymous composite functions](/searching_logs/query_language/#composite-function-calls) can now make use of filter expressions:  
+- [Anonymous composite functions](/searching_logs/#composite-function-calls) can now make use of filter expressions:  
   ```
     #type=accesslog | groupby(function={ uri=/foo* | count() })
   ```

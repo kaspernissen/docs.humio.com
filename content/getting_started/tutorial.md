@@ -436,7 +436,7 @@ However, this tutorial has only scratched the surface of what Humio can do. If y
 We suggest reading:
 
 * The [Glossary Section](/glossary/)
-* The [Query Language Reference](/searching_logs/query_language/)
+* The [Query Language Reference](/searching_logs/)
 * The [Query Functions](/searching_logs/query_functions/) reference documentation.
 
 ** _Thanks, and have fun!_ **

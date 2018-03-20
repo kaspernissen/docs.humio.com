@@ -1,6 +1,5 @@
 ---
 title: "Managing dataspaces"
-draft: true
 ---
 
 ## Dataspace Overview Page
