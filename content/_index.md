@@ -18,5 +18,4 @@ The second section, [Sending logs to Humio](/sending_logs_to_humio/) is all abou
 <div>Kubernetes</div>
 <div>DC/OS</div>
 <div>FluentD</div>
-<div>Linux</div>
 </div>
