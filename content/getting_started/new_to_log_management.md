@@ -1,5 +1,5 @@
 ---
-title: "Intro log management"
+title: "Intro to Log Management"
 weight: 1
 ---
 
@@ -39,7 +39,7 @@ In general, Humio is compatible with the Elastic ingest APIs. So if your
 favorite log shipper can send it to Elastic, there is a good chance it can ship to Humio as well. If you have questions or aren't sure, we are always here to support you.
 {{% /notice %}}
 
-An important aspect shipping is how faultsare handled. When evaluating a log shipper, examine what situations will cause the loss of log lines, or duplications. Also check which kinds of failures it can tolerate.
+An important aspect shipping is how faults are handled. When evaluating a log shipper, examine what situations will cause the loss of log lines, or duplications. Also check which kinds of failures it can tolerate.
 
 ## Parsing
 
