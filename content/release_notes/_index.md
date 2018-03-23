@@ -4,11 +4,21 @@ weight: 9
 pre: "<b>9. </b>"
 ---
 
+## 2018-03-22
+Regular update release.   
+Data migrations: No   
+
+- Improved ingest performance by tuning LZ4 compression.
+- Added a JSON tab when showing event details. The tab pretty prints the event and is only visible for JSON data. 
+- JSON is not pretty printed when showing the details for an event in the message tab.  
+- Fixed bug: When system got overloaded - events could get lost if processed out of order in a datasource.
+- Improved [Grafana integration](https://github.com/humio/humio2grafana).
+
 ## 2018-03-15
 Regular update release.   
 Data migrations: Yes, but compatible both ways: Users on dataspace can now have multiple roles.   
 
-- [Audit logging](installation/audit-logs.md) BETA feature. There is now a `humio-audit` dataspace with audit log of user actions on Humio.
+- [Audit logging](/operation/installation/audit_logs/) BETA feature. There is now a `humio-audit` dataspace with audit log of user actions on Humio.
 - License keys in UI now ignore whitespace for ease of inserting keys with line breaks.
 - Fixed bug: In uncommon cases when ingesting a large bulk of events that were not compressible at all, the non-compression could fail.
 - Fixed bug: "Export to file" failed on Sandbox dataspaces.
