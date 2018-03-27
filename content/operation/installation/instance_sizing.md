@@ -1,10 +1,6 @@
 ---
 title: "Instance sizing"
 ---
-
-
-# Sizing Humio / Hardware Recommendations
-
 This document describes how to choose hardware and size a Humio installation.
 
 Sizing depends on your usage patterns, so we recommend first doing an example setup to see how Humio works 

@@ -5,13 +5,11 @@ title: "Welcome to the Humio documentation"
 # Humio documentation
 <!--img style="float: left;margin-right: 1em;" src="./images/humio-owl.svg"-->
 
-Welcome to the documentation pages for Humio.
+Welcome to the Humio Docs! Your place to get info on the most flexible logging solution available!
 
-We have divided the documentation into a number of sections
+If you are new to log management, [Getting started](/getting_started/) will help you understand what log management is and where Humio fits in to the log ecosystem. You can also take a look at how easy it is to [migrate from the Elastic Stack](/getting_started/moving_from_elastic_stack/) to Humio.
 
-If you are new to log management take a look at our [Getting started](/getting_started/) section which will help you understand what log management and Humio is, as well as how you can easily [migrate from the Elastic Stack](/getting_started/moving_from_elastic_stack/) to Humio.
-
-The second section, [Sending logs to Humio](/sending_logs_to_humio/) is all about how you can send your data to Humio. We've gone ahead and compiled a list of most common ways of forwarding logs right here
+With a better understanding of log management, the next step is shipping logs! [Sending logs to Humio](/sending_logs_to_humio/) will give a step-by-step how to on sending data to Humio. We've gone ahead and compiled a list of most common ways of forwarding logs right here:
 
 <div style="column-width: 100px; text-align: center">
 <div>Filebeats</div>
