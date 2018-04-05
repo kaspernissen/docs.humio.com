@@ -263,7 +263,7 @@ Regular update release.
 - Netflow support for on premises customers. It is now possible to send Netflow data directly to Humio. It is configured using Ingest listeners.
 - Tags can be defined in [parsers](/sending_logs_to_humio/parsers/parsing/#adding-tags).
 - [Filebeat configuration](/sending_logs_to_humio/log_shippers/beats/filebeat/) now utilises tags in parsers. The Filebeat configuration is still backward compatible. 
-- Better [Bro integration](/guides/bro/).
+- Better [Bro integration](/walkthroughs/bro/).
 - Added [stddev()](/searching_logs/query_functions/#stddev) function.
 - Root user management in the UI. A gear icon has been added next to the "Add Dataspace" button, if you are logged in as a root user. Press it and it is possible to manage users.
 - Fix [bug #19](https://github.com/humio/issues/issues/19) uploading files to be used with the [lookup](/searching_logs/query_functions/#lookup) function. 
