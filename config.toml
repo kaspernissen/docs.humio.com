@@ -6,3 +6,6 @@ enableGitInfo = true
 
 [outputs]
 home = [ "HTML", "RSS", "JSON" ]
+
+[params]
+editURL = "https://github.com/humio/docs.humio.com/edit/master/content/"
