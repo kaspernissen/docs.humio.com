@@ -4,9 +4,17 @@ weight: 9
 pre: "<b>9. </b>"
 ---
 
+## 2018-03-26
+Bugfix release.
+Data migrations: No
+
+- Fixed bug: Race condition in segment merging code. Could lead to loss of data when changing size of segment files. The problem was introduced in the previous release as a case of the out-of-order processing fix.
+- Fixed bug: Auto suggestions selection using mouse.
+
 ## 2018-03-22
-Regular update release.   
-Data migrations: No   
+Regular update release.
+Data migrations: No
+Version: 2018-03-23T13-20-14--build-2297--sha-2dde0149735d4a41f367fa72837ec888418248a7   
 
 - Improved ingest performance by tuning LZ4 compression.
 - Added a JSON tab when showing event details. The tab pretty prints the event and is only visible for JSON data. 
