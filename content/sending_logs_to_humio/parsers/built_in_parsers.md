@@ -109,7 +109,7 @@ The timestamp must be in the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) 
 
 ## bro-json
 This parser can process JSON data generated from [Bro](https://www.bro.org/).  
-We have documentation [here](/guides/bro/) describing how to send Bro data to Humio.
+We have documentation [here](/walkthroughs/bro/) describing how to send Bro data to Humio.
 This parser is tailored to handle the output generated from the Bro script in the linked to documentation.    
 The name of the Bro log file will become a `#path` tag in Humio.
 
