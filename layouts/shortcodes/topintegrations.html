@@ -1,0 +1,6 @@
+<div style="column-width: 100px; text-align: center">
+    {{range $.Site.Data.topintegrations}}<div>
+    <img src="{{ .imgUrl }}" alt="{{ .name }} logo">
+        <a href="{{ .url }}">{{ .name }}</a>
+    </div>{{end}}
+</div>
