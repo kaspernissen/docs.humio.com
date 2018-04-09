@@ -75,7 +75,7 @@ Given the above log line, Humio parses the fields `user=John Doe` and `service=u
 {{% /notice %}}
 
 ## kv-millis
-This parser, like the (kv parser)(/sending_logs_to_humio/parsers/built_in_parsers/#kv-millis) parser, is a key-value parser. However, it expects the timestamp in the log line to be UTC time in milliseconds.
+This parser, like the [kv parser](/sending_logs_to_humio/parsers/built_in_parsers/#kv-millis) parser, is a key-value parser. However, it expects the timestamp in the log line to be UTC time in milliseconds.
 
 {{% notice note %}}
 ***Example of key-value parsing with millisecond timing***
