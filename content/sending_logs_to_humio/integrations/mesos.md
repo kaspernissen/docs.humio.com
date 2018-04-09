@@ -4,6 +4,7 @@ title: "DC/OS and Mesos"
 
 This is a Mesos framework for shipping Mesos tasks logs to Humio in the Cloud and on-premises.
 The main features of this integration are
+
 * Installing Filebeat and Metricbeats on all nodes in a Mesos or DC/OS cluster
 * Tag log events with relevant fields before shipped to Humio
 
