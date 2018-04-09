@@ -4,6 +4,15 @@ weight: 9
 pre: "<b>9. </b>"
 ---
 
+<!-- WIP:
+## 2018-04-XX
+Regular update release.   
+Data migrations: No       
+
+- New Query coordinator for handling distributed queries. This should improve the error messages on communication problems.
+- Updated Humio and Kafka Docker images to use Java 9.
+-->
+
 ## 2018-03-26
 Bugfix release.
 Data migrations: No
