@@ -1,6 +1,6 @@
 ---
 title: "Convincing your boss"
-weight: 4
+weight: 3
 ---
 
 
