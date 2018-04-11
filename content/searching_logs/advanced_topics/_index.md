@@ -1,8 +1,8 @@
 ---
-title: "Advanced_topics"
+title: "Advanced Topics"
 chapter: true
 ---
-# Advanced topic
+# Advanced Topics
 
 In this section we will cover some of the more advanced and complicated topics in regards to searching your Humio logs.
 
