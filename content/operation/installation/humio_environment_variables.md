@@ -60,15 +60,8 @@ TAG_HASHING_BUCKETS=16
 # Setting controlling auto-tagging of datasources with too much data for one stream. Defaults to 6MB/s.
 AUTOSHARDING_TRIGGER_SPEED=6291456
 
-# Number of blocks of 1MB stored in each segment. You can raise this to e.g 2000 or perhaps 4000 to get fewer, larger segments files. Or lower it to get retention to kick in ealier.
-# Default is 1000. Minimum is 100.
+# Number of blocks of 1MB stored in each segment. You can raise this to e.g 1000 or perhaps 4000 to get fewer, larger segments files. Minimum is 100.
 BLOCKS_PER_SEGMENT=1000
-
-# Compression level for event data files.
-# 0 => Use the `FAST` implemetation.
-# 1 - 17 => Use the `High` implemetation. Recommended values are in the range 4 .. 9
-# Default is 6.
-COMPRESSION_LEVEL=6
 
 # If a query is not used (polled) - how long should Humio wait until it does not keep the query running
 IDLE_POLL_TIME_BEFORE_LIVE_QUERY_IS_CANCELLED_MINUTES=60
@@ -77,6 +70,13 @@ IDLE_POLL_TIME_BEFORE_LIVE_QUERY_IS_CANCELLED_MINUTES=60
 # When a query results in larger results, the query is aborted, and gets a warning of "State too large. Lower your limits to get results."
 # If you have few but large queries, you may increase this to e.g. MaxHeapSize/32 or even MaxHeapSize/16, but with a high risk of OOM.
 #MAX_INTERNAL_STATESIZE=...
+
+# By default, root is able to query data in all dataspaces without being a member of them, and is able to set retention setting and delete data from all dataspaces.
+# Setting ENFORCE_AUDITABLE=true restricts root from this: He is no longer member of a dataspace unless explicitly added,
+#  and can only set retention or delete data by having the explicit permission granted, like any other user with that permission.
+# See `audit-logs`for more informartion on how the audit logging works.
+# Default: false
+#ENFORCE_AUDITABLE=false
 
 # How long should the `sensitive` part of the audit log be kept. Default to 200 years.
 # Set as number of days. Example: 10 years = 3653 days.
