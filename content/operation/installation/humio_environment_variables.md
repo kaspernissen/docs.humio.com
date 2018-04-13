@@ -60,8 +60,15 @@ TAG_HASHING_BUCKETS=16
 # Setting controlling auto-tagging of datasources with too much data for one stream. Defaults to 6MB/s.
 AUTOSHARDING_TRIGGER_SPEED=6291456
 
-# Number of blocks of 1MB stored in each segment. You can raise this to e.g 1000 or perhaps 4000 to get fewer, larger segments files. Minimum is 100.
+# Number of blocks of 1MB stored in each segment. You can raise this to e.g 2000 or perhaps 4000 to get fewer, larger segments files. Or lower it to get retention to kick in ealier.
+# Default is 1000. Minimum is 100.
 BLOCKS_PER_SEGMENT=1000
+
+# Compression level for event data files.
+# 0 => Use the `FAST` implemetation.
+# 1 - 17 => Use the `High` implemetation. Recommended values are in the range 4 .. 9
+# Default is 6.
+COMPRESSION_LEVEL=6
 
 # If a query is not used (polled) - how long should Humio wait until it does not keep the query running
 IDLE_POLL_TIME_BEFORE_LIVE_QUERY_IS_CANCELLED_MINUTES=60
