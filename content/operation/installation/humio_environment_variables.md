@@ -78,6 +78,13 @@ IDLE_POLL_TIME_BEFORE_LIVE_QUERY_IS_CANCELLED_MINUTES=60
 # If you have few but large queries, you may increase this to e.g. MaxHeapSize/32 or even MaxHeapSize/16, but with a high risk of OOM.
 #MAX_INTERNAL_STATESIZE=...
 
+# By default, root is able to query data in all dataspaces without being a member of them, and is able to set retention setting and delete data from all dataspaces.
+# Setting ENFORCE_AUDITABLE=true restricts root from this: He is no longer member of a dataspace unless explicitly added,
+#  and can only set retention or delete data by having the explicit permission granted, like any other user with that permission.
+# See `audit-logs`for more informartion on how the audit logging works.
+# Default: false
+#ENFORCE_AUDITABLE=false
+
 # How long should the `sensitive` part of the audit log be kept. Default to 200 years.
 # Set as number of days. Example: 10 years = 3653 days.
 #AUDITLOG_SENSITIVE_RETENTION_DAYS=3653

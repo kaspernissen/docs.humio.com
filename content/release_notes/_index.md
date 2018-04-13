@@ -11,11 +11,15 @@ Data migrations: No
 
 - New Query coordinator for handling distributed queries. This should improve the error messages on communication problems.
 - Updated Humio and Kafka Docker images to use Java 9.
+- Added a update service widget to the menu bar that will announce new updates and give access to
+  release notes directly in Humio. The service contacts a remote service: update.humio.com. If you
+  do not want to allow this communication you can disable it from the Root Administration interface.
 -->
 
 ## 2018-03-26
 Bugfix release.
 Data migrations: No
+Version: 2018-03-26T20-11-14--build-2310--sha-c2b27b32ec01c9f2613a47684267a05ba62dd00d
 
 - Fixed bug: Race condition in segment merging code. Could lead to loss of data when changing size of segment files. The problem was introduced in the previous release as a case of the out-of-order processing fix.
 - Fixed bug: Auto suggestions selection using mouse.

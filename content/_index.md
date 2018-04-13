@@ -11,11 +11,6 @@ If you are new to log management, [Getting started](/getting_started/) will help
 
 With a better understanding of log management, the next step is shipping logs! [Sending logs to Humio](/sending_logs_to_humio/) will give a step-by-step how to on sending data to Humio. We've gone ahead and compiled a list of most common ways of forwarding logs right here:
 
-<div style="column-width: 100px; text-align: center">
-  <div>Filebeats</div>
-  <div>Kubernetes</div>
-  <div>DC/OS</div>
-  <div>FluentD</div>
-</div>
+{{%topintegrations%}}
 
 One of the keys to log management is querying logs. We've put together [this handy guide](/searching_logs/query_functions/) to help explain our query methodology. Take a look as you explore what Humio can do for you.
