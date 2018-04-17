@@ -1,18 +1,18 @@
 
 :root{
-    
+
     --MAIN-TEXT-color:#323232; /* Color of text by default */
     --MAIN-TITLES-TEXT-color: #5e5e5e; /* Color of titles h2-h3-h4-h5 */
-    --MAIN-LINK-color:#1C90F3; /* Color of links */
+    --MAIN-LINK-color: #8959ff; /* Color of links */
     --MAIN-LINK-HOVER-color:#167ad0; /* Color of hovered links */
     --MAIN-ANCHOR-color: #1C90F3; /* color of anchors on titles */
 
-    --MENU-HEADER-BG-color:#1C90F3; /* Background color of menu header */
-    --MENU-HEADER-BORDER-color:#33a1ff; /*Color of menu header border */ 
+    --MENU-HEADER-BG-color:#1E1935; /* Background color of menu header */
+    --MENU-HEADER-BORDER-color: #AE92D6; /*Color of menu header border */
 
-    --MENU-SEARCH-BG-color:#167ad0; /* Search field background color (by default borders + icons) */
-    --MENU-SEARCH-BOX-color: #33a1ff; /* Override search field border color */
-    --MENU-SEARCH-BOX-ICONS-color: #a1d2fd; /* Override search field icons color */
+    --MENU-SEARCH-BG-color:#312a59; /* Search field background color (by default borders + icons) */
+    --MENU-SEARCH-BOX-color: #4b4374; /* Override search field border color */
+    --MENU-SEARCH-BOX-ICONS-color: rgb(214, 204, 255); /* Override search field icons color */
 
     --MENU-SECTIONS-ACTIVE-BG-color:#20272b; /* Background color of the active section and its childs */
     --MENU-SECTIONS-BG-color:#252c31; /* Background color of other sections */
@@ -23,7 +23,7 @@
 
     --MENU-VISITED-color: #33a1ff; /* Color of 'page visited' icons in menu */
     --MENU-SECTION-HR-color: #20272b; /* Color of <hr> separator in menu */
-    
+
 }
 
 body {
@@ -102,3 +102,28 @@ a:hover {
     border-color: var(--MENU-SECTION-HR-color);
 }
 
+h1 {
+  text-align: left;
+  font-size: 40px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  line-height: 1;
+}
+
+body #chapter h1 {
+  text-align: center;
+}
+
+#logo svg {
+  width: 216px;
+  max-width: 90%;
+}
+
+#chapter .notices p {
+  text-align: left;
+  font-size: 14px;
+}
+
+h2 {
+  font-size: 20px;
+}
