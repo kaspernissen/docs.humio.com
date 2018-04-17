@@ -10,11 +10,6 @@
     "imgUrl": "/images/kubernetes.svg"
   },
   {
-    "name": "FluentD",
-    "url": "/sending_logs_to_humio/log_shippers/fluentd",
-    "imgUrl": "/images/fluentd.svg"
-  },
-  {
     "name": "DC/OS",
     "url": "/sending_logs_to_humio/integrations/mesos",
     "imgUrl": "/images/dcos.svg"
