@@ -10,4 +10,5 @@ home = [ "HTML", "RSS", "JSON" ]
 [params]
 editURL = "https://github.com/humio/docs.humio.com/edit/master/content/"
 description = "Documentation site for Humio"
-disableInlineCopyToClipBoard = false
+disableInlineCopyToClipBoard = true
+themeVariant = "humio"
