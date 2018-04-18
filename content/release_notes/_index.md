@@ -5,9 +5,20 @@ pre: "<b>9. </b>"
 ---
 
 <!-- WIP:
+
 ## 2018-04-XX
 Regular update release.   
 Data migrations: No       
+
+- Humio is available as a downloadable Docker image. It can be used in trial mode for a month. After that a license is required.
+- New onboarding flow supporting downloading and running Humio.
+- Documentation has moved into its own project online at https://docs.humio.com
+- Improved versioning. The version now starts with an actual version number. This version matches the version in Dockerhub.
+
+## 2018-04-16
+Cloud-only release.    
+Data migrations: No   
+Version: 1.0.57--build-2434--sha-dba17eaa7
 
 - New Query coordinator for handling distributed queries. This should improve the error messages on communication problems.
 - Updated Humio and Kafka Docker images to use Java 9.
