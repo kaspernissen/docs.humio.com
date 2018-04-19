@@ -1,10 +1,10 @@
 ---
-title: "Kafka configuration"
+title: "Kafka Configuration"
 ---
 
 ## Configuring Kafka
 
-When running Humio in a cluster setup it uses Kafka as part of the infrastructure. 
+When running Humio in a cluster setup it uses Kafka as part of the infrastructure.
 
 In this section, we briefly describe how Humio uses Kafka. Then we discuss how to konfigure Kafka.
 
@@ -29,7 +29,7 @@ to match your disk space available for Kafka, please use the kafka-configs comma
 See below for an example, modifying the retention on the ingest queue to keep burst of data for up to 1 hour only.
 
 
-#### global-events 
+#### global-events
 This is Humios event sourced database queue. This queue will contain small events, and has a pretty low throughput.
 No log data is saved to this queue. There should be high number of replicas for this queue.
 
@@ -66,7 +66,7 @@ It is also possible to use other Kafka tools, such as the command line tools inc
 #### Setting retention on the ingest queue
 Show ingest queue configuration. (This only shows properties set specifically for the topic - not the default ones specified in kafka.properties
 ```
-<kafka_dir>/bin/kafka-configs.sh --zookeeper $HOST:2181 --entity-name humio-ingest --entity-type topics --describe 
+<kafka_dir>/bin/kafka-configs.sh --zookeeper $HOST:2181 --entity-name humio-ingest --entity-type topics --describe
 ```
 
 Set retention on the ingest queue to 1 hour.
@@ -84,4 +84,3 @@ Set retention on the ingest queue to 1GB (per partition)
 {{% notice note %}}
 The setting `retention.bytes` is per partition. By default Humio has 24 partitions for ingest.
 {{% /notice %}}
-

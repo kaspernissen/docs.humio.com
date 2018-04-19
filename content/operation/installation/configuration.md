@@ -1,18 +1,16 @@
 ---
 title: "Configuration"
+weight: 1
 ---
 
-## Configuring Humio
-In this section, we describe the configuration options you can use with Humio.
+Humio is configured by setting Environment Variables, when running Humio in Docker you can pass
+set the `--env-file=` flag and keep your configuration in a file.
+For a quick intro to setting configuration options see the [installation overview page](/operation/installation).
 
-### Java virtual machine parameters
-You can specify Java virtual machine parameters to pass to Humio using the property `HUMIO_JVM_ARGS`. The defaults are:
-```
-HUMIO_JVM_ARGS=-XX:+PrintFlagsFinal -Xss2M
-```
 
-### Example configuration file with comments
-```
+## Example configuration file with comments
+
+```toml
 # The stacksize should be at least 2M.
 # We suggest setting MaxDirectMemory to 50% of physical memory. At least 2G required.
 HUMIO_JVM_ARGS=-Xss2M -XX:MaxDirectMemorySize=32G
@@ -60,12 +58,18 @@ KAFKA_SERVERS=kafkahost01:9092,kafkahost02:9092
 #
 # This is important if you plan to use OAuth Federated Login or if you want to
 # be able to have Alert Notifications have consistent links back to the Humio UI.
-# The URL might only be reachable behind a VPN but that is no problem, as the user's
+# The URL might only be reachable behind a VPN but that is no problem, as a
 # browser can access it.
 #PUBLIC_URL=https://demo.example.com/humio
 ```
 
-#### Number of CPU Cores
+### Java virtual machine parameters
+You can specify Java virtual machine parameters to pass to Humio using the property `HUMIO_JVM_ARGS`. The defaults are:
+```bash
+HUMIO_JVM_ARGS=-XX:+PrintFlagsFinal -Xss2M
+```
+
+## Number of CPU Cores
 You can specify the number of processors for the machine running Humio by setting the `CORES` property.
 Humio uses this number when parallelizing queries.
 
@@ -73,7 +77,7 @@ By default, Humio uses the Java [available processors function](https://docs.ora
 
 ### Configuring Authentication
 
-Humio supports different ways of authentication users. Read more in the [Authentication Documentation]({{< relref "authentication.md" >}}).
+Humio supports different ways of authentication users. Read more in the dedicated [Authentication Documentation]({{< relref "authentication.md" >}}).
 
 ### Run Humio behind a (reverse) proxy server
 It is possible to put Humio behind a proxy server.
@@ -90,7 +94,7 @@ Humio must be configured with a proxy prefix url `/internal/humio`. This is done
 Humio requires the proxy to add the header `X-Forwarded-Prefix` only when Humio is hosted at at a non-empty prefix.
 Thus hosting Humio at "http://humio.example.com/" works without adding a header. An example onfiguration snippet for an nginx location is:
 
-```
+```nginx
 location /internal/humio {
 
     proxy_set_header        X-Forwarded-Prefix /internal/humio;
@@ -113,20 +117,22 @@ If it is not feasible for you to add the header `X-Forwarded-Prefix` in your pro
 
 Humio needs to be able keep a lot of files open at a time. The default limits are typically too low for any significant amount of data. Increase the limits using commands like:
 
-    cat << EOF | tee /etc/security/limits.d/99-humio-limits.conf
-    # Raise limits for files.
-    humio soft nofile 250000
-    humio hard nofile 250000
-    EOF
+```bash
+cat << EOF | tee /etc/security/limits.d/99-humio-limits.conf
+# Raise limits for files.
+humio soft nofile 250000
+humio hard nofile 250000
+EOF
 
-    cat << EOF | tee -a /etc/pam.d/common-session
-    # Apply limits:
-    session required pam_limits.so
-    EOF
+cat << EOF | tee -a /etc/pam.d/common-session
+# Apply limits:
+session required pam_limits.so
+EOF
+```
 
 These settings apply to the next login of the Humio user, not to any running processes.
 
-### Public URL {public_url}
+### Public URL {#public_url}
 
 `PUBLIC_URL` is the URL where the Humio instance is reachable from a browser.
 Leave our trailing slashes.
