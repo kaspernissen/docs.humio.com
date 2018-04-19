@@ -5,13 +5,11 @@ title: "Configuration"
 ## Configuring Humio
 In this section, we describe the configuration options you can use with Humio.
 
-
 ### Java virtual machine parameters
 You can specify Java virtual machine parameters to pass to Humio using the property `HUMIO_JVM_ARGS`. The defaults are:
 ```
 HUMIO_JVM_ARGS=-XX:+PrintFlagsFinal -Xss2M
 ```
-
 
 ### Example configuration file with comments
 ```
@@ -58,6 +56,13 @@ KAFKA_SERVERS=kafkahost01:9092,kafkahost02:9092
 # Select the IP to bind the http listening socket to. (Defaults to HUMIO_SOCKET_BIND)
 #HUMIO_HTTP_BIND=0.0.0.0
 
+# The URL where the Humio instance is reachable. (Leave our trailing slashes)
+#
+# This is important if you plan to use OAuth Federated Login or if you want to
+# be able to have Alert Notifications have consistent links back to the Humio UI.
+# The URL might only be reachable behind a VPN but that is no problem, as the user's
+# browser can access it.
+#PUBLIC_URL=https://demo.example.com/humio
 ```
 
 #### Number of CPU Cores
@@ -66,27 +71,12 @@ Humio uses this number when parallelizing queries.
 
 By default, Humio uses the Java [available processors function](https://docs.oracle.com/javase/8/docs/api/java/lang/Runtime.html#availableProcessors--) to get the number of CPU cores.
 
-### User authentication
+### Configuring Authentication
 
-Humio supports different ways of authentication users.
-
-* __No authentication__
-* __Auth0 authentication__   
-   Auth0 [Auth0](https://auth0.com/) is a cloud service making it possible to login with Google, GitHub and other providers using [OAuth](https://en.wikipedia.org/wiki/OAuth).  
-   You can also create your own database of users in Auth0.
-* __LDAP authentication__  
-   Humio can connect to an LDAP server an authenticate users
-     
-Users are authenticated (logged in) using one of the above integrations. But the authorisation is done in Humio. Which dataspaces a user can access is specified in Humio. 
-
-{{% notice note %}}
-User authentication is disabled by default.
-{{% /notice %}}
-    
-Configuration details for user [authentication](/operation/installation/authentication/)
+Humio supports different ways of authentication users. Read more in the [Authentication Documentation]({{< relref "authentication.md" >}}).
 
 ### Run Humio behind a (reverse) proxy server
-It is possible to put Humio behind a proxy server. 
+It is possible to put Humio behind a proxy server.
 
 {{% notice info %}}
 It is important that the proxy does not rewrite urls, when forwarding to Humio.
@@ -94,12 +84,11 @@ It is important that the proxy does not rewrite urls, when forwarding to Humio.
 
 For example a proxy server could accept all request at `http://example.com` and expose humio on `http://example.com/internal/humio/`.
 
-For this to work, the proxy must be set up to forward incoming requests with a location starting with `/internal/humio` to the Humio server and 
+For this to work, the proxy must be set up to forward incoming requests with a location starting with `/internal/humio` to the Humio server and
 Humio must be configured with a proxy prefix url `/internal/humio`. This is done by letting the proxy add the header `X-Forwarded-Prefix`.
 
 Humio requires the proxy to add the header `X-Forwarded-Prefix` only when Humio is hosted at at a non-empty prefix.
 Thus hosting Humio at "http://humio.example.com/" works without adding a header. An example onfiguration snippet for an nginx location is:
-
 
 ```
 location /internal/humio {
@@ -118,11 +107,11 @@ location /internal/humio {
   }
 ```
 
-If it is not feasible for you to add the header `X-Forwarded-Prefix` in your proxy, there is a fall-back solution: You can set `PROXY_PREFIX_URL` in your /home/humio/humio-config.env.
+If it is not feasible for you to add the header `X-Forwarded-Prefix` in your proxy, there is a fall-back solution: You can set `PROXY_PREFIX_URL` in your `/home/humio/humio-config.env`.
 
 ### Raising system limits for Humio
 
-Humio needs to be able keep a lot of files open at a time. The default limits are typically too low for any significant amount of data. Increase the limits using commands like...
+Humio needs to be able keep a lot of files open at a time. The default limits are typically too low for any significant amount of data. Increase the limits using commands like:
 
     cat << EOF | tee /etc/security/limits.d/99-humio-limits.conf
     # Raise limits for files.
@@ -137,3 +126,13 @@ Humio needs to be able keep a lot of files open at a time. The default limits ar
 
 These settings apply to the next login of the Humio user, not to any running processes.
 
+### Public URL {public_url}
+
+`PUBLIC_URL` is the URL where the Humio instance is reachable from a browser.
+Leave our trailing slashes.
+
+This property is only important if you plan to use OAuth Federated Login or if you want to
+be able to have Alert Notifications have consistent links back to the Humio UI.
+
+The URL might only be reachable behind a VPN but that is no problem, as the user's
+browser can access it.
