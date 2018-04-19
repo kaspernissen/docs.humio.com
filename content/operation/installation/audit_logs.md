@@ -1,8 +1,9 @@
 ---
-title: "Audit logs"
+title: "Audit Log"
 ---
 
-{{% notice note %}}
+{{% notice warning %}}
+__BETA__  
 Audit logging is currently being implemented as is as such considered "BETA".
 {{% /notice %}}
 

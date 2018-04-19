@@ -1,5 +1,5 @@
 ---
-title: "Installation distributed"
+title: "Cluster Setup"
 ---
 
 ## Overview
@@ -57,7 +57,7 @@ For each machine do:
         chown -R humio:humio /data/zookeeper-data
 
 1. Create a configuration file for Zookeeper. Replace the `HOST_1-3`
-variables with the DNS name or IP addresses of your hosts; here is the 
+variables with the DNS name or IP addresses of your hosts; here is the
 configuration file for `HOST`.
 
         cat << EOF > /home/humio/zookeeper.properties

@@ -105,13 +105,15 @@ If LDAP/AD requires login with the exact DN, then it is possible to first do a s
 a low-priviledge bind username, and then successively do the login with the correct DN.  
 To enable this, use this alternative property set:
 
-    AUTHENTICATION_METHOD=ldap-search
-    LDAP_AUTH_PROVIDER_URL=your-url       (example: ldap://ldap.forumsys.com:389)
-    LDAP_SEARCH_DOMAIN_NAME=your-domain   (example: example.com)
-    LDAP_SEARCH_BASE_DN=search-prefix     (example: ou=DevOps,dc=example,dc=com)
-    LDAP_SEARCH_BIND_NAME=bind-principal  (example: cn=Bind User,dc=example,dc=com)
-    LDAP_SEARCH_BIND_PASSWORD=bind-password
-    LDAP_SEARCH_FILTER=custom-search-filter (Optional, example: (uid={0}))
+```toml
+AUTHENTICATION_METHOD=ldap-search
+LDAP_AUTH_PROVIDER_URL=your-url       (example: ldap://ldap.forumsys.com:389)
+LDAP_SEARCH_DOMAIN_NAME=your-domain   (example: example.com)
+LDAP_SEARCH_BASE_DN=search-prefix     (example: ou=DevOps,dc=example,dc=com)
+LDAP_SEARCH_BIND_NAME=bind-principal  (example: cn=Bind User,dc=example,dc=com)
+LDAP_SEARCH_BIND_PASSWORD=bind-password
+LDAP_SEARCH_FILTER=custom-search-filter (Optional, example: (uid={0}))
+```
 
 If `LDAP_SEARCH_FILTER` is set, Humio makes a search for a DN mathcing the provided filter
 in the subtree specified by `LDAP_SEARCH_BASE_DN`, Using the bind-principal/password,
@@ -179,8 +181,23 @@ Read more about [Configuring Humio]({{< relref "configuration.md" >}})
 
 ### GitHub Sign-In {#github}
 
-Setup Instructions: https://developers.google.com/identity/sign-in/web/sign-in
+Setup Instructions: https://developer.github.com/apps/building-oauth-apps/creating-an-oauth-app/
 
+__Quick Summary__:
+
+- Create an OAuth App from your organization / user settings page,
+- Set the _Authorization callback URL_: `%PUBLIC_URL%/auth/github`
+
+Read more about [Configuring Humio]({{< relref "configuration.md" >}})
+
+Once your app is created you can configure Humio to use authenticate with GitHub:
+
+__Configuration Properties__
+
+- `GITHUB_OAUTH_CLIENT_ID`: The `client_id` from your GitHub OAuth App
+- `GITHUB_OAUTH_CLIENT_SECRET`: The `client_secret` your GitHub OAuth App
+
+Read more about [Configuring Humio]({{< relref "configuration.md" >}})
 
 ## Auth0 {#auth0}
 
