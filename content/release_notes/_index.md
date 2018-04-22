@@ -4,6 +4,25 @@ weight: 9
 pre: "<b>9. </b>"
 ---
 
+## 2018-04-XX
+Regular update release.
+Data migrations: No
+Configuration Changes: Yes
+Version: XXX
+
+### Added
+- Humio now support authenticating with [Google and Github directly](https://docs.humio.com/operation/installation/authentication#oauth), without the need to go through Auth0.
+
+### Configuration changes
+- Users that are authenticated through Auth0 will need to configure the `PUBLIC_URL` [configuration option](https://docs.humio.com/operation/installation/configuration#public_url).
+- The Auth0 configuration properties `AUTH0_WEB_CLIENT_ID` and `AUTH0_WEB_CLIENT_SECRET` have been removed.
+  You can safely delete the associated Auth0, as Humio only requires on Auth0 Application in the future.
+- The configuration options `AUTH0_API_CLIENT_ID` and `AUTH0_API_CLIENT_SECRET` have been deprecated in favor of `AUTH0_CLIENT_ID` and `AUTH0_CLIENT_SECRET` respectively - the old names will continue to work as aliases.  
+- The configuration option `AUTH0_WEB_CLIENT_ID_BASE64ENC` has been remove.
+- Depending on how you set up your Auth0 application, you may need to update your Auth0 Application Type to
+  "Regular Web Application" in the your Auth0 account, [more details can be found in our docs](https://docs.humio.com/operation/installation/authentication#auth0).
+
+
 ## 2018-04-19
 Regular update release.   
 Data migrations: No       
@@ -41,7 +60,7 @@ Data migrations: No
 Version: 2018-03-23T13-20-14--build-2297--sha-2dde0149735d4a41f367fa72837ec888418248a7   
 
 - Improved ingest performance by tuning LZ4 compression.
-- Added a JSON tab when showing event details. The tab pretty prints the event and is only visible for JSON data. 
+- Added a JSON tab when showing event details. The tab pretty prints the event and is only visible for JSON data.
 - JSON is not pretty printed when showing the details for an event in the message tab.  
 - Fixed bug: When system got overloaded - events could get lost if processed out of order in a datasource.
 - Improved [Grafana integration](https://github.com/humio/humio2grafana).
@@ -102,18 +121,18 @@ Data migrations: No.
   This allows alternatives similar to `case` or `cond` in other languages.  
   With `... | alt { <query>; <query>; ...; * } | ...` every event passing through
   will be tried to the alternatives in order until one emits an event.  If you add `; *` in the end, events
-  will pass through unchanged even if no other queries match.  Aggregate operators are not allowed in the 
+  will pass through unchanged even if no other queries match.  Aggregate operators are not allowed in the
   alternative branches.
-  
-- New `eval` syntax.  As a shorthand for `... | eval(foo=expr) | ...` you can now write `... | foo :=expr | ...`. 
-  Also, on the left hand side in an eval, you can write ``  `att` := expr `` which assigns the field that is the 
+
+- New `eval` syntax.  As a shorthand for `... | eval(foo=expr) | ...` you can now write `... | foo :=expr | ...`.
+  Also, on the left hand side in an eval, you can write ``  `att` := expr `` which assigns the field that is the
   current value of `att`.
-  
-- Improvements to the query optimizer.  Data source selection (choosing which data files to scan from disk) can 
-  now deal with more complex tag expressions.  For instance, now queries involving `OR` such as 
-  `#tag1=foo OR #tag2=bar` are now processed more efficiently.  The query analyzer is 
+
+- Improvements to the query optimizer.  Data source selection (choosing which data files to scan from disk) can
+  now deal with more complex tag expressions.  For instance, now queries involving `OR` such as
+  `#tag1=foo OR #tag2=bar` are now processed more efficiently.  The query analyzer is
   also able to identify `#tag=value` elements everywhere in the query, not only in the beginning of the query.
-  
+
 - New Feature: Dashboard Filters.
   Dashboard Filters allow you to filter the data set across all widgets in a dashboard. This effectively means
   that you can use dashboards for drill-down and reuse dashboards with several configurations.  
@@ -286,17 +305,17 @@ Regular update release.
 
 - Netflow support for on premises customers. It is now possible to send Netflow data directly to Humio. It is configured using Ingest listeners.
 - Tags can be defined in [parsers](/sending_logs_to_humio/parsers/parsing/#adding-tags).
-- [Filebeat configuration](/sending_logs_to_humio/log_shippers/beats/filebeat/) now utilises tags in parsers. The Filebeat configuration is still backward compatible. 
+- [Filebeat configuration](/sending_logs_to_humio/log_shippers/beats/filebeat/) now utilises tags in parsers. The Filebeat configuration is still backward compatible.
 - Better [Bro integration](/walkthroughs/bro/).
 - Added [stddev()](/searching_logs/query_functions/#stddev) function.
 - Root user management in the UI. A gear icon has been added next to the "Add Dataspace" button, if you are logged in as a root user. Press it and it is possible to manage users.
-- Fix [bug #19](https://github.com/humio/issues/issues/19) uploading files to be used with the [lookup](/searching_logs/query_functions/#lookup) function. 
+- Fix [bug #19](https://github.com/humio/issues/issues/19) uploading files to be used with the [lookup](/searching_logs/query_functions/#lookup) function.
 - Datasources are [autosharded](/operation/on_prem_http_api/#auto-tagging-high-volume-datasources) into multiple datasources if they have huge ingest loads. This is mostly an implementation detail.
 - [Tag sharding](/operation/on_prem_http_api/#setup-sharding-for-tags). A tag with many different values would result in a lot of small datasources which will hurt performance.
 A Tag will be sharded if it has many different values.  
 For example, having a field user as tag and having 100.000 Different users could result in 100.000 datasources. Instead the tag will be sharded and allowed to have 16 different values (by default).  
 In general do not use a field with high cardinality as a tag in Humio.
-    
+
 
 ## 2017-12-18
 Minor update release.  
@@ -387,7 +406,7 @@ Version: 2017-11-21T22-05-37--build-1245--sha-1dd64f3d2665b5923549e84b2a1bc34a9b
  - New interactive tutorial
  - Added pagination to tables
  - Fixed a couple of issues regarding syntax highlighting in the search field
- 
+
 
 ## 2017-11-15
 Regular update release.  
@@ -396,7 +415,7 @@ Version: 2017-11-16T08-50-16--build-1204--sha-f15c4e367ee62e187f76788c12eb0feb31
  - Fix bug where Humio ignored the default search range specified for the dataspace
  - Fix bug with "save as" menu being hidden behind event distribution graph
  - Add documentation for new [regular expression syntax](/searching_logs/)
- 
+
 
 ## 2017-11-14
 Regular update release.  
@@ -407,7 +426,7 @@ Version: 2017-11-14T11-02-13--build-1192--sha-4c326fd4ca7e79f581df6137be975bd6a8
  - Grafana integration. [Check it out](https://github.com/humio/humio2grafana)
  - New [Humio agent for Mesos and DC/OS](https://github.com/humio/dcos2humio)
  - Improved Error handling when a host is slow. Should decrease the number of warnings
- 
+
 
 
 ## 2017-11-09
@@ -422,12 +441,12 @@ Improvements to regular expression matching.
 
 - New syntax `field = /regex/idmg` syntax for matching. Optional flags `i`=ignore case, `m`=multiline (change semantics
   of `$` and `^` to match each line, nut just start/end), `d`=dotall (`.` includes `\n`),
-  and `g`=same as `repeat=true` for the `regex()` function.  I.e. to case-insensitively find all log lines containing `err` 
+  and `g`=same as `repeat=true` for the `regex()` function.  I.e. to case-insensitively find all log lines containing `err`
   (or `ERR`, or `Err`) you can now search
   ```
   /err/i
    ```
-- When such a regex-match expression appears at top-level e.g. `|` between two bars `|`, then named capturing groups 
+- When such a regex-match expression appears at top-level e.g. `|` between two bars `|`, then named capturing groups
   also cause new fields to be added to the output event as for the `regex()` function.
 - When no field is named, i.e. as in `/err/i`, then `@rawstring` is being searched.
 
@@ -445,7 +464,7 @@ Improvements in the query language:
   Such arguments can be used where ever a string, number or identifier is allowed in the language.  
   When calling a saved query, you can specify values for the arguments with a syntax like:  
     `$savedQuery(arg=value, otherArg=otherValue)`.
-  
+
 - Support for C-style allow comments `// single line` or `/* multi line */`
 - [Anonymous composite functions](/searching_logs/#composite-function-calls) can now make use of filter expressions:  
   ```
