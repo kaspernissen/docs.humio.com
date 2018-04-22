@@ -4,8 +4,6 @@ weight: 9
 pre: "<b>9. </b>"
 ---
 
-<!-- WIP:
-
 ## 2018-04-19
 Regular update release.   
 Data migrations: No       
@@ -13,10 +11,10 @@ Version: 1.0.58
 
 - Humio is available as a downloadable Docker image. It can be used in trial mode for a month. After that a license is required.
 - New onboarding flow supporting downloading and running Humio.
-- Documentation has moved into its own project online at [https://docs.humio.com](https://docs.humio.com). The project can be found on [Github](https://github.com/humio/docs.humio.com).
+- Documentation has moved into its own project online at [https://docs.humio.com](https://docs.humio.com). The project can be found on [GitHub](https://github.com/humio/docs.humio.com).
 - Small improvements to Grafana plugin.
 - JSON parsers can be configured to parse nested JSON. That means it will look at all strings inside the JSON and check if they are actually JSON.
-- Improved versioning. The version now starts with an actual version number. This version matches the version in Dockerhub.
+- Improved versioning. The version now starts with an actual version number. This version matches the version in Docker Hub.
 
 ## 2018-04-16
 Cloud-only release.    
@@ -25,10 +23,9 @@ Version: 1.0.57
 
 - New Query coordinator for handling distributed queries. This should improve the error messages on communication problems.
 - Updated Humio and Kafka Docker images to use Java 9.
-- Added a update service widget to the menu bar that will announce new updates and give access to
+- Added an update service widget to the menu bar that will announce new updates and give access to
   release notes directly in Humio. The service contacts a remote service: update.humio.com. If you
   do not want to allow this communication you can disable it from the Root Administration interface.
--->
 
 ## 2018-03-26
 Bugfix release.
