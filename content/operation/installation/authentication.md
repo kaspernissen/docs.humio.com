@@ -12,7 +12,7 @@ Humio supports the following authentication types:
 * [__By-Proxy__](#by-proxy)  
    Humio can use the username provided by the proxy in a HTTP header.
 * [__OAuth Identity Providers__](#oauth)  
-   Authentication is done by external OAuth identity providers, e.g. Google.
+   Authentication is done by external OAuth identity providers, e.g. Google and Github.
 * [__Auth0 Integration__](auth0)  
   Auth0 [Auth0](https://auth0.com/) is a cloud service making it possible to login with Google, GitHub and other providers using [OAuth](https://en.wikipedia.org/wiki/OAuth). You can also create your own database of users in Auth0.
 
