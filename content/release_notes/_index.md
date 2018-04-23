@@ -13,14 +13,18 @@ Version: XXX
 ### Added
 - Humio now support authenticating with [Google and Github directly](https://docs.humio.com/operation/installation/authentication#oauth), without the need to go through Auth0.
 
-### Configuration changes
-- Users that are authenticated through Auth0 will need to configure the `PUBLIC_URL` [configuration option](https://docs.humio.com/operation/installation/configuration#public_url).
+### Configuration Changes
+
+If you are using Auth0 you must update your Auth0 Application configuration and re-configure Humio:
+
+- Users that are authenticated through Auth0 will need to configure the `PUBLIC_URL` [configuration option](https://docs.humio.com/operation/installation/configuration#public_url), you MUST add add `$PUBLIC_URL/auth/auth0` to the list of callback URLs in your Auth0 Application.
 - The Auth0 configuration properties `AUTH0_WEB_CLIENT_ID` and `AUTH0_WEB_CLIENT_SECRET` have been removed.
   You can safely delete the associated Auth0, as Humio only requires on Auth0 Application in the future.
 - The configuration options `AUTH0_API_CLIENT_ID` and `AUTH0_API_CLIENT_SECRET` have been deprecated in favor of `AUTH0_CLIENT_ID` and `AUTH0_CLIENT_SECRET` respectively - the old names will continue to work as aliases.  
 - The configuration option `AUTH0_WEB_CLIENT_ID_BASE64ENC` has been remove.
 - Depending on how you set up your Auth0 application, you may need to update your Auth0 Application Type to
   "Regular Web Application" in the your Auth0 account, [more details can be found in our docs](https://docs.humio.com/operation/installation/authentication#auth0).
+- Humio Auth0 no longer requires the grant `read:users`, you can safely disable that on your Auth0 Application - or just leave it.
 
 
 ## 2018-04-19
