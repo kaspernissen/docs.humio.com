@@ -12,7 +12,7 @@ Humio supports the following authentication types:
 * [__By-Proxy__](#by-proxy)  
    Humio can use the username provided by the proxy in a HTTP header.
 * [__OAuth Identity Providers__](#oauth)  
-   Authentication is done by external OAuth identity providers, e.g. Google and Github.
+   Authentication is done by external OAuth identity providers, e.g. Google, Github and Atlassian/Bitbucket.
 * [__Auth0 Integration__](#auth0)  
   Auth0 [Auth0](https://auth0.com/) is a cloud service making it possible to login with Google, GitHub and other providers using [OAuth](https://en.wikipedia.org/wiki/OAuth). You can also create your own database of users in Auth0.
 
@@ -236,6 +236,7 @@ AUTHENTICATION_METHOD=auth0
 AUTH0_CLIENT_ID=$YOUR_CLIENT_ID
 AUTH0_CLIENT_SECRET=$YOUR_CLIENT_SECRET
 AUTH0_DOMAIN=$YOUR_AUTH0_DOMAIN
+PUBLIC_URL=$YOUR_SERVERS_BASE_URL
 ```
 
 _See the [installation overview page](/operation/installation) on how to set
@@ -248,13 +249,3 @@ to `%PUBLIC_URL%/auth/auth0`, e.g. https://www.example.com/auth/auth0, where
 `%PUBLIC_URL%` is the value of the Humio configuration option `PUBLIC_URL`.
 
 _Using Auth0 authentication for Humio requires that you set the `PUBLIC_URL` configuration option.
-During development this can be e.g. http://localhost:8080 without any issues._
-
-### Change the default Signature Algorithm
-
-Humio need to validate authentication tokens using the `HS256` Hashing Algorithm.
-This is not the default in Auth0. You need to change this by going to _Advanced Settings_
-on the _Settings_ page, and choosing `HS256` in the _JsonWebToken Signature Algorithm_
-field.
-
-Now Humio will be able to authenticate users through Auth0.
