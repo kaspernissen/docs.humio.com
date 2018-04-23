@@ -137,7 +137,7 @@ These settings apply to the next login of the Humio user, not to any running pro
 `PUBLIC_URL` is the URL where the Humio instance is reachable from a browser.
 Leave our trailing slashes.
 
-This property is only important if you plan to use OAuth Federated Login or if you want to
+This property is only important if you plan to use [OAuth Federated Login]({{< relref "authentication.md#oauth" >}}), [Auth0 Login]({{< "authentication.md#auth0" >}}) or if you want to
 be able to have Alert Notifications have consistent links back to the Humio UI.
 
 The URL might only be reachable behind a VPN but that is no problem, as the user's

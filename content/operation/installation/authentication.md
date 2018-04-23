@@ -13,7 +13,7 @@ Humio supports the following authentication types:
    Humio can use the username provided by the proxy in a HTTP header.
 * [__OAuth Identity Providers__](#oauth)  
    Authentication is done by external OAuth identity providers, e.g. Google and Github.
-* [__Auth0 Integration__](auth0)  
+* [__Auth0 Integration__](#auth0)  
   Auth0 [Auth0](https://auth0.com/) is a cloud service making it possible to login with Google, GitHub and other providers using [OAuth](https://en.wikipedia.org/wiki/OAuth). You can also create your own database of users in Auth0.
 
 Users are authenticated (logged in) using one of the above integrations. But the authorisation is done in Humio. Which dataspaces a user can access is specified in Humio.
@@ -201,51 +201,60 @@ Read more about [Configuring Humio]({{< relref "configuration.md" >}})
 
 ## Auth0 {#auth0}
 
-Create an [Auth0](https://auth0.com/) account. Unless you have specific requirements, the free tier is sufficient.
+Humio can be configured to authenticate users through [Auth0](https://auth0.com/). Unless you have specific requirements,
+Auth0's free tier is sufficient.
 
-### Configure Auth0 providers
-Select which Connections, like Google, Github and Microsoft you want to use for authentication, and follow Auth0's instructions on how to set them up.
-When configuring which information to request from external providers, only the email is needed. Humio will only allow users with a verified email to login.
+You can choose which Identity Providers (e.g. Google, Github and Facebook) you wish to allow for authentication.
 
-Another possibility is to create a user database in Auth0.
+{{% notice info %}}
+__GDPR Consideration__  
+Auth0 keeps information about your users. This may require you to have a Data Processing Agreement with
+Auth0. If all you need is Google and GitHub, you can use [Humio's build-in support for these providers](#oauth) and
+avoid storing your users' personal data with a third party provider.
+{{% /notice %}}
 
-### Configure the default client
-An Auth0 account has one default client. This client will be used for authenticating users logging into Humio from a browser.
-Go into settings for the default client and set the following configurations:  
+### Create a Humio Application
 
- * Put the URL of the server where Humio is running in `Allowed Callback URLs` and `Allowed Logout URLs`. For example *https://humio.yourcompany.com*,
- * Setup which `JsonWebToken Signature algorithm` is used.
-    * Go to the bottom of the client settings and press `Show Advanced Settings`.
-    * Select the `OAuth` tab.
-    * For the input field `JsonWebToken Signature Algorithm` select HS256
+You should create an Auth0 Application specifically for Humio.
+When selecting the type of application you should choose the option _Regular Web Application_.
 
-### Create a non interactive client
-Then create a client that is used for allowing the Humio backend to call Auth0's APIs. This client will be referred to as the API-client.
-The client needs the following configurations:
+Once the application is created you will need to set up a couple of properties.
 
-* The name of the client is not important, it can be `API` or whatever you decide
-* The default settings for the client is sufficient
-* Allow this client to call the Auth0 management API
-    * Navigate to APIs
-    * Press `Auth0 Management API`
-    * Go to the tab `Non Interactive Clients`
-    * Authorise this client
-    * The client menu item should expand allowing scopes to be selected.
-    * The only scope needed for this client is `read:users`
-    * Update scopes and the client is ready for use
+### Find your Application's Configuration
 
+Under the application's _Settings_ page find:
 
-### Configure Humio
-Now configure Humio to use the Auth0 account. Humio needs the client ids, client secrets and domain of the Auth0 clients. These are found at the top of the client settings page.
-Specify the following properties in the humio-config.env:
+- _Client ID_
+- _Client Secret_
+- _Domain_
 
-    AUTHENTICATION_METHOD=auth0
-    AUTH0_DOMAIN=auth0domain
-    AUTH0_WEB_CLIENT_ID= default-clients client ID
-    AUTH0_WEB_CLIENT_SECRET= default clients client secret
-    AUTH0_API_CLIENT_ID= API-clients client ID
-    AUTH0_API_CLIENT_SECRET= API-clients client secret
+We will need these for Humio's settings, you will also have to set the
+`AUTHENTICATION_METHOD` option to `auth0`, e.g.:
 
-Now Humio should authenticate using Auth0.
+```bash
+AUTHENTICATION_METHOD=auth0
+AUTH0_CLIENT_ID=$YOUR_CLIENT_ID
+AUTH0_CLIENT_SECRET=$YOUR_CLIENT_SECRET
+AUTH0_DOMAIN=$YOUR_AUTH0_DOMAIN
+```
 
-For questions, problems and more advanced configurations, please [contact us](mailto:support@humio.com)
+_See the [installation overview page](/operation/installation) on how to set
+these settings for your Humio cluster._
+
+### Setting the Callback URI
+
+In order to avoid CSRF attacks you must set the _Allowed Callback URLs_ field
+to `%PUBLIC_URL%/auth/auth0`, e.g. https://www.example.com/auth/auth0, where
+`%PUBLIC_URL%` is the value of the Humio configuration option `PUBLIC_URL`.
+
+_Using Auth0 authentication for Humio requires that you set the `PUBLIC_URL` configuration option.
+During development this can be e.g. http://localhost:8080 without any issues._
+
+### Change the default Signature Algorithm
+
+Humio need to validate authentication tokens using the `HS256` Hashing Algorithm.
+This is not the default in Auth0. You need to change this by going to _Advanced Settings_
+on the _Settings_ page, and choosing `HS256` in the _JsonWebToken Signature Algorithm_
+field.
+
+Now Humio will be able to authenticate users through Auth0.
