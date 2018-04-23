@@ -12,9 +12,12 @@ Humio supports the following authentication types:
 * [__By-Proxy__](#by-proxy)  
    Humio can use the username provided by the proxy in a HTTP header.
 * [__OAuth Identity Providers__](#oauth)  
-   Authentication is done by external OAuth identity providers, e.g. Google, Github and Atlassian/Bitbucket.
+   Authentication is done by external OAuth identity provider, Humio supports:
+   - [Google]({{< relref "#google" >}})
+   - [GitHub]({{< relref "#github" >}})
+   - [BitBucket]({{< relref "#bitbucket" >}})
 * [__Auth0 Integration__](#auth0)  
-  Auth0 [Auth0](https://auth0.com/) is a cloud service making it possible to login with many different OAuth identity providers like Google and Microsoft (https://en.wikipedia.org/wiki/OAuth). You can also create your own database of users in Auth0.
+  [Auth0](https://auth0.com/) is a cloud service making it possible to login with many different OAuth identity providers e.g. Google and Facebook. You can also create your own database of users in Auth0.
 
 Users are authenticated (logged in) using one of the above integrations. But the authorisation is done in Humio. Which dataspaces a user can access is specified in Humio.
 
@@ -141,6 +144,7 @@ Humio supports the OAuth 2.0 login flow for the following providers:
 
 - [Google Sign-In]({{< ref "#google" >}})
 - [GitHub Sign-In]({{< ref "#github" >}})
+- [BitBucket Sign-In]({{< ref "#bitbucket" >}})
 
 Providers must be configured on the Humio server, as seen in the section
 for each provider.
@@ -196,6 +200,31 @@ __Configuration Properties__
 
 - `GITHUB_OAUTH_CLIENT_ID`: The `client_id` from your GitHub OAuth App
 - `GITHUB_OAUTH_CLIENT_SECRET`: The `client_secret` your GitHub OAuth App
+
+Read more about [Configuring Humio]({{< relref "configuration.md" >}})
+
+
+### BitBucket Sign-In {#bitbucket}
+
+Setup Instructions: https://confluence.atlassian.com/bitbucket/integrate-another-application-through-oauth-372605388.html
+
+__Quick Summary__:
+
+- Go to your Account Settings
+- Create an OAuth Consumer
+- Set the _Callback URL_: `%PUBLIC_URL%/auth/bitbucket`
+- Grant the `account:email` permission.
+- Save
+- Find the Key (Client Id), and Secret (Client Secret) in the list of consumers.
+
+Read more about [Configuring Humio]({{< relref "configuration.md" >}})
+
+Once your consumer is created you can configure Humio to use authenticate with BitBucket:
+
+__Configuration Properties__
+
+- `BITBUCKET_OAUTH_CLIENT_ID`: The `Key` from your BitBucket OAuth Consumer
+- `BITBUCKET_OAUTH_CLIENT_SECRET`: The `Secret` your BitBucket OAuth Consumer
 
 Read more about [Configuring Humio]({{< relref "configuration.md" >}})
 
