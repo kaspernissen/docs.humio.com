@@ -26,11 +26,16 @@ HUMIO_JVM_ARGS=-Xss2M -XX:MaxDirectMemorySize=32G
 # If set, must be a (small) positive integer.
 #BOOTSTRAP_HOST_ID=1
 
-# The URL that other hosts can use to reach this server. Required.
+# The URL that other humio hosts in the cluster can use to reach this server. Required.
 # Examples: https://humio01.example.com  or  http://humio01:8080
 # Security: We recommend using a TLS endpoint.
 # If all servers in the Humio cluster share a closed LAN, using those endpoints may be okay.
 EXTERNAL_URL=https://humio01.example.com
+
+# The URL which users/browsers will use to reach the server
+# This URL is used to create links to the server
+# It is important to set this property when using OAuth authentication or alerts
+PUBLIC_URL=humio.mycompany.com
 
 # Kafka bootstrap servers list. Used as `bootstrap.servers` towards kafka.
 # should be set to a comma separated host:port pairs string.
@@ -135,7 +140,7 @@ These settings apply to the next login of the Humio user, not to any running pro
 ### Public URL {#public_url}
 
 `PUBLIC_URL` is the URL where the Humio instance is reachable from a browser.
-Leave our trailing slashes.
+Leave out trailing slashes.
 
 This property is only important if you plan to use [OAuth Federated Login]({{< relref "authentication.md#oauth" >}}), [Auth0 Login]({{< "authentication.md#auth0" >}}) or if you want to
 be able to have Alert Notifications have consistent links back to the Humio UI.

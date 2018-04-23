@@ -14,7 +14,7 @@ Humio supports the following authentication types:
 * [__OAuth Identity Providers__](#oauth)  
    Authentication is done by external OAuth identity providers, e.g. Google, Github and Atlassian/Bitbucket.
 * [__Auth0 Integration__](#auth0)  
-  Auth0 [Auth0](https://auth0.com/) is a cloud service making it possible to login with Google, GitHub and other providers using [OAuth](https://en.wikipedia.org/wiki/OAuth). You can also create your own database of users in Auth0.
+  Auth0 [Auth0](https://auth0.com/) is a cloud service making it possible to login with many different OAuth identity providers like Google and Microsoft (https://en.wikipedia.org/wiki/OAuth). You can also create your own database of users in Auth0.
 
 Users are authenticated (logged in) using one of the above integrations. But the authorisation is done in Humio. Which dataspaces a user can access is specified in Humio.
 
