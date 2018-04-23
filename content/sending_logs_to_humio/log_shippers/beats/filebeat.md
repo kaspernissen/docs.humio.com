@@ -58,7 +58,7 @@ filebeat.prospectors:
 
 output:
   elasticsearch:
-    hosts: ["<host>/api/v1/dataspaces/<dataspace>/ingest/elasticsearch"]
+    hosts: ["https://<host>/"]
     username: <ingest-token>
     compression_level: 5
     bulk_max_size: 50
@@ -182,7 +182,7 @@ filebeat:
 
 output:
   elasticsearch:
-    hosts: ["https://cloud.humio.com:443/api/v1/dataspaces/test/ingest/elasticsearch"]
+    hosts: ["https://cloud.humio.com/"]
     username: "ingest-token"
     compression_level: 5
     bulk_max_size: 50

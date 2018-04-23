@@ -62,14 +62,13 @@ metricbeat.modules:
       - socket # linux only
 
 output.elasticsearch:
-  hosts: ["https://<humio-host>:443/api/v1/dataspaces/<dataspace>/ingest/elasticsearch"]
+  hosts: ["https://<humio-host>/"]
   username: <ingest-token>
 ```
 
 Where:
 
 * `<humio-host>` - is the name of your Humio server
-* `<dataspace>` - is the name of your dataspace on your server
 * `<ingest-token>` - is the [ingest token](/sending_logs_to_humio/ingest_tokens/) for your dataspace
 
 {{% notice note %}}
