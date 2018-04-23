@@ -3,7 +3,15 @@ title: "Release notes"
 weight: 9
 pre: "<b>9. </b>"
 ---
+<!--
+## 2018-04-25 TODO: Please fix link on /content/sending_logs_to_humio/transport/elastic_bulk_api.md introduction
+Regular update release
+Data migrations: no
+Version 1.0.59
 
+- Improved Elastic Search [bulk API](sending_logs_to_humio/transport/elastic_bulk_api/) support.
+
+-->
 ## 2018-04-19
 Regular update release.   
 Data migrations: No       
