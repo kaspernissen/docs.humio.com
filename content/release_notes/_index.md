@@ -5,17 +5,19 @@ pre: "<b>9. </b>"
 ---
 
 ## 2018-04-XX
-Regular update release.
-Data migrations: No
-Configuration Changes: Yes
-Version: XXX
+Regular update release.  
+Data migrations: Yes  
+Configuration Changes: Yes  (Auth0 changes)  
+Version: 1.0.59
 
 ### Added
-- Humio now support authenticating with [Google, Github and Atlassion/Bitbucket directly](/operation/installation/authentication#oauth), without the need to go through Auth0.
+- Humio now support authenticating with [Google, Github and Atlassion/Bitbucket directly](/operation/installation/authentication#oauth), without the need to go through Auth0.  
+This is part of our steps towards supporting GDPR for https://cloud.humio.com. There is no reason to send user information to a third party (Auth0).
 
 ### Configuration Changes
 
-If you are using Auth0 you must update your Auth0 Application configuration and re-configure Humio(or start using your OAuth identity provider directly):
+If you are using Auth0 you must update your Auth0 Application configuration and re-configure Humio(or start using your OAuth identity provider directly).   
+We at Humio will be happy to help. Below configuration changes are only relevant if Auth0 is used for authentication:
 
 - Users that are authenticated through Auth0 will need to configure the `PUBLIC_URL` [configuration option](/operation/installation/configuration#public_url), you MUST add add `$PUBLIC_URL/auth/auth0` to the list of callback URLs in your Auth0 Application.
 - The Auth0 configuration properties `AUTH0_WEB_CLIENT_ID` and `AUTH0_WEB_CLIENT_SECRET` have been removed.
