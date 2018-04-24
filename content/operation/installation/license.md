@@ -28,8 +28,8 @@ In the view you can paste in the license key.
 Here is an example of updating the license key using CURL:
 
 ```bash
-curl -X POST -H "Authorization: Bearer $TOKEN" -H 'Content-Type: application/json' \
-  -d '{ "query": "mutation { updateLicenseKey(license: \"$LICENSE_KEY\") { expiresAt } }" }' \
+curl -v -X POST -H "Authorization: Bearer $TOKEN" -H 'Content-Type: application/json' \
+  -d "{ \"query\": \"mutation { updateLicenseKey(license: \\\"$LICENSE_KEY\\\") { expiresAt } }\" }" \
   https://$HUMIO_HOST/graphql
 ```
 
