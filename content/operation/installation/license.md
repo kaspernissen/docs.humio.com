@@ -1,8 +1,7 @@
 ---
-title: "License"
+title: "License Management"
+weight: 101
 ---
-
-## Installing License Keys
 
 Once you have purchased a license for running Humio on premise you will need
 to install your license key.

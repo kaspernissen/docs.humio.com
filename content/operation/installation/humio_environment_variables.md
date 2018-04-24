@@ -1,5 +1,6 @@
 ---
-title: "Humio environment variables"
+title: "Example Configuration File"
+weight: 100
 ---
 
 This describes the configuration parameters for Humio, and their default values.
@@ -47,7 +48,7 @@ HUMIO_JVM_ARGS=-Xss2M -XX:MaxDirectMemorySize=4G
 
 # Possible to use this if Humio is behind a proxy.
 # Add a subpath to the url where Humio is hosted
-# For examplea proxy at `http://myorg.com/` could expose Humio at `http://myorg.com/internal/humio/`. Then PROXY_PREFIX_URL=/internal/humio 
+# For examplea proxy at `http://myorg.com/` could expose Humio at `http://myorg.com/internal/humio/`. Then PROXY_PREFIX_URL=/internal/humio
 #PROXY_PREFIX_URL=/internal/humio
 
 # Humio limits the allowed memory one query can use. It is possible to disable this at on-premises installations

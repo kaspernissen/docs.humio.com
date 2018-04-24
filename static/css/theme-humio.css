@@ -124,6 +124,10 @@ body #chapter h1 {
   font-size: 14px;
 }
 
+.notices {
+  padding-right: 30px;
+}
+
 h2 {
   font-size: 20px;
 }
