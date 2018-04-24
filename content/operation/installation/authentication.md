@@ -52,7 +52,7 @@ curl http://localhost:8080/api/v1/users \
  -X POST \
  -H "Content-Type: application/json" \
  -H "Authorization: Bearer $TOKEN" \
- -d '{"email": "$EMAIL", "isRoot": true}'
+ -d "{\"email\": \"$EMAIL\", \"isRoot\": true}"
 ```
 
 `$EMAIL` needs to be verifiable, using one of the configured IdP's (identity
