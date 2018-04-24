@@ -108,7 +108,7 @@ If LDAP/AD requires login with the exact DN, then it is possible to first do a s
 a low-priviledge bind username, and then successively do the login with the correct DN.  
 To enable this, use this alternative property set:
 
-```toml
+```bash
 AUTHENTICATION_METHOD=ldap-search
 LDAP_AUTH_PROVIDER_URL=your-url       (example: ldap://ldap.forumsys.com:389)
 LDAP_SEARCH_DOMAIN_NAME=your-domain   (example: example.com)

@@ -1,5 +1,5 @@
 ---
-title: "Example Configuration File"
+title: "Configuration Options"
 weight: 100
 ---
 

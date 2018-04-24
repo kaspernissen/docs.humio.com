@@ -10,7 +10,7 @@ For a quick intro to setting configuration options see the [installation overvie
 
 ## Example configuration file with comments
 
-```toml
+```bash
 # The stacksize should be at least 2M.
 # We suggest setting MaxDirectMemory to 50% of physical memory. At least 2G required.
 HUMIO_JVM_ARGS=-Xss2M -XX:MaxDirectMemorySize=32G
@@ -142,7 +142,7 @@ These settings apply to the next login of the Humio user, not to any running pro
 `PUBLIC_URL` is the URL where the Humio instance is reachable from a browser.
 Leave out trailing slashes.
 
-This property is only important if you plan to use [OAuth Federated Login]({{< relref "authentication.md#oauth" >}}), [Auth0 Login]({{< relref "authentication.md#auth0" >}}) or if you want to
+This property is only important if you plan to use [OAuth Federated Login]({{< relref "authentication.md#oauth" >}}), [Auth0 Login]({{< "authentication.md#auth0" >}}) or if you want to
 be able to have Alert Notifications have consistent links back to the Humio UI.
 
 The URL might only be reachable behind a VPN but that is no problem, as the user's
