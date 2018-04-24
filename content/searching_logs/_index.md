@@ -31,7 +31,7 @@ For example, the following query has these components:
 * Two aggregate expressions
 
 ```
- #host=github #parser=json | repo.name=docker/* | groupby(repo.name, function=count()) | sort()
+ #host=github #parser=json | repo.name=docker/* | groupBy(repo.name, function=count()) | sort()
 
 |--------------------------|--------------------|--------------------------------------|----------
         Tag filters        |       Filter       |              Aggregate               | Aggregate
@@ -233,7 +233,33 @@ is short for
 ... | eval(foo = a + b) | eval(bar = a / b) | ...
 ```
 
-### Backticks (`)
+When what's on the right hand side of the assignment is a function call, the assignment is rewritten to specify the `as=` argument which, by convention, is the output attribute name i.e.,
+
+```
+... | foo := min(x) | bar := max(x) |  ...
+```
+
+is short for
+
+```
+... | min(x, as=foo) | max(x, as=bar) | ...
+```
+
+Similarly, you can use `attr =~ fun()` to designate the `field=attr` argument.  This lets you write
+
+```
+... | ip_addr =~ cidr("127.0.0.1/24") | ...
+```
+
+rather than
+
+```
+... | cidr("127.0.0.1/24", field=ip_addr) | ...
+```
+
+This also works well with e.g. `regex` and `replace`.  It's just a shorthand but very convenient.
+
+### Backticks 
 Backticks work in `eval` and the `:=` shorthand for eval only and provides one level of indirection of the name of the field.
 The assignment happens to the field with the name that is the value of the backticked field.
 
@@ -274,9 +300,9 @@ You can thus set a default value if some other value is not present. Here we set
 ... | eval(foo="missing") | eval(foo=bar) | ..."
 ```
 
-### Using `alt`
+### Using `case`
 
-`alt` describes alternative flows (as in `case` or `cond`).  You write a sequence (`;` separated) of pipe lines, and the first of these to emit a value ends the selection.  You can add `alt { ... ; * }` to let all events through.
+`case` describes alternative flows (as in `case` or `cond` in other languages).  You write a sequence (`;` separated) of pipe lines, and the first of these to emit a value ends the selection.  You can add `case { ... ; * }` to let all events through.
 
 In effect, it is kind of an if-then-if-then-else construct for events streams.  An alternative cannot be syntactically empty, you must put in an explicit `*` to match all.
 
@@ -284,10 +310,10 @@ An example: We have logs from multiple sources that all have a "time" field, and
 To distinguish the lines, we need to match a text, then set a field ("type") that we can then group by.
 ```
 time=*
-| alt { "client-side" | type:="client";
-        "frontend-server" | type:="frontend";
-        Database | type:="db" }
-| groupby(type, function=percentile(time)))
+| case { "client-side" | type:="client";
+            "frontend-server" | type:="frontend";
+            Database | type:="db" }
+| groupBy(type, function=percentile(time)))
 ```
 
 ## Composite Function Calls
@@ -299,7 +325,7 @@ special rules.  For all variations of groupby (bucket and timechart), that
 take a `function=` argument, you can also use a composite function.
 Composite functions take the form `{ f1(..) | f2(..) }` which works
 like the composition of `f1` and `f2`.  For example, you can do
-`groupby(type, function={ avg(foo,as=avgFoo) | round(avgFoo,as=outFoo) })`
+`groupBy(type, function={ avgFoo := avg(foo) | outFoo := round(avgFoo) })`
 
 You can also use filters inside such composite function calls, but not
 macros.

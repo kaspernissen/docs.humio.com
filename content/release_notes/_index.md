@@ -11,8 +11,15 @@ Configuration Changes: Yes  (Auth0 changes)
 Version: 1.0.59
 
 ### Added
-- Humio now support authenticating with [Google, Github and Atlassion/Bitbucket directly](/operation/installation/authentication#oauth), without the need to go through Auth0.  
-This is part of our steps towards supporting GDPR for https://cloud.humio.com. There is no reason to send user information to a third party (Auth0).
+- Humio now support authenticating with [Google, Github and Atlassian/Bitbucket directly](/operation/installation/authentication#oauth), without the need to go through Auth0.  
+This is part of our GDPR support for https://cloud.humio.com. There is no reason to send user information to a third party (Auth0).
+- New functions: `formatTime`, `ipLocation`, `rename`, `parseInt` (updated version of `to_radix_10` function), `stats`, `head`. See [query functions documentation](/searching_logs/query_functions/) for details.
+- New syntax for computing multiple aggregates i.e., to compute both min and max`... | [min(foo), max(foo)] | ... `. This is shorthand for the `stats` function.
+- New convenience syntax for passing the `as=` parameter using assignment syntax.  `minx := min(x)` is equivalent to `min(x, as=minx)`.  This can be used at top-level `|` between bars `|`, or within `[` array blocks `]`.
+- New convenience syntax for passing the `field=` parameter to a function using curly assignment syntax.  `ip_addr =~ cidr("127.0.0.1/24")` is equivalent to `cidr("127.0.0.1/24", field=ip_addr)`.  This can also be used for regex i.e., `name =~ regex("foo.*")`.
+- The parser now tries to deal with left and right double quotes which can easily occur if you edit your queries in a word processor, i.e., `Protocol := “UDP - 17”`
+- New naming convention for function names is `camelCase()` which is now reflected in documentation and examples.  Functions are matched case-insensitively, so the change is backwards compatible.  
+- Renamed the `alt` keyword to `case`.  `alt` will still work for a few releases but is now deprecated.
 
 ### Configuration Changes
 
