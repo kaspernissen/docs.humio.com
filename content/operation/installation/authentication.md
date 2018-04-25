@@ -157,7 +157,7 @@ get `client_id` and `client_secret`, and configure your `redirect_uri`.
 
 {{% notice warning %}}
 In order for OAuth authentication to work properly you must provide
-a URL where Humio can be reached from the browser, see the configuration option [PUBLIC_URL]({{< ref "operation/installation/configuration.md#public_url" >}}).
+a URL where Humio can be reached from the browser, see the configuration option [PUBLIC_URL]({{< ref "operation/installation/configuration_options.md#public_url" >}}).
 {{% /notice %}}
 
 ### Google Sign-In {#google}
@@ -170,7 +170,7 @@ __Quick Summary__:
 - Create a _OAuth Client ID_ on the Credentials Page,
 - Add an _Authorized redirect URI_: `%PUBLIC_URL%/auth/google`
 
-Where [`%PUBLIC_URL%`]({{< relref "configuration.md#public_url" >}}) is the same value as Humio is configured with.
+Where [`%PUBLIC_URL%`]({{< relref "operation/installation/configuration_options.md#public_url" >}}) is the same value as Humio is configured with.
 This can e.g. be `http://localhost:8080/auth/google` during development.
 Login will fail if the `redirect_uri` is not set correctly.
 
@@ -181,7 +181,7 @@ __Configuration Properties__
 - `GOOGLE_OAUTH_CLIENT_ID`: The `client_id` from your Google OAuth App
 - `GOOGLE_OAUTH_CLIENT_SECRET`: The `client_secret` your Google OAuth App
 
-Read more about [Configuring Humio]({{< relref "configuration.md" >}})
+Read more about [Configuring Humio]({{< relref "operation/installation/configuration_options.md" >}})
 
 ### GitHub Sign-In {#github}
 
@@ -192,7 +192,7 @@ __Quick Summary__:
 - Create an OAuth App from your organization / user settings page,
 - Set the _Authorization callback URL_: `%PUBLIC_URL%/auth/github`
 
-Read more about [Configuring Humio]({{< relref "configuration.md" >}})
+Read more about [Configuring Humio]({{< relref "operation/installation/configuration_options.md" >}})
 
 Once your app is created you can configure Humio to use authenticate with GitHub:
 
@@ -201,7 +201,7 @@ __Configuration Properties__
 - `GITHUB_OAUTH_CLIENT_ID`: The `client_id` from your GitHub OAuth App
 - `GITHUB_OAUTH_CLIENT_SECRET`: The `client_secret` your GitHub OAuth App
 
-Read more about [Configuring Humio]({{< relref "configuration.md" >}})
+Read more about [Configuring Humio]({{< relref "operation/installation/configuration_options.md" >}})
 
 
 ### BitBucket Sign-In {#bitbucket}
@@ -217,7 +217,7 @@ __Quick Summary__:
 - Save
 - Find the Key (Client Id), and Secret (Client Secret) in the list of consumers.
 
-Read more about [Configuring Humio]({{< relref "configuration.md" >}})
+Read more about [Configuring Humio]({{< relref "operation/installation/configuration_options.md" >}})
 
 Once your consumer is created you can configure Humio to use authenticate with BitBucket:
 
@@ -226,7 +226,7 @@ __Configuration Properties__
 - `BITBUCKET_OAUTH_CLIENT_ID`: The `Key` from your BitBucket OAuth Consumer
 - `BITBUCKET_OAUTH_CLIENT_SECRET`: The `Secret` your BitBucket OAuth Consumer
 
-Read more about [Configuring Humio]({{< relref "configuration.md" >}})
+Read more about [Configuring Humio]({{< relref "operation/installation/configuration_options.md" >}})
 
 ## Auth0 {#auth0}
 

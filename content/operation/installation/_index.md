@@ -4,7 +4,7 @@ title: "Installation"
 
 ## Overview
 
-This section describes how to install Humio on a single machine. If you want to run a distributed cluster, please refer to [distributed installation](/operation/installation/installation_distributed/)
+This section describes how to install Humio on a single machine. If you want to run a distributed cluster, please refer to [distributed installation](/operation/installation/cluster_setup/)
 
 ## Running Humio as a Docker container
 
@@ -73,7 +73,7 @@ docker run ... --detach --restart=always
 ```
 
 ## Configuring Humio
-Please refer to the [configuration](/operation/installation/configuration/) page
+Please refer to the [configuration](/operation/installation/configuration_options/) page
 
 ## System Administration
 Please refer to the [system administration](/operation/installation/system_administration/) page

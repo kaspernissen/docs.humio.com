@@ -1,26 +1,24 @@
 ---
 title: "Configuration Options"
-weight: 100
+weight: 1
 ---
 
-This describes the configuration parameters for Humio, and their default values.
-Please see [the installation instructions](/operation/installation/) on where to place the configuration file.
-
-```
-# JVM arguments. Make sure to increase stac size to at least 2M (-Xss2M) and allow XX:MaxDirectMemorySize to be at least half of available RAM.
-# You may also need to add -Xmx4 to allow 4G of heap space, but on systems with plenty of memory and JDK8 or newer, the JRE defaults are okay.
-# You can tune "Akka" configurations using -Dconfig.file=/home/humio/akka.conf and -Dakka.log-config-on-start=on. notably akka.http.server, through the file referred by config.file. (Remember to mount using -v on docker)
-HUMIO_JVM_ARGS=-Xss2M -XX:MaxDirectMemorySize=4G
-
-# License key. Required if you are not running Humio as a trial version. Set one of these.
-#LICENSE_KEYSTRING=SomeLongStringYouHaveFromHumioSales
-# - or -
-#LICENSE_FILE=PAthToFileHoldingKeyString
+Humio is configured by setting Environment Variables, when running Humio in Docker you can pass
+set the `--env-file=` flag and keep your configuration in a file.
+For a quick intro to setting configuration options see the [installation overview page](/operation/installation).
 
 
-# Make Humio write a backup of the data files. The BACKUP_KEY is user fdor encryption.
-#BACKUP_NAME=
-#BACKUP_KEY=
+## Example configuration file with comments
+
+```bash
+# The stacksize should be at least 2M.
+# We suggest setting MaxDirectMemory to 50% of physical memory. At least 2G required.
+HUMIO_JVM_ARGS=-Xss2M -XX:MaxDirectMemorySize=32G
+
+# Make Humio write a backup of the data files:
+# Backup files are written to mount point "/backup".
+#BACKUP_NAME=my-backup-name
+#BACKUP_KEY=my-secret-key-used-for-encryption
 
 # ID to choose for this server when starting up the first time.
 # Leave commented out to autoselect the next available ID.
@@ -28,16 +26,21 @@ HUMIO_JVM_ARGS=-Xss2M -XX:MaxDirectMemorySize=4G
 # If set, must be a (small) positive integer.
 #BOOTSTRAP_HOST_ID=1
 
-# The URL that other hosts can use to reach this server. Required.
+# The URL that other humio hosts in the cluster can use to reach this server. Required.
 # Examples: https://humio01.example.com  or  http://humio01:8080
 # Security: We recommend using a TLS endpoint.
 # If all servers in the Humio cluster share a closed LAN, using those endpoints may be okay.
-#EXTERNAL_URL=https://humio01.example.com
+EXTERNAL_URL=https://humio01.example.com
+
+# The URL which users/browsers will use to reach the server
+# This URL is used to create links to the server
+# It is important to set this property when using OAuth authentication or alerts
+PUBLIC_URL=humio.mycompany.com
 
 # Kafka bootstrap servers list. Used as `bootstrap.servers` towards kafka.
 # should be set to a comma separated host:port pairs string.
 # Example: `my-kafka01:9092` or `kafkahost01:9092,kafkahost02:9092`
-#KAFKA_SERVERS=kafkahost01:9092,kafkahost02:9092
+KAFKA_SERVERS=kafkahost01:9092,kafkahost02:9092
 
 # Zookeeper servers.
 # Defaults to "localhost:2181", which is okay for a single server system, but
@@ -46,49 +49,100 @@ HUMIO_JVM_ARGS=-Xss2M -XX:MaxDirectMemorySize=4G
 # Note, there is NO security on the zookeeper connections. Keep inside trusted LAN.
 #ZOOKEEPER_URL=localhost:2181
 
-# Possible to use this if Humio is behind a proxy.
-# Add a subpath to the url where Humio is hosted
-# For examplea proxy at `http://myorg.com/` could expose Humio at `http://myorg.com/internal/humio/`. Then PROXY_PREFIX_URL=/internal/humio
-#PROXY_PREFIX_URL=/internal/humio
+# Select the TCP port to listen for http.
+#HUMIO_PORT=8080
 
-# Humio limits the allowed memory one query can use. It is possible to disable this at on-premises installations
-ALLOW_UNLIMITED_STATE_SIZE=false
+# Select the IP to bind the udp/tcp/http listening sockets to.
+# Each listener entity has a listen-configuration. This ENV is used when that is not set.
+#HUMIO_SOCKET_BIND=0.0.0.0
 
-# Settings controlling auto-sharding.
-MAX_DISTINCT_TAG_VALUES=5000
-TAG_HASHING_BUCKETS=16
+# Select the IP to bind the http listening socket to. (Defaults to HUMIO_SOCKET_BIND)
+#HUMIO_HTTP_BIND=0.0.0.0
 
-# Setting controlling auto-tagging of datasources with too much data for one stream. Defaults to 6MB/s.
-AUTOSHARDING_TRIGGER_SPEED=6291456
-
-# Number of blocks of 1MB stored in each segment. You can raise this to e.g 2000 or perhaps 4000 to get fewer, larger segments files. Or lower it to get retention to kick in ealier.
-# Default is 1000. Minimum is 100.
-BLOCKS_PER_SEGMENT=1000
-
-# Compression level for event data files.
-# 0 => Use the `FAST` implemetation.
-# 1 - 17 => Use the `High` implemetation. Recommended values are in the range 4 .. 9
-# Default is 6.
-COMPRESSION_LEVEL=6
-
-# If a query is not used (polled) - how long should Humio wait until it does not keep the query running
-IDLE_POLL_TIME_BEFORE_LIVE_QUERY_IS_CANCELLED_MINUTES=60
-
-# Limit size of internal state of each query internally in the cluster in bytes. Defaults to MaxHeapSize/128
-# When a query results in larger results, the query is aborted, and gets a warning of "State too large. Lower your limits to get results."
-# If you have few but large queries, you may increase this to e.g. MaxHeapSize/32 or even MaxHeapSize/16, but with a high risk of OOM.
-#MAX_INTERNAL_STATESIZE=...
-
-# By default, root is able to query data in all dataspaces without being a member of them, and is able to set retention setting and delete data from all dataspaces.
-# Setting ENFORCE_AUDITABLE=true restricts root from this: He is no longer member of a dataspace unless explicitly added,
-#  and can only set retention or delete data by having the explicit permission granted, like any other user with that permission.
-# See `audit-logs`for more informartion on how the audit logging works.
-# Default: false
-#ENFORCE_AUDITABLE=false
-
-# How long should the `sensitive` part of the audit log be kept. Default to 200 years.
-# Set as number of days. Example: 10 years = 3653 days.
-#AUDITLOG_SENSITIVE_RETENTION_DAYS=3653
-
-
+# The URL where the Humio instance is reachable. (Leave our trailing slashes)
+#
+# This is important if you plan to use OAuth Federated Login or if you want to
+# be able to have Alert Notifications have consistent links back to the Humio UI.
+# The URL might only be reachable behind a VPN but that is no problem, as a
+# browser can access it.
+#PUBLIC_URL=https://demo.example.com/humio
 ```
+
+### Java virtual machine parameters
+You can specify Java virtual machine parameters to pass to Humio using the property `HUMIO_JVM_ARGS`. The defaults are:
+```bash
+HUMIO_JVM_ARGS=-XX:+PrintFlagsFinal -Xss2M
+```
+
+## Number of CPU Cores
+You can specify the number of processors for the machine running Humio by setting the `CORES` property.
+Humio uses this number when parallelizing queries.
+
+By default, Humio uses the Java [available processors function](https://docs.oracle.com/javase/8/docs/api/java/lang/Runtime.html#availableProcessors--) to get the number of CPU cores.
+
+### Configuring Authentication
+
+Humio supports different ways of authentication users. Read more in the dedicated [Authentication Documentation]({{< relref "authentication.md" >}}).
+
+### Run Humio behind a (reverse) proxy server
+It is possible to put Humio behind a proxy server.
+
+{{% notice info %}}
+It is important that the proxy does not rewrite urls, when forwarding to Humio.
+{{% /notice %}}
+
+For example a proxy server could accept all request at `http://example.com` and expose humio on `http://example.com/internal/humio/`.
+
+For this to work, the proxy must be set up to forward incoming requests with a location starting with `/internal/humio` to the Humio server and
+Humio must be configured with a proxy prefix url `/internal/humio`. This is done by letting the proxy add the header `X-Forwarded-Prefix`.
+
+Humio requires the proxy to add the header `X-Forwarded-Prefix` only when Humio is hosted at at a non-empty prefix.
+Thus hosting Humio at "http://humio.example.com/" works without adding a header. An example onfiguration snippet for an nginx location is:
+
+```nginx
+location /internal/humio {
+
+    proxy_set_header        X-Forwarded-Prefix /internal/humio;
+    proxy_set_header        X-Forwarded-Proto $scheme;
+    proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header        X-Real-IP $remote_addr;
+    proxy_set_header        Host $host;
+
+    proxy_pass          http://localhost:8080;
+    proxy_read_timeout  10;
+    proxy_redirect http:// https://;
+    expires off;
+    proxy_http_version 1.1;
+  }
+```
+
+If it is not feasible for you to add the header `X-Forwarded-Prefix` in your proxy, there is a fall-back solution: You can set `PROXY_PREFIX_URL` in your `/home/humio/humio-config.env`.
+
+### Raising system limits for Humio
+
+Humio needs to be able keep a lot of files open at a time. The default limits are typically too low for any significant amount of data. Increase the limits using commands like:
+
+```bash
+cat << EOF | tee /etc/security/limits.d/99-humio-limits.conf
+# Raise limits for files.
+humio soft nofile 250000
+humio hard nofile 250000
+EOF
+
+cat << EOF | tee -a /etc/pam.d/common-session
+# Apply limits:
+session required pam_limits.so
+EOF
+```
+
+These settings apply to the next login of the Humio user, not to any running processes.
+
+### Public URL {#public_url}
+
+`PUBLIC_URL` is the URL where the Humio instance is reachable from a browser.
+Leave out trailing slashes.
+
+This property is only important if you plan to use [OAuth Federated Login]({{< relref "operation/installation/authentication.md#oauth">}}), [Auth0 Login]({{< relref "operation/installation/authentication.md#auth0">}}) or if you want to be able to have Alert Notifications have consistent links back to the Humio UI.
+
+The URL might only be reachable behind a VPN but that is no problem, as the user's
+browser can access it.
