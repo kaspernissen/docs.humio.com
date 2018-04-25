@@ -1,7 +1,7 @@
 baseURL = "https://docs.humio.com/"
 languageCode = "en-us"
 title = "Humio documentation"
-theme = "hugo-theme-learn"
+theme = "hugo-theme-humio"
 enableGitInfo = true
 
 [outputs]
