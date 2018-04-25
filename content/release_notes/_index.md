@@ -28,7 +28,7 @@ This is part of our GDPR efforts for our customers on cloud.humio.com, so as to 
 If you are using Auth0 in your on-prem installation of Humio you must update your Auth0 Application configuration and re-configure Humio(or start using your OAuth identity provider directly).   
 We at Humio will be happy to help. Below configuration changes are only relevant if Auth0 is used for authentication:
 
-- Users that are authenticated through Auth0 will need to configure the `PUBLIC_URL` [configuration option](/operation/installation/configuration#public_url), you MUST add add `$PUBLIC_URL/auth/auth0` to the list of callback URLs in your Auth0 Application.
+- Users that are authenticated through Auth0 will need to configure the `PUBLIC_URL` [configuration option](/operation/installation/configuration_options#public_url), you MUST add add `$PUBLIC_URL/auth/auth0` to the list of callback URLs in your Auth0 Application.
 - The Auth0 configuration properties `AUTH0_WEB_CLIENT_ID` and `AUTH0_WEB_CLIENT_SECRET` have been removed.
   You can safely delete the associated Auth0, as Humio only requires on Auth0 Application in the future.
 - The configuration options `AUTH0_API_CLIENT_ID` and `AUTH0_API_CLIENT_SECRET` have been deprecated in favor of `AUTH0_CLIENT_ID` and `AUTH0_CLIENT_SECRET` respectively - the old names will continue to work as aliases.  

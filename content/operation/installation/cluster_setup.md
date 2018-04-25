@@ -241,7 +241,7 @@ In the above example, we used Dockers [restart policies](https://docs.docker.com
 
 
 ## Configuring Humio
-Please refer to the [configuration](/operation/installation/configuration/) section
+Please refer to the [configuration](/operation/installation/configuration_options/) section
 
 ## System administration
 Please refer to the [system administration](/operation/installation/system_administration/) page
