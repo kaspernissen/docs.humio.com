@@ -94,7 +94,7 @@ Regular update release.
 Data migrations: No.  
 Version: 2018-03-13T07-55-33--build-2206--sha-582948b69f04dc9201ecefbeaa10c19aac1633cd
 
-- Introduced [licensing](/operation/installation/license/). Humio requires a license to run. It can run in trial mode with all features enabled for a month.
+- Introduced [licensing](/operation/installation/license_management/). Humio requires a license to run. It can run in trial mode with all features enabled for a month.
 - Fixed bug: In some scenarios the browsers back button had to be clicked twice or more to go back.
 - Fixed bug: Enter does not start search after navigating using the browsers back button
 
