@@ -4,7 +4,7 @@ weight: 9
 pre: "<b>9. </b>"
 ---
 
-## 2018-04-XX
+## 2018-04-26
 Regular update release.  
 Data migrations: Yes  
 Configuration Changes: Yes  (Auth0 changes)  
