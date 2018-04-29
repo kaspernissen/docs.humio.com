@@ -49,10 +49,10 @@ License | Dependency | Attribution
 [Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | com.clearspring.analytics # stream # 2.7.0 | Copyright (C) 2012 Clearspring Technologies, Inc.
 [Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0) | com.typesafe # config # 1.3.0 | Copyright (C) 2011-2012 Typesafe Inc.
 [Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0) | com.typesafe # ssl-config-core_2.12 # 0.2.1 | Copyright 2009-2017 Lightbend Inc.
-[Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0) | com.typesafe.akka # akka-actor_2.12 # 2.5.9 | Copyright 2009-2017 Lightbend Inc.
-[Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0) | com.typesafe.akka # akka-stream-testkit_2.12 # 2.5.9 | Copyright 2009-2017 Lightbend Inc.
-[Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0) | com.typesafe.akka # akka-stream_2.12 # 2.5.9 | Copyright 2009-2017 Lightbend Inc.
-[Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0) | com.typesafe.akka # akka-testkit_2.12 # 2.5.9 | Copyright 2009-2017 Lightbend Inc.
+[Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0) | com.typesafe.akka # akka-actor_2.12 # 2.5.12 | Copyright 2009-2017 Lightbend Inc.
+[Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0) | com.typesafe.akka # akka-stream-testkit_2.12 # 2.5.12 | Copyright 2009-2017 Lightbend Inc.
+[Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0) | com.typesafe.akka # akka-stream_2.12 # 2.5.12 | Copyright 2009-2017 Lightbend Inc.
+[Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0) | com.typesafe.akka # akka-testkit_2.12 # 2.5.12 | Copyright 2009-2017 Lightbend Inc.
 [Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | commons-codec # commons-codec # 1.10 | Copyright (c) 2002-2016 The Apache Software Foundation [NOTICE](https://github.com/apache/commons-codec/blob/trunk/NOTICE.txt)
 [Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.html) | it.unimi.dsi # fastutil # 6.5.7 | Copyright (C) 2002-2017 Sebastiano Vigna
 [Apache License, Version 2.0](https://opensource.org/licenses/Apache-2.0) | com.typesafe.akka # akka-http-core_2.12 # 10.0.11 | Copyright 2009-2017 Lightbend Inc.
@@ -67,13 +67,11 @@ License | Dependency | Attribution
 [Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | com.fasterxml.jackson.core # jackson-databind # 2.8.4 | Copyright (c) 2007- Tatu Saloranta, tatu.saloranta@iki.fi
 [Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | com.googlecode.java-ipv6 # java-ipv6 # 0.16 | Copyright 2013 Jan Van Besien [NOTICE](https://github.com/janvanbesien/java-ipv6/blob/master/NOTICE)
 [Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | com.tdunning # t-digest # 3.1 | The code for the t-digest was originally authored by Ted Dunning
-[Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | com.yahoo.datasketches # sketches-core # 0.10.3 | 
+[Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | com.yahoo.datasketches # sketches-core # 0.10.3 |
 [Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | org.lz4 # lz4-java # 1.4 |  Copyright Adrien Grand.  LZ4 is Copyright (c) 2011-2014, Yann Collet [NOTICE](https://github.com/lz4/lz4-java/blob/master/src/lz4/LICENSE)
-[Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | org.apache.kafka # kafka-clients # 1.0.0 | Copyright 2017 The Apache Software Foundation.
-[Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | org.apache.kafka # kafka_2.12 # 1.0.0 |  Copyright 2017 The Apache Software Foundation. [NOTICE](https://github.com/apache/kafka/blob/trunk/NOTICE)
+[Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | org.apache.kafka # kafka-clients # 1.0.1 | Copyright 2017 The Apache Software Foundation.
+[Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | org.apache.kafka # kafka_2.12 # 1.0.1 |  Copyright 2017 The Apache Software Foundation. [NOTICE](https://github.com/apache/kafka/blob/trunk/NOTICE)
 [Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | org.apache.zookeeper # zookeeper # 3.4.10 | Copyright 2009-2014 The Apache Software Foundation. [NOTICE](https://github.com/apache/zookeeper/blob/master/NOTICE.txt)
-[Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0) | org.scalatra.scalate # scalate-core_2.12 # 1.8.0 | Copyright 2009-2010 Progress Software Corporation [NOTICE](https://github.com/scalate/scalate/blob/master/notice.md)
-[Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0) | org.scalatra.scalate # scalate-util_2.12 # 1.8.0 | Copyright 2009-2010 Progress Software Corporation [NOTICE](https://github.com/scalate/scalate/blob/master/notice.md)
 [Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | org.xerial.snappy # snappy-java # 1.1.2.6 | Copyright 2011 Taro L. Saito. [NOTICE](https://github.com/xerial/snappy-java/blob/master/NOTICE)
 [Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) | com.github.davidmoten # flatbuffers-java # 1.7.0.1 |
 [BSD 2-Clause License](http://opensource.org/licenses/BSD-2-Clause) | dnsjava # dnsjava # 2.1.7 | Copyright (c) 2004 Brian Wellington (bwelling@xbill.org)
@@ -81,7 +79,7 @@ License | Dependency | Attribution
 [BSD 3-Clause](http://www.scala-lang.org/license.html) | org.scala-lang # scala-library # 2.12.2 | Copyright (c) 2002-  EPFL, Copyright (c) 2011-  Lightbend, Inc.
 [BSD 3-Clause](http://www.scala-lang.org/license.html) | org.scala-lang # scala-reflect # 2.12.2 | Copyright (c) 2002-  EPFL, Copyright (c) 2011-  Lightbend, Inc.
 [BSD 3-Clause](http://opensource.org/licenses/BSD-3-Clause) | org.scala-lang.modules # scala-java8-compat_2.12 # 0.8.0 | Copyright (c) 2002-  EPFL, Copyright (c) 2011-  Lightbend, Inc.
-[BSD 3-Clause](http://opensource.org/licenses/BSD-3-Clause) | org.scala-lang.modules # scala-parser-combinators_2.12 # 1.0.6 | Copyright (c) 2002-2013 EPFL Copyright (c) 2011-2013 Typesafe, Inc.
+[BSD 3-Clause](http://opensource.org/licenses/BSD-3-Clause) | org.scala-lang.modules # scala-parser-combinators_2.12 # 1.1.0 | Copyright (c) 2002-2013 EPFL Copyright (c) 2011-2013 Typesafe, Inc.
 [BSD 3-Clause](http://opensource.org/licenses/BSD-3-Clause) | org.scala-lang.modules # scala-xml_2.12 # 1.0.6 | Copyright (c) 2002-2017  EPFL, Copyright (c) 2011-2017  Lightbend, Inc.
 [Go License](https://github.com/Teradata/re2j/blob/master/LICENSE) | com.teradata # re2j-td # 1.4 | Copyright 2015 The RE2 Authors
 [CC Public Domain](https://creativecommons.org/publicdomain/zero/1.0/) | org.reactivestreams # reactive-streams # 1.0.0 | [Copyright Waiver](https://github.com/reactive-streams/reactive-streams-jvm/blob/master/CopyrightWaivers.txt)
