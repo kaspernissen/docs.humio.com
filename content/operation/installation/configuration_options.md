@@ -35,7 +35,7 @@ EXTERNAL_URL=https://humio01.example.com
 # The URL which users/browsers will use to reach the server
 # This URL is used to create links to the server
 # It is important to set this property when using OAuth authentication or alerts
-PUBLIC_URL=humio.mycompany.com
+PUBLIC_URL=https://humio.mycompany.com
 
 # Kafka bootstrap servers list. Used as `bootstrap.servers` towards kafka.
 # should be set to a comma separated host:port pairs string.
