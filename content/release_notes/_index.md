@@ -4,6 +4,18 @@ weight: 9
 pre: "<b>9. </b>"
 ---
 
+## 2018-05-04
+Minor update release.  
+Data migrations: No  
+Configuration Changes: No  
+Version: 1.0.60
+
+- Increase maximum allowed http connections to 250000.
+- Timeout idle http connections after 60 seconds.
+- Fix dashboard links on frontpage.
+- Removed logging of verbose datastructure when querying.
+
+
 ## 2018-04-26
 Regular update release.  
 Data migrations: Yes  
