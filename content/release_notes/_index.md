@@ -13,6 +13,7 @@ Version: 1.0.60
 - Increase maximum allowed http connections to 250000.
 - Timeout idle http connections after 60 seconds.
 - Fix dashboard links on frontpage.
+- Remmoved error logging when tokens has expired
 - Removed logging of verbose datastructure when querying.
 
 
