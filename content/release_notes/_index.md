@@ -4,6 +4,15 @@ weight: 9
 pre: "<b>9. </b>"
 ---
 
+## 2018-05-08
+Minor update release.  
+Data migrations: No  
+Configuration Changes: No  
+Version: 1.0.61
+
+- Improved "connect points" option in timecharts.
+- Worked on http request handling - do not starve requests under load.
+
 ## 2018-05-04
 Minor update release.  
 Data migrations: No  
