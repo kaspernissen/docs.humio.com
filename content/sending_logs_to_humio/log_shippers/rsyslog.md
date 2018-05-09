@@ -11,7 +11,7 @@ We recommend the following minimal configuration for forwarding all logs to Humi
 
 Create a file named `/etc/rsyslog.d/33-humio.conf` with the following contents
 
-```
+```groovy
 module(load="omelasticsearch")
 template(name="humiotemplate"
          type="list"
@@ -34,6 +34,6 @@ template(name="humiotemplate"
            usehttps="on")
 ```
 
-Remember to replace `<Humio server>` with your Humio host, i.e. `cloud.humio.com` and `<ingest token>` with the ingest token for your dataspace.
+Remember to replace `<Humio server>` with your Humio host, i.e. `cloud.humio.com` and `<ingest token>` with the [ingest token](/sending_logs_to_humio/ingest_tokens/) for your dataspace.
 
 Furthermore `bulkmode` and `usehttps` _has_ to be set to `on` for `cloud.humio.com` and on-prem installations where Humio is serviced behind a https proxy.
