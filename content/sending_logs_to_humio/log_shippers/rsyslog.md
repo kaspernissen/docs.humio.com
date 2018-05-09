@@ -36,4 +36,4 @@ template(name="humiotemplate"
 
 Remember to replace `<Humio server>` with your Humio host, i.e. `cloud.humio.com` and `<ingest token>` with the ingest token for your dataspace.
 
-Furthermore `bulkmode` and `usehttps` _has_ to be set to `on`.
+Furthermore `bulkmode` and `usehttps` _has_ to be set to `on` for `cloud.humio.com` and on-prem installations where Humio is serviced behind a https proxy.
