@@ -17,13 +17,13 @@ template(name="humiotemplate"
          type="list"
          option.json="on") {
            constant(value="{")
-             constant(value="\"@timestamp\":\"")      property(name="timereported" dateFormat="rfc3339")
-             constant(value="\",\"message\":\"")     property(name="msg")
-             constant(value="\",\"host\":\"")        property(name="hostname")
-             constant(value="\",\"severity\":\"")    property(name="syslogseverity-text")
-             constant(value="\",\"facility\":\"")    property(name="syslogfacility-text")
-             constant(value="\",\"syslogtag\":\"")   property(name="syslogtag")
-           constant(value="\"}")
+             constant(value="\"@timestamp\":\"") property(name="timereported" dateFormat="rfc3339") constant("\",")
+             constant(value="\"message\":\"")    property(name="msg")                               constant("\",")
+             constant(value="\"host\":\"")       property(name="hostname")                          constant("\",")
+             constant(value="\"severity\":\"")   property(name="syslogseverity-text")               constant("\",")
+             constant(value="\"facility\":\"")   property(name="syslogfacility-text")               constant("\",")
+             constant(value="\"syslogtag\":\"")  property(name="syslogtag")                         constant("\"")
+           constant(value="}")
          }
 *.* action(type="omelasticsearch"
            server="<Humio server>"
