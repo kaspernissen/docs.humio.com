@@ -10,8 +10,8 @@ Data migrations: No
 Configuration Changes: No  
 Version: 1.0.63
 
-- Bugfix. Alerts could end up not being run after restarting a query
-- Query segment files using read instead of mmap
+- Bugfix. Alerts could end up not being run after restarting a query.
+- Query segment files using read instead of mmap.
 
 ## 2018-05-09
 Minor update release.  
@@ -19,7 +19,7 @@ Data migrations: No
 Configuration Changes: No  
 Version: 1.0.62
 
-- Increase timeout for http query requests
+- Increase timeout for http query requests.
 
 ## 2018-05-08
 Minor update release.  
