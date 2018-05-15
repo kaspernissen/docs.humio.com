@@ -4,7 +4,7 @@ weight: 9
 pre: "<b>9. </b>"
 ---
 
-## 2018-05-015
+## 2018-05-15
 Minor update release.  
 Data migrations: No  
 Configuration Changes: No  
@@ -12,7 +12,7 @@ Version: 1.0.64
 
 - Search scheduling is more fair in cases with multiple heavy searches.
 
-## 2018-05-015
+## 2018-05-15
 Regular update release.  
 Data migrations: No  
 Configuration Changes: No  
