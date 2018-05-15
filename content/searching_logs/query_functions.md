@@ -1,6 +1,7 @@
 ---
 title: "Query functions"
 ---
+
 Query functions are specified using a name followed by brackets containing parameters. Parameters are supplied as named parameters
 
 ```

@@ -1098,4 +1098,10 @@ pre .copy-to-clipboard:hover {
     text-align: left;
 }
 
+.query-function-title {
+  font-size: 27px;
+  color: #1e1a35 !important;
+  text-decoration: underline;
+}
+
 /*# sourceMappingURL=theme.css.map */

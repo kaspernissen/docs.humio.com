@@ -1,7 +1,8 @@
 {{ $queryFunctions := getJSON "../humio/target/docs-data/queryfunctions.json" }}
 
 {{ range sort $queryFunctions "name" }}
-<h2 id="{{.name}}">{{ .name}}</h2>
+<div class="query-function">
+<h2 id="{{.name}}" class="query-function-title">{{ .name}}</h2>
 <div>{{ if .isAggregateFunction }}Aggregate{{ else }}Filter{{ end }}</div>
 <p>{{ .description | markdownify }}</p>
 <h3 id="{{.name}}-parameters">Parameters</h3>
@@ -34,4 +35,5 @@
 <p>{{ .description}}</p>
 {{ highlight .value "" "" }}
 {{ end }}
+</div>
 {{ end }}
