@@ -1098,6 +1098,15 @@ pre .copy-to-clipboard:hover {
     text-align: left;
 }
 
+.function-list {
+
+}
+
+.query-function {
+  border-top: solid 1px lightgray;
+  padding-bottom: 40px;
+}
+
 .query-function__top {
   display: flex;
   align-items: center;
@@ -1132,6 +1141,18 @@ pre .copy-to-clipboard:hover {
 .query-function h4 {
   font-size: 15px;
   opacity: 0.7;
+}
+
+#navigation {
+  display: none;
+}
+
+#body > .padding {
+  padding: 1rem 3rem;
+}
+
+.query-function-list {
+  margin-right: 100px;
 }
 
 /*# sourceMappingURL=theme.css.map */

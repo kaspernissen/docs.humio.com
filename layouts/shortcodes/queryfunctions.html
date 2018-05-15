@@ -1,11 +1,22 @@
 {{ $queryFunctions := getJSON "../humio/target/docs-data/queryfunctions.json" }}
 
+<div class="query-function-toc">
+<h2>List of Functions</h2>
+<ul class="toc">
 {{ range sort $queryFunctions "name" }}
-<div class="query-function">
+  <li><a href="#{{.name}}">{{.name}}</a></li>
+{{ end }}
+</ul>
+</div>
+
+<div class="query-function-list">
+{{ range sort $queryFunctions "name" }}
+<div class="query-function" id="{{.name}}">
 <div class="query-function__top">
-  <h2 id="{{.name}}" class="query-function__title">{{ .name}}</h2>
+  <h2 class="query-function__title" data-id="{{.name}}">{{ .name}}</h2>
   <div class="query-function__type">( {{ if .isAggregateFunction }}Aggregate{{ else }}Filter{{ end }} Function )</div>
 </div>
+
 <p>{{ .description | markdownify }}</p>
 <h3 id="{{.name}}-parameters">Parameters</h3>
 {{ if .parameters }}
@@ -40,3 +51,4 @@
 {{ end }}
 </div>
 {{ end }}
+</div>
