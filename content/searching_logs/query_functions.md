@@ -15,3 +15,4 @@ A function is either a `transformation function` or an `aggregate function` Tran
 Each query function is described below:
 
 {{% queryfunctions %}}
+ 

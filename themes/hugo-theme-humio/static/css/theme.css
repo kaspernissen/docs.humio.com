@@ -1098,10 +1098,40 @@ pre .copy-to-clipboard:hover {
     text-align: left;
 }
 
-.query-function-title {
-  font-size: 27px;
+.query-function__top {
+  display: flex;
+  align-items: center;
+  margin-top: 60px;
+  justify-content: space-between;
+  margin-bottom: 40px;
+}
+
+.query-function__title {
+  font-size: 30px;
   color: #1e1a35 !important;
   text-decoration: underline;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.query-function__type {
+  font-size: 14px;
+  text-transform: uppercase;
+  opacity: 0.5;
+}
+
+.query-function__title .anchor {
+  right: -24px;
+  width: 24px;
+  top: 3px;
+  text-align: right;
+}
+
+.query-function h4 {
+  font-size: 15px;
+  opacity: 0.7;
 }
 
 /*# sourceMappingURL=theme.css.map */

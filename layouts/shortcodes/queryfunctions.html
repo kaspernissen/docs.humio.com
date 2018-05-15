@@ -2,8 +2,10 @@
 
 {{ range sort $queryFunctions "name" }}
 <div class="query-function">
-<h2 id="{{.name}}" class="query-function-title">{{ .name}}</h2>
-<div>{{ if .isAggregateFunction }}Aggregate{{ else }}Filter{{ end }}</div>
+<div class="query-function__top">
+  <h2 id="{{.name}}" class="query-function__title">{{ .name}}</h2>
+  <div class="query-function__type">( {{ if .isAggregateFunction }}Aggregate{{ else }}Filter{{ end }} Function )</div>
+</div>
 <p>{{ .description | markdownify }}</p>
 <h3 id="{{.name}}-parameters">Parameters</h3>
 {{ if .parameters }}
@@ -30,10 +32,11 @@
 {{ else }}
 <p>Takes no parameters</p>
 {{ end }}
-<h3 id="{{.name}}-examples">Examples</h3>
-{{range .examples}}
-<p>{{ .description}}</p>
-{{ highlight .value "" "" }}
+<h3 id="{{ .name }}-examples">Examples</h3>
+{{range $index, $value := .examples}}
+<h4 id="{{ $value.name }}-examples-{{add $index 1}}">Example {{ add $index 1 }}</h4>
+<p>{{ $value.description}}</p>
+{{ highlight $value.value "" "" }}
 {{ end }}
 </div>
 {{ end }}
